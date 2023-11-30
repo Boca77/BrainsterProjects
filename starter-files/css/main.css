@@ -207,4 +207,32 @@ nav .burger.x span:last-child {
     display: block;
     margin-bottom: 25px;
   }
+}
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  color: white;
+  height: 70vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://cdn.stocksnap.io/img-thumbs/960w/business-people_IS1XRUWYW4.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+@media (max-width: 1190px) {
+  .banner {
+    font-size: 40px;
+  }
+}
+@media (max-width: 910px) {
+  .banner {
+    font-size: 25px;
+  }
+}
+@media (max-width: 425px) {
+  .banner {
+    font-size: 15px;
+  }
 }/*# sourceMappingURL=main.css.map */
