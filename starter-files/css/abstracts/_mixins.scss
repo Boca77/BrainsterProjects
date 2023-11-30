@@ -15,13 +15,13 @@
 }
 
 @mixin laptop-m-styles {
-  @media (max-width: 1024px) {
+  @media (max-width: 1190px) {
     @content;
   }
 }
 
 @mixin tablet-styles {
-  @media (max-width: 768px) {
+  @media (max-width: 910px) {
     @content;
   }
 }
