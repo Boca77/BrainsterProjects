@@ -26,19 +26,19 @@ btn.onclick = function () {
 
 marketing.onclick = function () {
   toggleFilter(marketing);
-  filterMarketing();
+  filteringCards(marketingCards);
   showCards(marketing);
 };
 
 code.onclick = function () {
   toggleFilter(code);
-  filterCoding();
+  filteringCards(codingCards);
   showCards(code);
 };
 
 design.onclick = function () {
   toggleFilter(design);
-  filterDesign();
+  filteringCards(designCards);
   showCards(design);
 };
 
@@ -65,27 +65,11 @@ function toggleFilter(button) {
   }
 }
 
-function filterCoding() {
+function filteringCards(cards) {
   hideAllCards();
 
-  codingCards.forEach((codingCard) => {
-    codingCard.style.display = "block";
-  });
-}
-
-function filterDesign() {
-  hideAllCards();
-
-  designCards.forEach((designCard) => {
-    designCard.style.display = "block";
-  });
-}
-
-function filterMarketing() {
-  hideAllCards();
-
-  marketingCards.forEach((marketingCard) => {
-    marketingCard.style.display = "block";
+  cards.forEach((card) => {
+    card.style.display = "block";
   });
 }
 
