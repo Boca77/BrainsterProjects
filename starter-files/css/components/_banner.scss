@@ -1,0 +1,27 @@
+@use "../abstracts/mixins" as mix;
+
+.banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  color: white;
+  height: 70vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("https://cdn.stocksnap.io/img-thumbs/960w/business-people_IS1XRUWYW4.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  @include mix.laptop-m-styles {
+    font-size: 40px;
+  }
+  @include mix.tablet-styles {
+    font-size: 25px;
+    height: 60vh;
+    background-position: top;
+  }
+  @include mix.mobile-l-styles {
+    font-size: 15px;
+    height: 50vh;
+  }
+}
