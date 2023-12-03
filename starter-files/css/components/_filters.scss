@@ -47,6 +47,9 @@
 
     &:not(:last-child) {
       border-right: 1px rgba(128, 128, 128, 0.2) solid;
+      @include mix.tablet-styles {
+        border-bottom: 1px rgba(128, 128, 128, 0.2) solid;
+      }
     }
 
     .desc {

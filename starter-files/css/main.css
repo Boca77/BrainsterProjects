@@ -330,6 +330,11 @@ nav .burger.x span:last-child {
 .filters .filter:not(:last-child) {
   border-right: 1px rgba(128, 128, 128, 0.2) solid;
 }
+@media (max-width: 910px) {
+  .filters .filter:not(:last-child) {
+    border-bottom: 1px rgba(128, 128, 128, 0.2) solid;
+  }
+}
 .filters .filter .desc {
   flex-basis: 90%;
   margin-right: 15px;
