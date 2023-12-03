@@ -36,7 +36,7 @@ h2 {
   text-align: center;
   font-size: 50px;
   margin-bottom: 0;
-  padding: 30px 0;
+  padding: 50px 0;
 }
 @media (max-width: 1190px) {
   h2 {
@@ -390,6 +390,7 @@ nav .burger.x span:last-child {
   width: 75%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 176px;
 }
 @media (max-width: 1190px) {
   .cards {
@@ -515,4 +516,15 @@ nav .burger.x span:last-child {
   .cards .cards-container .card .inner .card-body .more {
     transform: scale(0.8);
   }
+}
+
+footer {
+  text-align: center;
+  background: #302f38;
+  padding: 15px;
+}
+footer p {
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0;
 }/*# sourceMappingURL=main.css.map */
