@@ -7,6 +7,11 @@ nav {
   padding: 20px 50px;
   background-color: #fcd232;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px;
+  background-position: center;
+
+  @include mix.mobile-l-styles {
+    padding: 15px 20px;
+  }
 
   .logo {
     img {
@@ -157,6 +162,7 @@ nav {
       height: 100vh;
       transition: height 0.8s ease;
       position: absolute;
+      z-index: 2;
       top: 0;
       left: 0;
       right: 0;
