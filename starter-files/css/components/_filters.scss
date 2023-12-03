@@ -1,0 +1,94 @@
+@use "../abstracts/mixins" as mix;
+
+.filters {
+  display: flex;
+  @include mix.tablet-styles {
+    flex-direction: column;
+  }
+  .filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-basis: 33.33%;
+    color: white;
+    background-color: #302f38;
+    padding: 25px 45px;
+    font-weight: 600;
+    cursor: pointer;
+
+    @include mix.laptop-m-styles {
+      padding: 25px 35px;
+    }
+    @include mix.tablet-styles {
+      padding: 15px 35px;
+    }
+    @include mix.mobile-l-styles {
+      padding: 15px 20px;
+    }
+
+    i {
+      margin-bottom: 0;
+      display: inline-block;
+      margin-top: 17px;
+      color: #eb3b3b;
+      display: none;
+    }
+    .icon {
+      flex-basis: 10%;
+      P {
+        text-align: center;
+        margin-bottom: 0;
+        background-color: #302f38;
+        border-radius: 50%;
+        height: 35px;
+        width: 35px;
+      }
+    }
+
+    &:not(:last-child) {
+      border-right: 1px rgba(128, 128, 128, 0.2) solid;
+      @include mix.tablet-styles {
+        border-bottom: 1px rgba(128, 128, 128, 0.2) solid;
+      }
+    }
+
+    .desc {
+      flex-basis: 90%;
+      margin-right: 15px;
+      font-size: 18px;
+      p {
+        margin-bottom: 0;
+        width: 70%;
+        @include mix.laptop-l-styles {
+          width: 100%;
+        }
+        @include mix.laptop-m-styles {
+          font-size: 12px;
+        }
+        @include mix.tablet-styles {
+          font-size: 20px;
+          width: 60%;
+        }
+        @media (max-width: 650px) {
+          width: 90%;
+        }
+        @include mix.mobile-l-styles {
+          width: 100%;
+          font-size: 15px;
+        }
+        @include mix.mobile-m-styles {
+          font-size: 13px;
+        }
+      }
+    }
+    &.filter-on {
+      background-color: #eb3b3b;
+      i {
+        display: inline-block;
+      }
+      p {
+        color: #302f38;
+      }
+    }
+  }
+}
