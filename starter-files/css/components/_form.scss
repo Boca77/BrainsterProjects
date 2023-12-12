@@ -1,0 +1,93 @@
+h1 {
+  margin: 100px 0;
+  font-size: 70px;
+  font-weight: 600;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.custom-select {
+  position: relative;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.custom-select select {
+  display: none;
+}
+
+.select-selected {
+  background-color: #fff;
+}
+
+.select-selected:after {
+  position: absolute;
+
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: black transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent black transparent;
+  top: 7px;
+}
+
+.select-items div,
+.select-selected {
+  border-radius: 5px;
+  overflow: hidden;
+  color: black;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+.select-items {
+  position: absolute;
+  background-color: #fff;
+  top: 50px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 5px;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,
+.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 150px;
+}
+
+form {
+  label {
+    font-weight: bold;
+  }
+  input::placeholder {
+    font-size: 15px;
+  }
+  .button {
+    width: 100%;
+    border: none;
+    margin-top: 25px;
+    @media (max-width: 767px) {
+      margin-top: 200px;
+    }
+  }
+}
+
+.position-fixed {
+  width: 100%;
+}

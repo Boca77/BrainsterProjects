@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Brainster Labs" />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="author" content="Boris Nachev" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/0d6f25b6d2.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <title>Вроаботи наш студент</title>
+  </head>
+  <body>
+    <nav id="nav">
+      <div class="logo">
+        <a href="./index.html">
+          <img src="../img/Logo.png" alt="Brainster Logo" />
+          <p>brainster</p>
+        </a>
+      </div>
+      <div class="content btn-on" id="menu">
+        <ul class="links">
+          <li>
+            <a href="https://brainster.co/marketing/" target="_blank">
+              Академија за маркетинг
+            </a>
+          </li>
+          <li>
+            <a href="https://brainster.co/full-stack/ " target="_blank">
+              Академија за програмирање
+            </a>
+          </li>
+          <li>
+            <a href="https://brainster.co/data-science/ " target="_blank">
+              Академија за data science
+            </a>
+          </li>
+          <li>
+            <a href="https://brainster.co/graphic-design/" target="_blank">
+              Академија за дизајн
+            </a>
+          </li>
+        </ul>
+        <div class="employment">
+          <a
+            class="button btn-on"
+            id="employment-btn"
+            href="./contact-form.html"
+          >
+            Вработи наш студент
+          </a>
+        </div>
+      </div>
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+    <div class="box">
+      <div class="container-sm">
+        <h1 class="text-center title">Вработи студент</h1>
+        <form class="needs-validation" novalidate>
+          <div class="row justify-content-center">
+            <div class="col-md-6 col-xl-4 mb-3">
+              <label for="full-name">Име и презиме</label>
+              <input
+                type="text"
+                class="form-control"
+                id="full-name"
+                placeholder="Вашето име и презиме"
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="col-md-6 col-xl-4 mb-3">
+              <label for="company">Име на компанија</label>
+              <input
+                type="text"
+                class="form-control"
+                id="company"
+                placeholder="Име на вашата компанија"
+                required
+              />
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-6 col-xl-4 mb-3">
+              <label for="email">Контакт имејл</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Контакт имејл на вашата компанија"
+                required
+              />
+              <div class="invalid-feedback">
+                Ве молам внесете валиден е маил
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4 mb-3">
+              <label for="tel">Контакт телефон </label>
+              <input
+                type="tel"
+                class="form-control"
+                id="tel"
+                placeholder="Контакт телефон на вашата компанија"
+                required
+              />
+              <div class="invalid-feedback">Ве молам внесет мобилен број</div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-6 col-xl-4 mb-3">
+              <label for="stydent-type">Тип на студент</label>
+              <div class="custom-select" id="stydent-type">
+                <select>
+                  <option value="0">Изберете тип на студент</option>
+                  <option value="1">Студент од програмирање</option>
+                  <option value="2">Студент од маркетинг</option>
+                  <option value="3">Студент од data science</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6 col-xl-4 mb-3">
+              <input
+                class="button d-inline-block"
+                type="submit"
+                value="ИСПРАТИ"
+              />
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <footer>
+        <p>Изработено со ❤️ од студентите на Brainster</p>
+      </footer>
+    </div>
+    <!-- scripts -->
+    <script src="./js/input-validation.js"></script>
+    <script src="./js/select-form.js"></script>
+    <script src="./js/index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
