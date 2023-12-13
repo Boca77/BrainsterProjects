@@ -10,6 +10,8 @@
       src="https://kit.fontawesome.com/0d6f25b6d2.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -70,7 +72,7 @@
     <div class="box">
       <div class="container-sm">
         <h1 class="text-center title">Вработи студент</h1>
-        <form class="needs-validation" novalidate>
+        <form class="needs-validation" id="form">
           <div class="row justify-content-center">
             <div class="col-md-6 col-xl-4 mb-3">
               <label for="full-name">Име и презиме</label>
@@ -81,22 +83,16 @@
                 placeholder="Вашето име и презиме"
                 required
               />
-              <div class="invalid-feedback">
-                Внесете го вашето име и презиме
-              </div>
             </div>
             <div class="col-md-6 col-xl-4 mb-3">
-              <label for="company">Име на компанија</label>
+              <label for="company-name">Име на компанија</label>
               <input
                 type="text"
                 class="form-control"
-                id="company"
+                id="company-name"
                 placeholder="Име на вашата компанија"
                 required
               />
-              <div class="invalid-feedback">
-                Внесете го името на вашата фирма
-              </div>
             </div>
           </div>
           <div class="row justify-content-center">
@@ -109,9 +105,6 @@
                 placeholder="Контакт имејл на вашата компанија"
                 required
               />
-              <div class="invalid-feedback">
-                Ве молам внесете валиден е маил
-              </div>
             </div>
             <div class="col-md-6 col-xl-4 mb-3">
               <label for="tel">Контакт телефон </label>
@@ -122,7 +115,6 @@
                 placeholder="Контакт телефон на вашата компанија"
                 required
               />
-              <div class="invalid-feedback">Ве молам внесет мобилен број</div>
             </div>
           </div>
           <div class="row justify-content-center">
@@ -131,9 +123,6 @@
               <div class="custom-select" id="stydent-type">
                 <select>
                   <option value="0">Изберете тип на студент</option>
-                  <option value="1">Студент од програмирање</option>
-                  <option value="2">Студент од маркетинг</option>
-                  <option value="3">Студент од data science</option>
                 </select>
               </div>
             </div>
@@ -155,7 +144,9 @@
     <!-- scripts -->
     <script src="./js/input-validation.js"></script>
     <script src="./js/select-form.js"></script>
-    <script src="./js/index.js"></script>
+    <script src="./js/nav.js"></script>
+    <script type="module" src="./js/data.js"></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
