@@ -25,15 +25,18 @@ form.addEventListener("submit", (e) => {
   const companyName = document.getElementById("company-name").value;
   const email = document.getElementById("email").value;
   const tel = document.getElementById("tel").value;
+  const student = document.getElementById("student");
+  const studentTyp = student.textContent;
 
   const newClientRef = push(ref(database, "users"));
-  const referenceName = newClientRef.key;
+  console.log("student:", studentTyp);
 
   set(newClientRef, {
     fullName: fullName,
     companyName: companyName,
     email: email,
     phoneNumber: tel,
+    studentType: studentTyp,
   });
 
   form.reset();

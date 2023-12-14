@@ -120,11 +120,31 @@
           <div class="row justify-content-center">
             <div class="col-md-6 col-xl-4 mb-3">
               <label for="stydent-type">Тип на студент</label>
-              <div class="custom-select" id="stydent-type">
-                <select>
-                  <option value="0">Изберете тип на студент</option>
-                </select>
+              <div class="custom-select">
+                <button
+                  class="select-button"
+                  role="combobox"
+                  aria-labelledby="select button"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                  aria-controls="select-dropdown"
+                >
+                  <span class="selected-value" id="student"
+                    >Избери тип на студент</span
+                  >
+                  <span class="arrow"></span>
+                </button>
+                <ul
+                  class="select-dropdown"
+                  role="listbox"
+                  id="select-dropdown"
+                ></ul>
               </div>
+
+              <link
+                href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+                rel="stylesheet"
+              />
             </div>
             <div class="col-md-6 col-xl-4 mb-3">
               <input
@@ -142,8 +162,10 @@
       </footer>
     </div>
     <!-- scripts -->
+
     <script src="./js/input-validation.js"></script>
-    <script src="./js/select-form.js"></script>
+    <script type="module" src="./js/select-form.js"></script>
+    <script type="module" src="./js/drop-down.js"></script>
     <script src="./js/nav.js"></script>
     <script type="module" src="./js/data.js"></script>
 
