@@ -11,7 +11,7 @@
   height: 70vh;
   overflow: none;
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
   background-attachment: fixed;
   position: relative;
 
@@ -29,32 +29,11 @@
     }
   }
   @media (max-width: 798px) {
-    height: 35vh;
     .employment {
       font-size: 20px;
     }
   }
-  @media (max-width: 600px) {
-    height: 25vh;
-    .employment {
-      font-size: 15px;
-      .btn {
-        padding: 0px;
-      }
-    }
 
-    @media (max-width: 450px) {
-      height: 20vh;
-      .employment {
-        font-size: 12px;
-      }
-    }
-    @media (max-width: 450px) {
-      .employment {
-        font-size: 10px;
-      }
-    }
-  }
   .employment {
     z-index: 3;
     border-radius: 10px;
@@ -66,8 +45,17 @@
       bottom: 30px;
       left: 50px;
     }
+    @media (max-width: 500px) {
+      transform: translateX(-50%);
+      font-size: 15px;
+      left: 50%;
+      width: 200px;
+    }
+
     a {
       background-color: black;
+      width: 100%;
+      text-align: center;
     }
 
     // transform: scale(1);

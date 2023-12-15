@@ -267,7 +267,7 @@ nav .burger.x span:last-child {
   height: 70vh;
   overflow: none;
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
   background-attachment: fixed;
   position: relative;
 }
@@ -288,35 +288,8 @@ nav .burger.x span:last-child {
   }
 }
 @media (max-width: 798px) {
-  .banner {
-    height: 35vh;
-  }
   .banner .employment {
     font-size: 20px;
-  }
-}
-@media (max-width: 600px) {
-  .banner {
-    height: 25vh;
-  }
-  .banner .employment {
-    font-size: 15px;
-  }
-  .banner .employment .btn {
-    padding: 0px;
-  }
-}
-@media (max-width: 600px) and (max-width: 450px) {
-  .banner {
-    height: 20vh;
-  }
-  .banner .employment {
-    font-size: 12px;
-  }
-}
-@media (max-width: 600px) and (max-width: 450px) {
-  .banner .employment {
-    font-size: 10px;
   }
 }
 .banner .employment {
@@ -333,8 +306,18 @@ nav .burger.x span:last-child {
     left: 50px;
   }
 }
+@media (max-width: 500px) {
+  .banner .employment {
+    transform: translateX(-50%);
+    font-size: 15px;
+    left: 50%;
+    width: 200px;
+  }
+}
 .banner .employment a {
   background-color: black;
+  width: 100%;
+  text-align: center;
 }
 .banner .employment:hover a {
   background-color: transparent;
@@ -868,6 +851,13 @@ form .button {
 
 .position-fixed {
   width: 100%;
+}
+
+.alert {
+  width: 60%;
+  margin: auto;
+  margin-bottom: 30px;
+  display: none;
 }
 
 .table-box {
