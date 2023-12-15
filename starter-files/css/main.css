@@ -55,7 +55,7 @@ h2 {
   margin: 0 auto;
 }
 
-.btn {
+.button {
   background-color: red;
   padding: 8px 15px;
   border-radius: 5px;
@@ -64,12 +64,14 @@ h2 {
 }
 
 nav {
+  position: relative;
+  z-index: 3;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
   background-color: #fcd232;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 100px;
   background-position: center;
 }
 @media (max-width: 425px) {
@@ -107,6 +109,11 @@ nav .content .links li {
   display: inline-block;
   position: relative;
 }
+@media (max-width: 350px) {
+  nav .content .links li {
+    font-size: 16px;
+  }
+}
 nav .content .links li:not(:last-child) {
   margin-right: 20px;
 }
@@ -135,11 +142,11 @@ nav .content .links a:hover {
   color: red;
   transition: color 0.5s ease;
 }
-nav .btn {
+nav .button {
   transform: scale(1);
   transition: transform 0.5s ease-out;
 }
-nav .btn:hover {
+nav .button:hover {
   transform: scale(1.1);
   transition: transform 0.5s ease-in;
 }
@@ -181,7 +188,7 @@ nav .burger.x span:nth-child(2) {
 nav .burger.x span:last-child {
   opacity: 0;
 }
-@media (max-width: 1190px) {
+@media (max-width: 1246px) {
   nav {
     font-size: 12px;
   }
@@ -193,6 +200,11 @@ nav .burger.x span:last-child {
   }
   nav .logo p {
     font-size: 8px;
+  }
+}
+@media (max-width: 966px) {
+  nav {
+    font-size: 11px;
   }
 }
 @media (max-width: 910px) {
@@ -222,13 +234,13 @@ nav .burger.x span:last-child {
     transition: height 0.8s ease;
     overflow: hidden;
   }
-  nav .content .btn {
+  nav .content .button {
     margin-left: 30px;
     font-size: 20px;
     opacity: 1;
     transition: all 1s ease;
   }
-  nav .content .btn.btn-on {
+  nav .content .button.btn-on {
     opacity: 0;
     transition: all 1s ease;
   }
@@ -256,22 +268,26 @@ nav .burger.x span:last-child {
   background-position: center;
   background-attachment: fixed;
 }
-@media (max-width: 1190px) {
-  .banner {
-    font-size: 40px;
+@media (max-width: 768px) {
+  .banner h1 {
+    font-size: 50px;
   }
 }
-@media (max-width: 910px) {
+@media (max-width: 600px) {
   .banner {
-    font-size: 25px;
     height: 60vh;
     background-position: top;
   }
+  .banner h1 {
+    font-size: 45px;
+  }
 }
-@media (max-width: 425px) {
+@media (max-width: 600px) {
   .banner {
-    font-size: 15px;
     height: 50vh;
+  }
+  .banner h1 {
+    font-size: 40px;
   }
 }
 
@@ -518,6 +534,54 @@ nav .burger.x span:last-child {
   }
 }
 
+.box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 111.7px);
+  margin: 0;
+}
+@media (max-width: 1247px) {
+  .box {
+    height: calc(100vh - 96.97px);
+  }
+}
+@media (max-width: 967px) {
+  .box {
+    height: calc(100vh - 96.47px);
+  }
+}
+@media (max-width: 425px) {
+  .box {
+    height: calc(100vh - 86.97px);
+  }
+}
+.box .container {
+  flex: 1;
+}
+@media (max-width: 990px) {
+  .box h1.title {
+    font-size: 48px;
+  }
+}
+@media (max-width: 776px) {
+  .box h1.title {
+    font-size: 40px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 425px) {
+  .box h1.title {
+    font-size: 40px;
+  }
+}
+@media (max-width: 355px) {
+  .box h1.title {
+    font-size: 30px;
+  }
+}
+
 footer {
   text-align: center;
   background: #302f38;
@@ -527,4 +591,182 @@ footer p {
   font-weight: 600;
   color: white;
   margin-bottom: 0;
+}
+@media (max-width: 375px) {
+  footer p {
+    font-size: 12px;
+  }
+}
+
+h1 {
+  margin: 100px 0;
+  font-size: 70px;
+  font-weight: 600;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.custom-select {
+  position: relative;
+  width: 100%;
+  font-size: 16px;
+  color: #000;
+}
+
+.select-button {
+  width: 100%;
+  font-size: 15px;
+  background-color: #fff;
+  padding: 10px 15px;
+  border: 1px solid #caced1;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.selected-value {
+  text-align: left;
+}
+
+.arrow {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #000;
+  transition: transform ease-in-out 0.3s;
+}
+
+.select-dropdown {
+  position: absolute;
+  list-style: none;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 15px;
+  padding: 10px;
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  transition: 0.3s linear;
+  transform: matrix(1, 1);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.select-dropdown:focus-within {
+  box-shadow: 0 10px 25px rgba(94, 108, 233, 0.6);
+}
+
+.select-dropdown li {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 7px;
+  border-bottom: rgba(128, 128, 128, 0.384) solid 1px;
+}
+
+.select-dropdown li label {
+  width: 100%;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.select-dropdown::-webkit-scrollbar {
+  width: 7px;
+}
+
+.select-dropdown::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+
+.select-dropdown::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 25px;
+}
+
+.select-dropdown li:hover,
+.select-dropdown input:checked ~ label {
+  background-color: #f2f2f2;
+}
+
+.select-dropdown input:focus ~ label {
+  background-color: #dfdfdf;
+}
+
+.select-dropdown input[type=radio] {
+  position: absolute;
+  left: 0;
+  opacity: 0;
+}
+
+/* interactivity */
+.custom-select.active .arrow {
+  transform: rotate(180deg);
+}
+
+.custom-select.active .select-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: matrix(1, 1);
+}
+
+form label {
+  font-weight: bold;
+}
+form input::-moz-placeholder {
+  font-size: 15px;
+}
+form input::placeholder {
+  font-size: 15px;
+}
+form .button {
+  width: 100%;
+  border: none;
+  margin-top: 25px;
+}
+@media (max-width: 767px) {
+  form .button {
+    margin-top: 200px;
+  }
+}
+
+.position-fixed {
+  width: 100%;
+}
+
+.table-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+.table-box table,
+.table-box th,
+.table-box td {
+  border: 1px black solid;
+  padding: 10px;
+}
+@media (max-width: 900px) {
+  .table-box {
+    font-size: 12px;
+  }
+}
+@media (max-width: 550px) {
+  .table-box {
+    font-size: 10px;
+  }
+}
+@media (max-width: 320px) {
+  .table-box {
+    font-size: 7px;
+  }
 }/*# sourceMappingURL=main.css.map */
