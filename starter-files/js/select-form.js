@@ -1,34 +1,29 @@
 const customSelect = document.querySelector(".custom-select");
 const selectBtn = document.querySelector(".select-button");
 const selectedValue = document.querySelector(".selected-value");
-const optionsList = document.querySelectorAll(".select-dropdown li");
+const optionsList = document.querySelector(".select-dropdown");
 
-// add click event to select button
 selectBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  // add/remove active class on the container element
   customSelect.classList.toggle("active");
-  // update the aria-expanded attribute based on the current state
   selectBtn.setAttribute(
     "aria-expanded",
     selectBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
   );
 });
 
-optionsList.forEach((option) => {
-  function handler(e) {
-    e.preventDefault();
-    // Click Events
-    if (e.type === "click" && e.clientX !== 0 && e.clientY !== 0) {
-      selectedValue.textContent = this.children[1].textContent;
-      customSelect.classList.remove("active");
-    }
-    // Key Events
-    if (e.key === "Enter") {
-      selectedValue.textContent = this.textContent;
-      customSelect.classList.remove("active");
-    }
+optionsList.addEventListener("click", (e) => {
+  e.preventDefault();
+  const selectedOption = e.target.closest("li");
+  if (selectedOption) {
+    selectedValue.textContent = selectedOption.textContent;
+    customSelect.classList.remove("active");
   }
+});
 
-  option.addEventListener("click", handler);
+// Close dropdown when clicking outside the dropdown area
+document.addEventListener("click", (e) => {
+  if (!customSelect.contains(e.target)) {
+    customSelect.classList.remove("active");
+  }
 });
