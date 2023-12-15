@@ -1,11 +1,13 @@
 @use "../abstracts/mixins" as mix;
 
 .filters {
+  z-index: 9;
   display: flex;
   @include mix.tablet-styles {
     flex-direction: column;
   }
   .filter {
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;

@@ -215,14 +215,14 @@ nav .burger.x span:last-child {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    z-index: 2;
+    z-index: 9;
   }
   nav .content {
     display: block;
     height: 100vh;
     transition: height 0.8s ease;
     position: absolute;
-    z-index: 2;
+    z-index: 9;
     top: 0;
     left: 0;
     right: 0;
@@ -256,42 +256,150 @@ nav .burger.x span:last-child {
   }
 }
 
+.banner-img {
+  z-index: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://cdn.stocksnap.io/img-thumbs/960w/electric-blue_9EJOFXLU6M.jpg");
+}
+
 .banner {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-size: 50px;
   color: white;
   height: 70vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://cdn.stocksnap.io/img-thumbs/960w/business-people_IS1XRUWYW4.jpg");
+  overflow: none;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  position: relative;
 }
-@media (max-width: 768px) {
-  .banner h1 {
-    font-size: 50px;
-  }
-}
-@media (max-width: 600px) {
+@media (max-width: 1250px) {
   .banner {
     height: 60vh;
-    background-position: top;
   }
-  .banner h1 {
-    font-size: 45px;
+  .banner .employment {
+    font-size: 40px;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 910px) {
   .banner {
-    height: 50vh;
+    height: 45vh;
   }
-  .banner h1 {
-    font-size: 40px;
+  .banner .employment {
+    font-size: 25px;
+  }
+}
+@media (max-width: 798px) {
+  .banner .employment {
+    font-size: 20px;
+  }
+}
+.banner .employment {
+  z-index: 3;
+  border-radius: 10px;
+  border: solid black 5px;
+  position: absolute;
+  bottom: 60px;
+  left: 80px;
+}
+@media (max-width: 768px) {
+  .banner .employment {
+    bottom: 30px;
+    left: 50px;
+  }
+}
+@media (max-width: 500px) {
+  .banner .employment {
+    transform: translateX(-50%);
+    font-size: 15px;
+    left: 50%;
+    width: 200px;
+  }
+}
+.banner .employment a {
+  background-color: black;
+  width: 100%;
+  text-align: center;
+}
+.banner .employment:hover a {
+  background-color: transparent;
+}
+.banner img {
+  position: absolute;
+  top: 15%;
+  right: 6%;
+  width: 250px;
+}
+@media (max-width: 1440px) {
+  .banner img {
+    top: 10%;
+    right: 4%;
+    width: 200px;
+  }
+}
+@media (max-width: 1324px) {
+  .banner img {
+    top: 10%;
+    right: 4%;
+    width: 150px;
+  }
+}
+@media (max-width: 900px) {
+  .banner img {
+    top: 10%;
+    right: 4%;
+    width: 150px;
+  }
+}
+@media (max-width: 768px) {
+  .banner img {
+    top: 5%;
+    right: 4%;
+    width: 150px;
+  }
+}
+@media (max-width: 650px) {
+  .banner img {
+    width: 100px;
+  }
+}
+@media (max-width: 425px) {
+  .banner img {
+    width: 50px;
+  }
+}
+.banner .box {
+  z-index: -1;
+  position: absolute;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: 800;
+  overflow: hidden;
+  width: 100%;
+}
+@media (max-width: 1440px) {
+  .banner .box {
+    bottom: 0;
+    top: 0;
+  }
+}
+.banner .box--2 .box__background {
+  top: -100%;
+  left: -50%;
+  width: 100%;
+  font-size: 24px;
+}
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotateReverse {
+  to {
+    transform: rotate(-360deg);
   }
 }
 
 .filters {
+  z-index: 9;
   display: flex;
 }
 @media (max-width: 910px) {
@@ -300,6 +408,7 @@ nav .burger.x span:last-child {
   }
 }
 .filters .filter {
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -742,6 +851,13 @@ form .button {
 
 .position-fixed {
   width: 100%;
+}
+
+.alert {
+  width: 60%;
+  margin: auto;
+  margin-bottom: 30px;
+  display: none;
 }
 
 .table-box {

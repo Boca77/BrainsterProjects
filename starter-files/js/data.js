@@ -18,6 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const form = document.getElementById("form");
+const alert = document.getElementById("alert");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -38,6 +39,10 @@ form.addEventListener("submit", (e) => {
     phoneNumber: tel,
     studentType: studentTyp,
   });
+  alert.style.display = "block";
+  setTimeout(() => {
+    alert.style.display = "none";
+  }, 2500);
 
   form.reset();
 });
