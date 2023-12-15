@@ -1,12 +1,14 @@
 @use "../abstracts/mixins" as mix;
 
 nav {
+  position: relative;
+  z-index: 3;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
   background-color: #fcd232;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 100px;
   background-position: center;
 
   @include mix.mobile-l-styles {
@@ -46,6 +48,10 @@ nav {
         margin-bottom: 0px;
         display: inline-block;
         position: relative;
+        @media (max-width: 350px) {
+          font-size: 16px;
+        }
+
         &:not(:last-child) {
           margin-right: 20px;
         }
@@ -78,12 +84,12 @@ nav {
     }
   }
 
-  .btn {
+  .button {
     transform: scale(1);
     transition: transform 0.5s ease-out;
   }
 
-  .btn:hover {
+  .button:hover {
     transform: scale(1.1);
     transition: transform 0.5s ease-in;
   }
@@ -133,7 +139,7 @@ nav {
     }
   }
 
-  @include mix.laptop-m-styles {
+  @media (max-width: 1246px) {
     font-size: 12px;
     .content {
       gap: 20px;
@@ -146,6 +152,9 @@ nav {
         font-size: 8px;
       }
     }
+  }
+  @media (max-width: 966px) {
+    font-size: 11px;
   }
 
   @include mix.tablet-styles {
@@ -175,7 +184,7 @@ nav {
         overflow: hidden;
       }
 
-      .btn {
+      .button {
         margin-left: 30px;
         font-size: 20px;
         opacity: 1;
