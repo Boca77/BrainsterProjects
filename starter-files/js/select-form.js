@@ -21,7 +21,6 @@ optionsList.addEventListener("click", (e) => {
   }
 });
 
-// Close dropdown when clicking outside the dropdown area
 document.addEventListener("click", (e) => {
   if (!customSelect.contains(e.target)) {
     customSelect.classList.remove("active");

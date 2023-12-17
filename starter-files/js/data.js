@@ -42,7 +42,7 @@ form.addEventListener("submit", (e) => {
   alert.style.display = "block";
   setTimeout(() => {
     alert.style.display = "none";
-  }, 2500);
+  }, 3500);
 
   form.reset();
 });

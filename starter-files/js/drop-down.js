@@ -24,22 +24,19 @@ const optionsRef = ref(database, "students");
 
 function populateSelect(snapshot) {
   if (snapshot.exists()) {
-    selectDropdown.innerHTML = ""; // Clear existing options
+    selectDropdown.innerHTML = "";
 
     snapshot.forEach((childSnapshot) => {
       const option = childSnapshot.val();
       const optionElement = document.createElement("li");
       optionElement.classList.add("de-active");
 
-      // Assuming each option has a "value" and "text" property
       optionElement.textContent = option.name || "";
       optionElement.setAttribute("role", "option");
 
       optionElement.addEventListener("click", () => {
-        // Handle click event for the custom option
         selectButton.querySelector(".selected-value").textContent =
           option.name || "";
-        // Add logic to handle the selected option as needed
       });
 
       selectDropdown.appendChild(optionElement);
