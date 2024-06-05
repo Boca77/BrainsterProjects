@@ -114,9 +114,11 @@
                 </div>
             </div>
         </div>
+        <footer class="p-3 bg-black w-full flex justify-center text-white"></footer>
     </main>
     <!-- <script src="./js/filters.js"></script> -->
     <script src="./js/filter.js"></script>
+    <script src="./js/footer.js"></script>
 </body>
 
 </html>
