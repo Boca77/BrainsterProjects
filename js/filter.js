@@ -3,16 +3,19 @@ let filter = document.getElementById("filter");
 let category = document.querySelectorAll(".category");
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
+// unchecking all the checkboxes
 for (var i = 0; i < checkboxes.length; i++) {
   checkboxes[i].checked = false;
 }
 
+// filter toggle logic
 filter.addEventListener("click", () => {
   filterContent.classList.toggle("top-1/2");
   filterContent.classList.toggle("opacity-0");
   filterContent.style.transition = "all ease 0.5s";
 });
 
+// filter function logic
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener("click", () => {
     let anyChecked = false;
