@@ -1,7 +1,6 @@
 let filterContent = document.getElementById("filter-content");
 let filter = document.getElementById("filter");
 let category = document.querySelectorAll(".category");
-
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
 for (var i = 0; i < checkboxes.length; i++) {

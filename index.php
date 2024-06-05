@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div id="outer" class="flex justify-center">
+        <div id="outer" class="flex justify-center w-4/5">
             <div id="book-cards" class="flex w-full md:w-4/5 flex-wrap gap-6 justify-center px-4 my-14">
                 <div id="card" class="w-full shadow-2xl sm:w-1/2 md:w-1/3 lg:w-1/4 ">
                     <img class="rounded-t-lg w-full h-[300px] md:h-[400px] object-cover" src="https://picsum.photos/200/300" alt="">
