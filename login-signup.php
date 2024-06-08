@@ -19,14 +19,14 @@
             </div>
         </nav>
 
-        <form id="login" class="max-w-lg max-md:mx-auto mt-20 w-full p-6 ">
+        <form id="login" action="./backEnd/login.php" method="POST" class="max-w-lg max-md:mx-auto mt-20 w-full p-6 ">
             <div class="mb-10">
                 <h3 class="text-4xl font-extrabold">LogIn</h3>
             </div>
             <div>
                 <label class="text-[15px] mb-3 block">Username</label>
                 <div class="relative flex items-center">
-                    <input name="username" type="text" required class="w-full text-sm bg-gray-100 px-4 py-4 rounded-md outline-blue-600" placeholder="Enter Username" />
+                    <input name="username" type="text" required class="w-full text-sm bg-gray-100 px-4 py-4 rounded-md outline-blue-600 text-black" placeholder="Enter Username" />
                 </div>
             </div>
             <div class="mt-6">
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="mt-10">
-                <button type="button" class="w-full shadow-xl py-3 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
+                <button type="submit" class="w-full shadow-xl py-3 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
                     Log In
                 </button>
             </div>
