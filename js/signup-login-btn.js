@@ -3,6 +3,25 @@ let loginBtn = document.getElementById("login-btn");
 let signupForm = document.getElementById("signup");
 let loginForm = document.getElementById("login");
 
+if (
+  localStorage.getItem("onPage") == "signUp" ||
+  !localStorage.getItem("onPage")
+) {
+  signupForm.classList.add("block");
+  signupForm.classList.remove("hidden");
+
+  loginForm.classList.remove("block");
+  loginForm.classList.add("hidden");
+}
+
+if (localStorage.getItem("onPage") == "signUp") {
+  signupForm.classList.add("block");
+  signupForm.classList.remove("hidden");
+
+  loginForm.classList.remove("block");
+  loginForm.classList.add("hidden");
+}
+
 loginBtn.addEventListener("click", () => {
   loginBtn.style.backgroundColor = "#68b1a5";
   loginBtn.style.transition = "all 0.8s ease";
@@ -15,6 +34,10 @@ loginBtn.addEventListener("click", () => {
 
   signupForm.classList.remove("block");
   signupForm.classList.add("hidden");
+
+  let onPage = "login";
+
+  localStorage.setItem("onPage", onPage);
 });
 
 signupBtn.addEventListener("click", () => {
@@ -29,4 +52,8 @@ signupBtn.addEventListener("click", () => {
 
   loginForm.classList.remove("block");
   loginForm.classList.add("hidden");
+
+  let onPage = "signUp";
+
+  localStorage.setItem("onPage", onPage);
 });
