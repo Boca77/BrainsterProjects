@@ -30,8 +30,3 @@ class Connection
         $this->connection = null;
     }
 }
-
-$dbConn = new Connection;
-$connection = $dbConn->getConnection();
-
-var_dump($connection);
