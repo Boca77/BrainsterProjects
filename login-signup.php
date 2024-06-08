@@ -35,6 +35,14 @@
                     <input name="password" type="password" required class="w-full text-sm text-black px-4 py-4 rounded-md outline-blue-600" placeholder="Enter password" />
                 </div>
             </div>
+            <?php
+            $message = $_GET['errorLogin'] ?? '';
+            if ($message != '') {
+                echo "<div class='p-2 mt-5 bg-red-600 rounded border border-red-400'>
+                <p>$message</p>
+            </div>";
+            }
+            ?>
             <div class="mt-10">
                 <button type="submit" class="w-full shadow-xl py-3 px-4 text-sm font-semibold rounded text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">
                     Log In
