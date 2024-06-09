@@ -11,7 +11,6 @@ $connection = $db->getConnection();
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-
 $stmt = $connection->prepare('SELECT `username`, `password` FROM `users` WHERE `username` = :username');
 $stmt->bindParam(':username', $username);
 $stmt->execute();
@@ -19,19 +18,21 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($user) {
     $passwordDB = $user['password'];
+
     if (password_verify($password, $passwordDB)) {
+        if ($user['username'] == 'admin') {
+            $_SESSION['isAdmin'] = true;
+        }
+
         $_SESSION['user'] = $user['username'];
         $_SESSION['isLoggedIn'] = true;
 
         header("location: ../index.php");
         return;
-    } else {
-
-        header("location: ../login-signup.php?errorLogin=Invalid%20password");
-        return;
     }
-} else {
 
-    header("location: ../login-signup.php?errorLogin=Username%20not%20found");
+    header("location: ../login-signup.php?errorLogin=Invalid%20password");
     return;
 }
+
+header("location: ../login-signup.php?errorLogin=Username%20not%20found");

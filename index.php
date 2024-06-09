@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Brainster Library</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/0d6f25b6d2.js" crossorigin="anonymous"></script>
 </head>
@@ -17,11 +17,17 @@ session_start();
     <div class="banner min-h-[60vh] flex flex-col gap-48 bg-[url('./imgs/banner1.jpg')] bg-cover bg-center border-b-2 border-gray-400 ">
         <nav class="flex justify-between px-10 py-5 justify-self-start">
             <p class="text-xl text-neutral-300">Brainster Library</p>
-            <div class="buttons flex items-center gap-7">
+            <div class="buttons flex items-center gap-5">
                 <?php
                 $isLoggedIn = $_SESSION['isLoggedIn'] ?? '';
+                $isAdmin = $_SESSION['isAdmin'] ?? '';
                 if ($isLoggedIn == true) {
                     echo "<h5 class='text-white'>Welcome {$_SESSION['user']} </h5>";
+
+                    if ($isAdmin == true) {
+                        echo '<a href="./admin-panel.php"><button class="text-white bg-[#1B3534] hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">Admin Panel</button></a>';
+                    }
+
                     echo '<a href="./backEnd/logout.php"><button class="text-white bg-[#1B3534] hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">LogOut</button></a>';
                 } else {
                     echo '<a href="./login-signup.php"><button class="text-white bg-[#1B3534] hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">SignUp / LogIn</button></a>
