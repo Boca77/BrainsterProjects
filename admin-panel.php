@@ -96,11 +96,21 @@
 
                     <hr class="mt-6 border-b-1 border-blueGray-300">
 
-                    <form action="">
+                    <form action="./backEnd/admin/addAuthor.php" method="POST">
 
-                        <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase text-white">
+                        <h6 class="text-blueGray-400 text-sm mt-3 mb-3 font-bold uppercase text-white">
                             Add an Author
                         </h6>
+
+                        <?php
+                        $message = $_GET['msg'] ?? '';
+                        if ($message) {
+                            echo "<div class='p-2 mb-3 text-white bg-[#467e74] rounded'>
+                                        <p>$message</p>
+                                   </div>";
+                        }
+
+                        ?>
 
                         <div class="flex flex-wrap">
 
@@ -109,7 +119,7 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Name
                                     </label>
-                                    <input type="text" required name="author_name" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <input type="text" required name="name" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                 </div>
                             </div>
 
@@ -118,7 +128,7 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Surname
                                     </label>
-                                    <input type="text" required name="author_surname" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <input type="text" required name="last_name" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                 </div>
                             </div>
 
