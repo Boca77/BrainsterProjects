@@ -21,6 +21,7 @@ session_start();
                 <?php
                 $isLoggedIn = $_SESSION['isLoggedIn'] ?? '';
                 $isAdmin = $_SESSION['isAdmin'] ?? '';
+
                 if ($isLoggedIn == true) {
                     echo "<h5 class='text-white'>Welcome {$_SESSION['user']} </h5>";
 
