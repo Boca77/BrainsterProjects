@@ -13,7 +13,7 @@ $getAuthor->execute();
 $author = $getAuthor->fetchAll(PDO::FETCH_ASSOC);
 
 if ($author) {
-    header('location: ../../admin-panel.php?msg=Author%20already%20added');
+    header('location: ../../admin-panel.php?authorMsg=Author%20already%20added');
     return;
 }
 
@@ -23,4 +23,4 @@ $insertAuthor->execute($_POST);
 
 $db->destroyConnection();
 
-header('location: ../../admin-panel.php?msg=Successfully%20added%20author');
+header('location: ../../admin-panel.php?authorMsg=Successfully%20added%20author');

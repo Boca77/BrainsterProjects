@@ -103,7 +103,7 @@
                         </h6>
 
                         <?php
-                        $message = $_GET['msg'] ?? '';
+                        $message = $_GET['authorMsg'] ?? '';
                         if ($message) {
                             echo "<div class='p-2 mb-3 text-white bg-[#467e74] rounded'>
                                         <p>$message</p>
@@ -153,18 +153,25 @@
 
                     <hr class="mt-6 border-b-1 border-blueGray-300">
 
-                    <form action="">
+                    <form action="./backEnd/admin/addCategory.php" method="POST">
 
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase text-white">
                             Add/Edit/Delete a category
                         </h6>
-
+                        <?php
+                        $message = $_GET['catMsg'] ?? '';
+                        if ($message) {
+                            echo "<div class='p-2 mb-3 text-white bg-[#467e74] rounded'>
+                                        <p>$message</p>
+                                   </div>";
+                        }
+                        ?>
                         <div class="w-full lg:w-6/12 px-4">
                             <div class="relative w-full mb-3">
                                 <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                     Category
                                 </label>
-                                <input type="text" required name="book_title" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                <input type="text" required name="category" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
