@@ -1,3 +1,20 @@
+<?php
+include("./backEnd/Connection.php");
+
+use Connection\Connection;
+
+$db = new Connection();
+$connection = $db->getConnection();
+
+$getAuthor = $connection->prepare("SELECT * FROM `authors`");
+$getAuthor->execute();
+$authors = $getAuthor->fetchAll(PDO::FETCH_ASSOC);
+
+$getCat = $connection->prepare("SELECT * FROM `category`");
+$getCat->execute();
+$categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,19 +40,26 @@
                 </div>
                 <div class="flex-auto bg-[#5b998e] px-4 lg:px-10 py-10 pt-0">
 
-                    <form action="">
+                    <form action="./backEnd/admin/addBook.php" method="POST">
 
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase text-white">
                             Add a book
                         </h6>
-
+                        <?php
+                        $message = $_GET['bookMsg'] ?? '';
+                        if ($message) {
+                            echo "<div class='p-2 mb-3 text-white bg-[#467e74] rounded'>
+                                        <p>$message</p>
+                                   </div>";
+                        }
+                        ?>
                         <div class="flex flex-wrap">
                             <div class="w-full lg:w-6/12 px-4">
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Book Title
                                     </label>
-                                    <input type="text" required name="book_title" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <input type="text" required name="title" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                 </div>
                             </div>
 
@@ -44,7 +68,14 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Author
                                     </label>
-                                    <input type="text" required name="author" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <select required name="author_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option selected disabled hidden>Choose an author</option>
+                                        <?php
+                                        foreach ($authors as $author) {
+                                            echo "<option value='{$author['id']}'> {$author['name']} {$author['last_name']} </option>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
 
@@ -53,7 +84,7 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Year Published
                                     </label>
-                                    <input type="number" required name="year_published" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <input type="number" required name="year" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                 </div>
                             </div>
 
@@ -62,7 +93,7 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Number of pages
                                     </label>
-                                    <input type="text" required name="number_pages" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <input type="text" required name="page_num" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                 </div>
                             </div>
 
@@ -71,7 +102,7 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Book Cover Photo
                                     </label>
-                                    <input type="text" required name="cover_photo" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <input type="text" required name="img_url" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                 </div>
                             </div>
 
@@ -80,7 +111,14 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Category
                                     </label>
-                                    <input type="text" required name="category" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <select required name="category_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                        <option selected disabled hidden>Choose a category</option>
+                                        <?php
+                                        foreach ($categories as $category) {
+                                            echo "<option value='{$category['id']}'> {$category['name']} </option>";
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                             </div>
 
@@ -88,7 +126,7 @@
 
                         <div class="flex flex-wrap">
                             <div class="w-full px-4">
-                                <input type="submit" class="border-[#355c55] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                <input type="submit" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
@@ -137,7 +175,7 @@
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Author Biography
                                     </label>
-                                    <textarea type="text" name="biography" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="2"></textarea>
+                                    <textarea type="text" required name="biography" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="2"></textarea>
                                 </div>
                             </div>
 
@@ -145,7 +183,7 @@
 
                         <div class="flex flex-wrap">
                             <div class="w-full px-4">
-                                <input type="submit" class="border-[#355c55] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                <input type="submit" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
@@ -177,7 +215,7 @@
 
                         <div class="flex flex-wrap">
                             <div class="w-full px-4">
-                                <input type="submit" class="border-[#355c55] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                <input type="submit" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
 
