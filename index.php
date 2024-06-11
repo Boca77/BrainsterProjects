@@ -1,5 +1,17 @@
 <?php
 session_start();
+
+include("./backEnd/Connection.php");
+
+use Connection\Connection;
+
+$db = new Connection();
+$connection = $db->getConnection();
+
+$getCat = $connection->prepare("SELECT * FROM `category`");
+$getCat->execute();
+$categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <!DOCTYPE html>
@@ -49,35 +61,14 @@ session_start();
             </div>
             <div id="filter-content" class="absolute opacity-0 top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
                 <div class="flex items-center gap-5 p-5">
-                    <div class="items-center flex">
-                        <input checked id="adventure" type="checkbox" value="Adventure" class="w-4 h-4 accent-slate-400">
-                        <label for="adventure" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Adventure</label>
-                    </div>
-                    <div class="items-center flex">
-                        <input checked id="horror" type="checkbox" value="Horror" class="w-4 h-4 accent-slate-400">
-                        <label for="horror" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Horror</label>
-                    </div>
-                    <div class="items-center flex">
-                        <input checked id="IT" type="checkbox" value="IT" class="w-4 h-4 accent-slate-400">
-                        <label for="IT" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">IT</label>
-                    </div>
-                    <div class="items-center flex">
-                        <input checked id="mystery" type="checkbox" value="Mystery" class="w-4 h-4 accent-slate-400">
-                        <label for="mystery" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Mystery</label>
-                    </div>
-                    <div class="items-center flex">
-                        <input checked id="romance" type="checkbox" value="Romance" class="w-4 h-4 accent-slate-400">
-                        <label for="romance" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Romance</label>
-                    </div>
-                    <div class="items-center flex">
-                        <input checked id="sci-fi" type="checkbox" value="Sci-fi" class="w-4 h-4 accent-slate-400">
-                        <label for="sci-fi" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sci-fi</label>
-                    </div>
-                    <div class="items-center flex">
-                        <input checked id="thriller" type="checkbox" value="Thriller" class="w-4 h-4 accent-slate-400">
-                        <label for="thriller" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Thriller</label>
-                    </div>
-
+                    <?php
+                    foreach ($categories as $category) {
+                        echo "<div class='items-center flex'>
+                        <input checked id='{$category['name']}' type='checkbox' value='{$category['name']}' class='w-4 h-4 accent-slate-400'>
+                        <label for='{$category['name']}' class='ms-2 text-sm font-medium text-gray-900 dark:text-gray-300'>{$category['name']}</label>
+                        </div>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
