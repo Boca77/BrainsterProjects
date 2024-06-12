@@ -12,14 +12,13 @@ $getCat = $connection->prepare("SELECT * FROM `category`");
 $getCat->execute();
 $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
 
-$getBooks = $connection->prepare("SELECT 
-    *, books.id AS book_id
-FROM 
-    books 
-JOIN 
-    authors ON books.author_id = authors.id 
-JOIN 
-    category ON books.category_id = category.id");
+$getBooks = $connection->prepare("SELECT *, books.id AS book_id
+    FROM 
+        books 
+    JOIN 
+        authors ON books.author_id = authors.id 
+    JOIN 
+        category ON books.category_id = category.id");
 $getBooks->execute();
 $books = $getBooks->fetchAll(PDO::FETCH_ASSOC);
 
@@ -90,16 +89,15 @@ $books = $getBooks->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($books as $book) {
                     echo "
                          <div id='card' class='w-full shadow-2xl sm:w-1/2 md:w-1/3 lg:w-1/4 relative'>
-                         <a href='./index.php?id={$book['book_id']}'>
+                         <a href='./book.php?id={$book['book_id']}'>
                             <img class='rounded-t-lg w-full h-[300px] md:h-[400px] object-cover' src='{$book['img_url']}' alt=''>
                             <div id='content' class='p-2 flex flex-col bg-[#507e76] text-white rounded-b-lg '>
-                                <h3 class='text-lg shadow-lg border-b mb-3 self-center'>{$book['title']}</h3>
+                                <h3 class='text-lg shadow-b-lg p-1 border-b mb-3 self-center'>{$book['title']}</h3>
                                 <p>Author: {$book['first_name']} {$book['last_name']}</p>
                                 <p>Category: <span class='category'>{$book['name']}</span></p>
                             </div>
                             </a>
-                        </div>
-                    ";
+                        </div>";
                 }
                 ?>
             </div>
