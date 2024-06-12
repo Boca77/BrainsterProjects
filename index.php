@@ -12,7 +12,7 @@ $getCat = $connection->prepare("SELECT * FROM `category`");
 $getCat->execute();
 $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
 
-$getBooks = $connection->prepare("SELECT *, books.id AS book_id
+$getBooks = $connection->prepare("SELECT *, books.id AS book_id, books.is_del AS book_is_del
     FROM 
         books 
     JOIN 
@@ -74,10 +74,12 @@ $books = $getBooks->fetchAll(PDO::FETCH_ASSOC);
                 <div class="flex items-center gap-5 p-5">
                     <?php
                     foreach ($categories as $category) {
-                        echo "<div class='items-center flex'>
+                        if ($category["is_del"] != true) {
+                            echo "<div class='items-center flex'>
                         <input checked id='{$category['name']}' type='checkbox' value='{$category['name']}' class='w-4 h-4 accent-slate-400'>
                         <label for='{$category['name']}' class='ms-2 text-sm font-medium text-gray-900 dark:text-gray-300'>{$category['name']}</label>
                         </div>";
+                        }
                     }
                     ?>
                 </div>
@@ -87,7 +89,8 @@ $books = $getBooks->fetchAll(PDO::FETCH_ASSOC);
             <div id="book-cards" class="flex w-full md:w-4/5 flex-wrap gap-6 justify-center px-4 my-14">
                 <?php
                 foreach ($books as $book) {
-                    echo "
+                    if ($book["book_is_del"] != true) {
+                        echo "
                          <div id='card' class='w-full shadow-2xl sm:w-1/2 md:w-1/3 lg:w-1/4 relative'>
                          <a href='./book.php?id={$book['book_id']}'>
                             <img class='rounded-t-lg w-full h-[300px] md:h-[400px] object-cover' src='{$book['img_url']}' alt=''>
@@ -98,6 +101,7 @@ $books = $getBooks->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             </a>
                         </div>";
+                    }
                 }
                 ?>
             </div>

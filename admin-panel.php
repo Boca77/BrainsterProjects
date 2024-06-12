@@ -72,7 +72,9 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
                                         <option selected disabled hidden>Choose an author</option>
                                         <?php
                                         foreach ($authors as $author) {
-                                            echo "<option value='{$author['id']}'> {$author['first_name']} {$author['last_name']} </option>";
+                                            if ($author["is_del"] != true) {
+                                                echo "<option value='{$author['id']}'> {$author['first_name']} {$author['last_name']} </option>";
+                                            }
                                         }
                                         ?>
                                     </select>
@@ -115,7 +117,9 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
                                         <option selected disabled hidden>Choose a category</option>
                                         <?php
                                         foreach ($categories as $category) {
-                                            echo "<option value='{$category['id']}'> {$category['name']} </option>";
+                                            if ($category["is_del"] != true) {
+                                                echo "<option value='{$category['id']}'> {$category['name']} </option>";
+                                            }
                                         }
                                         ?>
                                     </select>
