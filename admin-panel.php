@@ -72,7 +72,7 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
                                         <option selected disabled hidden>Choose an author</option>
                                         <?php
                                         foreach ($authors as $author) {
-                                            echo "<option value='{$author['id']}'> {$author['name']} {$author['last_name']} </option>";
+                                            echo "<option value='{$author['id']}'> {$author['first_name']} {$author['last_name']} </option>";
                                         }
                                         ?>
                                     </select>
@@ -157,7 +157,7 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Name
                                     </label>
-                                    <input type="text" required name="name" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <input type="text" required name="first_name" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                 </div>
                             </div>
 

@@ -12,6 +12,18 @@ $getCat = $connection->prepare("SELECT * FROM `category`");
 $getCat->execute();
 $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
 
+$getBooks = $connection->prepare("SELECT 
+    *, books.id AS book_id
+FROM 
+    books 
+JOIN 
+    authors ON books.author_id = authors.id 
+JOIN 
+    category ON books.category_id = category.id");
+$getBooks->execute();
+$books = $getBooks->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -74,56 +86,25 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
         </div>
         <div id="outer" class="flex justify-center w-4/5">
             <div id="book-cards" class="flex w-full md:w-4/5 flex-wrap gap-6 justify-center px-4 my-14">
-                <div id="card" class="w-full shadow-2xl sm:w-1/2 md:w-1/3 lg:w-1/4 relative ">
-                    <img class="rounded-t-lg w-full h-[300px] md:h-[400px] object-cover" src="https://picsum.photos/200/300" alt="">
-                    <div id="content" class="p-2 flex flex-col bg-[#507e76] text-white rounded-b-lg ">
-                        <h3 class="text-lg shadow-lg border-b mb-3 self-center">Book Title</h3>
-                        <p>Author: Jon</p>
-                        <p>Category: <span class="category">Adventure</span></p>
-                    </div>
-                </div>
-                <div id="card" class="w-full shadow-2xl sm:w-1/2 md:w-1/3 lg:w-1/4 ">
-                    <img class="rounded-t-lg w-full h-[300px] md:h-[400px] object-cover" src="https://picsum.photos/200/300" alt="">
-                    <div id="content" class="p-2 flex flex-col rounded-b-lg bg-[#507e76] text-white">
-                        <h3 class="text-lg shadow-lg border-b mb-3 self-center">Book Title</h3>
-                        <p>Author: Jon</p>
-                        <p>Category: <span class="category">Mystery</span></p>
-                    </div>
-                </div>
-                <div id="card" class="w-full shadow-2xl sm:w-1/2 md:w-1/3 lg:w-1/4 ">
-                    <img class="rounded-t-lg w-full h-[300px] md:h-[400px] object-cover" src="https://picsum.photos/200/300" alt="">
-                    <div id="content" class="p-2 flex flex-col rounded-b-lg bg-[#507e76] text-white">
-                        <h3 class="text-lg shadow-lg border-b mb-3 self-center">Book Title</h3>
-                        <p>Author: Jon</p>
-                        <p>Category: <span class="category">Adventure</span></p>
-                    </div>
-                </div>
-                <div id="card" class="w-full shadow-2xl sm:w-1/2 md:w-1/3 lg:w-1/4 ">
-                    <img class="rounded-t-lg w-full h-[300px] md:h-[400px] object-cover" src="https://picsum.photos/200/300" alt="">
-                    <div id="content" class="p-2 flex flex-col rounded-b-lg bg-[#507e76] text-white">
-                        <h3 class="text-lg shadow-lg border-b mb-3 self-center">Book Title</h3>
-                        <p>Author: Jon</p>
-                        <p>Category: <span class="category">Horror</span></p>
-                    </div>
-                </div>
-                <div id="card" class="w-full shadow-2xl sm:w-1/2 md:w-1/3 lg:w-1/4 ">
-                    <img class="rounded-t-lg w-full h-[300px] md:h-[400px] object-cover" src="https://picsum.photos/200/300" alt="">
-                    <div id="content" class="p-2 flex flex-col rounded-b-lg bg-[#507e76] text-white">
-                        <h3 class="text-lg shadow-lg border-b mb-3 self-center">Book Title</h3>
-                        <p>Author: Jon</p>
-                        <p>Category: <span class="category">Mystery</span></p>
-                    </div>
-                </div>
-                <div id="card" class="w-full shadow-2xl sm:w-1/2 md:w-1/3 lg:w-1/4 ">
-                    <img class="rounded-t-lg w-full h-[300px] md:h-[400px] object-cover" src="https://picsum.photos/200/300" alt="">
-                    <div id="content" class="p-2 flex flex-col rounded-b-lg bg-[#507e76] text-white">
-                        <h3 class="text-lg shadow-lg border-b mb-3 self-center">Book Title</h3>
-                        <p>Author: Jon</p>
-                        <p>Category: <span class="category">IT</span></p>
-                    </div>
-                </div>
+                <?php
+                foreach ($books as $book) {
+                    echo "
+                         <div id='card' class='w-full shadow-2xl sm:w-1/2 md:w-1/3 lg:w-1/4 relative'>
+                         <a href='./index.php?id={$book['book_id']}'>
+                            <img class='rounded-t-lg w-full h-[300px] md:h-[400px] object-cover' src='{$book['img_url']}' alt=''>
+                            <div id='content' class='p-2 flex flex-col bg-[#507e76] text-white rounded-b-lg '>
+                                <h3 class='text-lg shadow-lg border-b mb-3 self-center'>{$book['title']}</h3>
+                                <p>Author: {$book['first_name']} {$book['last_name']}</p>
+                                <p>Category: <span class='category'>{$book['name']}</span></p>
+                            </div>
+                            </a>
+                        </div>
+                    ";
+                }
+                ?>
             </div>
         </div>
+
         <footer class="p-3 bg-black w-full flex justify-center text-white"></footer>
     </main>
     <!-- <script src="./js/filters.js"></script> -->
