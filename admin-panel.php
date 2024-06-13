@@ -37,7 +37,7 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
                         </h6>
                     </div>
 
-                    <a href="" class="text-white bg-[#346968] cursor-pointer hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center">
+                    <a href="./remove-edit.php" class="text-white bg-[#346968] cursor-pointer hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center">
                         Delete Data
                     </a>
 
@@ -203,7 +203,7 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
                     <form action="./backEnd/admin/addCategory.php" method="POST">
 
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase text-white">
-                            Add/Edit/Delete a category
+                            Add a category
                         </h6>
                         <?php
                         $message = $_GET['catMsg'] ?? '';
