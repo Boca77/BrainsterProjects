@@ -213,7 +213,7 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
                                    </div>";
                         }
                         ?>
-                        <div class="w-full lg:w-6/12 px-4">
+                        <div class="w-full px-4">
                             <div class="relative w-full mb-3">
                                 <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                     Category

@@ -10,9 +10,19 @@ $getAuthor = $connection->prepare("SELECT `first_name`, `last_name` FROM `author
 $getAuthor->bindParam(':first_name', $_POST['first_name']);
 $getAuthor->bindParam(':last_name', $_POST['last_name']);
 $getAuthor->execute();
-$author = $getAuthor->fetchAll(PDO::FETCH_ASSOC);
+$author = $getAuthor->fetch(PDO::FETCH_ASSOC);
 
 if ($author) {
+    if ($author['is_del'] == true) {
+        $unDeleteAuthor = $connection->prepare("UPDATE `authors`
+            SET is_del = 0
+            WHERE id = :id");
+        $unDeleteAuthor->bindParam('id', $author['id']);
+        $unDeleteAuthor->execute();
+
+        header('location: ../../admin-panel.php?authorMsg=Successfully%20added%20author');
+        return;
+    }
     header('location: ../../admin-panel.php?authorMsg=Author%20already%20added');
     return;
 }
