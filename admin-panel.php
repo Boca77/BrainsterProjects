@@ -26,16 +26,21 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body class="bg-[#4f867d]">
-    <section class=" py-1 bg-blueGray-50">
+    <section class="py-1 bg-blueGray-50">
         <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
             <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
-                <div class="rounded-t bg-[#6eb8ab] mb-0 px-6 py-6">
+                <div class="rounded-t flex justify-between bg-[#6eb8ab] mb-0 px-6 py-6">
 
                     <div class="text-center flex justify-between">
                         <h6 class="text-blueGray-700 text-xl font-bold text-white">
                             Admin Panel
                         </h6>
                     </div>
+
+                    <a href="" class="text-white bg-[#346968] cursor-pointer hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center">
+                        Delete Data
+                    </a>
+
 
                 </div>
                 <div class="flex-auto bg-[#5b998e] px-4 lg:px-10 py-10 pt-0">
@@ -69,7 +74,7 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
                                         Author
                                     </label>
                                     <select required name="author_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                        <option selected disabled hidden>Choose an author</option>
+                                        <option selected disabled hidden value="">Choose an author</option>
                                         <?php
                                         foreach ($authors as $author) {
                                             if ($author["is_del"] != true) {
@@ -114,7 +119,7 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
                                         Category
                                     </label>
                                     <select required name="category_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                        <option selected disabled hidden>Choose a category</option>
+                                        <option selected disabled hidden value="">Choose a category</option>
                                         <?php
                                         foreach ($categories as $category) {
                                             if ($category["is_del"] != true) {

@@ -26,7 +26,8 @@ checkboxes.forEach((checkbox) => {
     });
 
     category.forEach((category) => {
-      const parentElement = category.parentElement.parentElement.parentElement;
+      const parentElement =
+        category.parentElement.parentElement.parentElement.parentElement;
 
       if (anyChecked) {
         if (checkbox.checked && category.innerText === checkbox.value) {
