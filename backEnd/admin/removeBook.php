@@ -11,7 +11,7 @@ use Connection\Connection;
 $db = new Connection();
 $connection = $db->getConnection();
 
-$bookID = $_POST['book_id'];
+$bookID = $_GET['bookId'];
 $getBook = $connection->prepare("UPDATE `books`
 SET is_del = 1
 WHERE id = :id");

@@ -66,7 +66,7 @@ $authors = $getAuthor->getAuthor();
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Book
                                     </label>
-                                    <select required name="book_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <select required name="book_id" id="book_input" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                         <option selected disabled hidden value="">Chose a book</option>
                                         <?php
                                         foreach ($books as $book) {
@@ -76,19 +76,21 @@ $authors = $getAuthor->getAuthor();
                                         }
                                         ?>
                                     </select>
+                                    <div>
+                                        <p id="book-error" class="text-orange-800"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="flex flex-wrap">
                             <div class="w-full md:w-1/2 px-4">
-                                <input type="submit" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="action" value="Remove">
+                                <input type="button" id="book-del" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="action" value="Remove">
                             </div>
                             <div class="w-full md:w-1/2 px-4">
                                 <input type="submit" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="action" value="Edit">
                             </div>
                         </div>
-
                     </form>
 
                     <hr class="mt-6 border-b-1 border-blueGray-300">
@@ -112,7 +114,7 @@ $authors = $getAuthor->getAuthor();
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Author
                                     </label>
-                                    <select required name="author_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <select required name="author_id" id="author_input" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                         <option selected disabled hidden value="">Chose an author</option>
                                         <?php
                                         foreach ($authors as $author) {
@@ -122,16 +124,19 @@ $authors = $getAuthor->getAuthor();
                                         }
                                         ?>
                                     </select>
+                                    <div>
+                                        <p id="author-error" class="text-orange-800"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="flex flex-wrap">
                             <div class="w-full md:w-1/2 px-4">
-                                <input type="submit" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="action" value="Remove">
+                                <input type="submit" id="author-del" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="action" value="Remove">
                             </div>
                             <div class="w-full md:w-1/2 px-4">
-                                <input type="submit" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="action" value="Edit">
+                                <input type="submit" id='edit' class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="action" value="Edit">
                             </div>
                         </div>
 
@@ -158,7 +163,7 @@ $authors = $getAuthor->getAuthor();
                                     <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
                                         Category
                                     </label>
-                                    <select required name="cat_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                                    <select required name="cat_id" id="category_input" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                                         <option selected disabled hidden value="">Chose a category</option>
                                         <?php
                                         foreach ($categories as $category) {
@@ -168,13 +173,16 @@ $authors = $getAuthor->getAuthor();
                                         }
                                         ?>
                                     </select>
+                                    <div>
+                                        <p id="cat-error" class="text-orange-800"></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="flex flex-wrap">
                             <div class="w-full md:w-1/2 px-4">
-                                <input type="submit" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="action" value="Remove">
+                                <input type="submit" id="category-del" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="action" value="Remove">
                             </div>
                             <div class="w-full md:w-1/2 px-4">
                                 <input type="submit" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" name="action" value="Edit">
@@ -187,6 +195,8 @@ $authors = $getAuthor->getAuthor();
             </div>
         </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/sweet-alert.js"></script>
 </body>
 
 </html>
