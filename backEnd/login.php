@@ -11,10 +11,10 @@ $connection = $db->getConnection();
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-$stmt = $connection->prepare('SELECT `username`, `password` FROM `users` WHERE `username` = :username');
-$stmt->bindParam(':username', $username);
-$stmt->execute();
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
+$getUser = $connection->prepare('SELECT `username`, `password` FROM `users` WHERE `username` = :username');
+$getUser->bindParam(':username', $username);
+$getUser->execute();
+$user = $getUser->fetch(PDO::FETCH_ASSOC);
 
 if ($user) {
     $passwordDB = $user['password'];
