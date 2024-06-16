@@ -1,18 +1,15 @@
 <?php
-include("./backEnd/Connection.php");
+require_once("./backEnd/Classes/GetCategory.php");
+require_once("./backEnd/Classes/GetAuthor.php");
 
-use Connection\Connection;
+use GetAuthor\GetAuthor;
+use GetCategory\GetCategory;
 
-$db = new Connection();
-$connection = $db->getConnection();
+$getAuthor = new GetAuthor;
+$authors = $getAuthor->getAuthor();
 
-$getAuthor = $connection->prepare("SELECT * FROM `authors` WHERE is_del = 0");
-$getAuthor->execute();
-$authors = $getAuthor->fetchAll(PDO::FETCH_ASSOC);
-
-$getCat = $connection->prepare("SELECT * FROM `category` WHERE is_del = 0");
-$getCat->execute();
-$categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
+$getCat = new GetCategory;
+$categories = $getCat->getCategory();
 ?>
 
 <!DOCTYPE html>

@@ -1,31 +1,20 @@
 <?php
-include("./backEnd/Connection.php");
+include("./backEnd/Classes/GetBooks.php");
+include("./backEnd/Classes/GetCategory.php");
+require_once("./backEnd/Classes/GetAuthor.php");
 
-use Connection\Connection;
+use GetBooks\GetBooks;
+use GetCategory\GetCategory;
+use GetAuthor\GetAuthor;
 
-$db = new Connection();
-$connection = $db->getConnection();
+$getCat = new GetCategory;
+$categories = $getCat->getCategory();
 
-$getAuthor = $connection->prepare("SELECT * FROM `authors` WHERE is_del = 0");
-$getAuthor->execute();
-$authors = $getAuthor->fetchAll(PDO::FETCH_ASSOC);
+$getBooks = new GetBooks;
+$books = $getBooks->getBooks();
 
-$getCat = $connection->prepare("SELECT * FROM `category` WHERE is_del = 0");
-$getCat->execute();
-$categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
-
-$getBooks = $connection->prepare("SELECT *, 
-        books.id AS book_id
-    FROM 
-        books 
-    JOIN 
-        authors ON books.author_id = authors.id 
-    JOIN 
-        category ON books.category_id = category.id
-    WHERE 
-        books.is_del = 0 AND authors.is_del = 0 AND category.is_del = 0");
-$getBooks->execute();
-$books = $getBooks->fetchAll(PDO::FETCH_ASSOC);
+$getAuthor = new GetAuthor;
+$authors = $getAuthor->getAuthor();
 ?>
 
 <!DOCTYPE html>
