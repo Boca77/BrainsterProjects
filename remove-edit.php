@@ -6,25 +6,24 @@ use Connection\Connection;
 $db = new Connection();
 $connection = $db->getConnection();
 
-$getAuthor = $connection->prepare("SELECT * FROM `authors`");
+$getAuthor = $connection->prepare("SELECT * FROM `authors` WHERE is_del = 0");
 $getAuthor->execute();
 $authors = $getAuthor->fetchAll(PDO::FETCH_ASSOC);
 
-$getCat = $connection->prepare("SELECT * FROM `category`");
+$getCat = $connection->prepare("SELECT * FROM `category` WHERE is_del = 0");
 $getCat->execute();
 $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
 
-$getCat = $connection->prepare("SELECT * FROM `category`");
-$getCat->execute();
-$categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
-
-$getBooks = $connection->prepare("SELECT *, books.id AS book_id, books.is_del AS book_is_del
+$getBooks = $connection->prepare("SELECT *, 
+        books.id AS book_id
     FROM 
         books 
     JOIN 
         authors ON books.author_id = authors.id 
     JOIN 
-        category ON books.category_id = category.id");
+        category ON books.category_id = category.id
+    WHERE 
+        books.is_del = 0 AND authors.is_del = 0 AND category.is_del = 0");
 $getBooks->execute();
 $books = $getBooks->fetchAll(PDO::FETCH_ASSOC);
 ?>

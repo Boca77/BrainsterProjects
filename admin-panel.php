@@ -6,11 +6,11 @@ use Connection\Connection;
 $db = new Connection();
 $connection = $db->getConnection();
 
-$getAuthor = $connection->prepare("SELECT * FROM `authors`");
+$getAuthor = $connection->prepare("SELECT * FROM `authors` WHERE is_del = 0");
 $getAuthor->execute();
 $authors = $getAuthor->fetchAll(PDO::FETCH_ASSOC);
 
-$getCat = $connection->prepare("SELECT * FROM `category`");
+$getCat = $connection->prepare("SELECT * FROM `category` WHERE is_del = 0");
 $getCat->execute();
 $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -77,9 +77,7 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
                                         <option selected disabled hidden value="">Choose an author</option>
                                         <?php
                                         foreach ($authors as $author) {
-                                            if ($author["is_del"] != true) {
-                                                echo "<option value='{$author['id']}'> {$author['first_name']} {$author['last_name']} </option>";
-                                            }
+                                            echo "<option value='{$author['id']}'> {$author['first_name']} {$author['last_name']} </option>";
                                         }
                                         ?>
                                     </select>
@@ -122,9 +120,7 @@ $categories = $getCat->fetchAll(PDO::FETCH_ASSOC);
                                         <option selected disabled hidden value="">Choose a category</option>
                                         <?php
                                         foreach ($categories as $category) {
-                                            if ($category["is_del"] != true) {
-                                                echo "<option value='{$category['id']}'> {$category['name']} </option>";
-                                            }
+                                            echo "<option value='{$category['id']}'> {$category['name']} </option>";
                                         }
                                         ?>
                                     </select>

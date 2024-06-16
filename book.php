@@ -16,7 +16,6 @@ $getBook = $connection->prepare("SELECT * FROM `books`
 $getBook->bindParam(":id", $bookID);
 $getBook->execute();
 $book = $getBook->fetch(PDO::FETCH_ASSOC);
-
 ?>
 
 <!doctype html>
