@@ -2,7 +2,7 @@
 
 namespace GetAuthor;
 
-require_once("./backEnd/Connection.php");
+require_once(__DIR__ . "/../Connection.php");
 
 use Connection\Connection;
 
@@ -22,5 +22,12 @@ class GetAuthor
         $this->author = $this->connection->prepare("SELECT * FROM `authors` WHERE is_del = 0");
         $this->author->execute();
         return $this->author->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getAuthorByID($id)
+    {
+        $this->author = $this->connection->prepare("SELECT * FROM `authors` WHERE is_del = 0 AND id = $id");
+        $this->author->execute();
+        return $this->author->fetch(\PDO::FETCH_ASSOC);
     }
 }

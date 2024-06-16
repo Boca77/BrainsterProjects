@@ -1,9 +1,4 @@
 <?php
-if ($_POST["action"] == 'Edit') {
-    echo "EDIT";
-    return;
-}
-
 include("../Connection.php");
 
 use Connection\Connection;
