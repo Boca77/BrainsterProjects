@@ -1,13 +1,11 @@
 <?php
-require_once(__DIR__ . "/../Classes/GetCategory.php");
-require_once(__DIR__ . "/../Classes/GetAuthor.php");
-require_once(__DIR__ . "/../Classes/GetBooks.php");
+require_once("./backEnd/Classes/GetCategory.php");
+require_once("./backEnd/Classes/GetAuthor.php");
+require_once("./backEnd/Classes/GetBooks.php");
 
 use GetAuthor\GetAuthor;
 use GetBooks\GetBooks;
 use GetCategory\GetCategory;
-
-$id = $_POST["id"];
 
 $getAuthor = new GetAuthor;
 $authors = $getAuthor->getAuthor();
@@ -16,7 +14,7 @@ $getCat = new GetCategory;
 $categories = $getCat->getCategory();
 
 $getBook = new GetBooks;
-$book = $getBook->getBookByID($id);
+$book = $getBook->getBookByID($_POST["id"]);
 
 ?>
 
@@ -50,7 +48,7 @@ $book = $getBook->getBookByID($id);
                 </div>
                 <div class="flex-auto bg-[#5b998e] px-4 lg:px-10 py-10 pt-0">
 
-                    <form action="./backEnd/admin/addBook.php" method="POST">
+                    <form action="./backEnd/admin/updateBook.php" method="POST">
 
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase text-white">
                             Edit a book
@@ -79,7 +77,7 @@ $book = $getBook->getBookByID($id);
                                         Author
                                     </label>
                                     <select required name="author_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                        <option selected disabled hidden value="<?= $book["author_id"] ?>"><?= $book['first_name'] . ' ' . $book["last_name"] ?></option>
+                                        <option selected hidden value="<?= $book["author_id"] ?>"><?= $book['first_name'] . ' ' . $book["last_name"] ?></option>
                                         <?php
                                         foreach ($authors as $author) {
                                             echo "<option value='{$author['id']}'> {$author['first_name']} {$author['last_name']} </option>";
@@ -122,7 +120,7 @@ $book = $getBook->getBookByID($id);
                                         Category
                                     </label>
                                     <select required name="category_id" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                                        <option selected disabled hidden value="<?= $book['category_id'] ?>"><?= $book['name'] ?></option>
+                                        <option selected hidden value="<?= $book['category_id'] ?>"><?= $book['name'] ?></option>
                                         <?php
                                         foreach ($categories as $category) {
                                             echo "<option value='{$category['id']}'> {$category['name']} </option>";
@@ -131,6 +129,8 @@ $book = $getBook->getBookByID($id);
                                     </select>
                                 </div>
                             </div>
+
+                            <input type="text" value="<?= $book['book_id'] ?>" name="id" hidden>
 
                         </div>
 

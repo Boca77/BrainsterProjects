@@ -1,12 +1,10 @@
 <?php
-require_once(__DIR__ . "/../Classes/GetAuthor.php");
+require_once("./backEnd/Classes/GetAuthor.php");
 
 use GetAuthor\GetAuthor;
 
 $getAuthor = new GetAuthor;
 $authors = $getAuthor->getAuthorByID($_POST["id"]);
-
-var_dump($authors)
 
 ?>
 
@@ -40,7 +38,7 @@ var_dump($authors)
                 </div>
                 <div class="flex-auto bg-[#5b998e] px-4 lg:px-10 py-10 pt-0">
 
-                    <form action="./backEnd/admin/addAuthor.php" method="POST">
+                    <form action="./backEnd/admin/updateAuthor.php" method="POST">
 
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-3 font-bold uppercase text-white">
                             Edit an Author
@@ -84,6 +82,8 @@ var_dump($authors)
                                     <textarea type="text" required name="biography" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="2"><?= $authors["biography"] ?></textarea>
                                 </div>
                             </div>
+
+                            <input type="text" value="<?= $authors['id'] ?>" name="id" hidden>
 
                         </div>
 

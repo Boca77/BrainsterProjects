@@ -1,14 +1,11 @@
 <?php
+require_once("./backEnd/Classes/GetCategory.php");
 
 use GetCategory\GetCategory;
-
-require_once(__DIR__ . "/../Classes/GetCategory.php");
-
 
 $getCat = new GetCategory;
 $categories = $getCat->getCategoryByID($_POST["id"]);
 
-var_dump($categories);
 ?>
 
 <!DOCTYPE html>
@@ -37,15 +34,15 @@ var_dump($categories);
                         Delete Data
                     </a>
 
-
                 </div>
                 <div class="flex-auto bg-[#5b998e] px-4 lg:px-10 py-10 pt-0">
 
-                    <form action="./backEnd/admin/addCategory.php" method="POST">
+                    <form action="./backEnd/admin/updateCategory.php" method="POST">
 
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase text-white">
                             Add a category
                         </h6>
+
                         <?php
                         $message = $_GET['catMsg'] ?? '';
                         if ($message) {
@@ -54,6 +51,7 @@ var_dump($categories);
                                    </div>";
                         }
                         ?>
+
                         <div class="w-full px-4">
                             <div class="relative w-full mb-3">
                                 <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2 text-white">
@@ -63,14 +61,14 @@ var_dump($categories);
                             </div>
                         </div>
 
+                        <input type="text" value="<?= $categories['id'] ?>" name="id" hidden>
+
                         <div class="flex flex-wrap">
                             <div class="w-full px-4">
                                 <input type="submit" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 mt-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                             </div>
                         </div>
-
                     </form>
-
                 </div>
             </div>
         </div>

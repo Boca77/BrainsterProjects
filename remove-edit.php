@@ -47,7 +47,7 @@ $authors = $getAuthor->getAuthor();
                 </div>
                 <div class="flex-auto bg-[#5b998e] px-4 lg:px-10 py-10 pt-0">
 
-                    <form action="./backEnd/admin/editBook.php" method="POST">
+                    <form action="./editBook.php" method="POST">
 
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase text-white">
                             Remove/Edit Book
@@ -76,7 +76,6 @@ $authors = $getAuthor->getAuthor();
                                         }
                                         ?>
                                     </select>
-                                    <input type="text" value="book" name="type" hidden>
 
                                     <div>
                                         <p id="book-error" class="text-orange-800"></p>
@@ -97,7 +96,7 @@ $authors = $getAuthor->getAuthor();
 
                     <hr class="mt-6 border-b-1 border-blueGray-300">
 
-                    <form action="./backEnd/admin/editAuthor.php" method="POST">
+                    <form action="./editAuthor.php" method="POST">
 
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase text-white">
                             Remove/Edit Author
@@ -126,7 +125,6 @@ $authors = $getAuthor->getAuthor();
                                         }
                                         ?>
                                     </select>
-                                    <input type="text" value="author" name="type" hidden>
 
                                     <div>
                                         <p id="author-error" class="text-orange-800"></p>
@@ -148,7 +146,7 @@ $authors = $getAuthor->getAuthor();
 
                     <hr class="mt-6 border-b-1 border-blueGray-300">
 
-                    <form action="./backEnd/admin/editCategory.php" method="POST">
+                    <form action="./editCategory.php" method="POST">
 
                         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase text-white">
                             Remove/Edit Category
@@ -177,7 +175,6 @@ $authors = $getAuthor->getAuthor();
                                         }
                                         ?>
                                     </select>
-                                    <input type="text" value="category" name="type" hidden>
                                     <div>
                                         <p id="cat-error" class="text-orange-800"></p>
                                     </div>
