@@ -24,9 +24,9 @@
                 <h3 class="text-4xl font-extrabold">LogIn</h3>
             </div>
             <div>
-                <label class="text-[15px] mb-3 block">Username</label>
+                <label class="text-[15px] mb-3 block">Email</label>
                 <div class="relative flex items-center">
-                    <input name="username" type="text" required class="w-full text-sm bg-gray-100 px-4 py-4 rounded-md outline-blue-600 text-black" placeholder="Enter Username" />
+                    <input name="email" type="email" required class="w-full text-sm bg-gray-100 px-4 py-4 rounded-md outline-blue-600 text-black" placeholder="Enter Username" />
                 </div>
             </div>
             <div class="mt-6">
@@ -55,9 +55,9 @@
                 <h3 class="text-4xl font-extrabold">Sign Up</h3>
             </div>
             <div>
-                <label class="text-[15px] mb-3 block">Username</label>
+                <label class="text-[15px] mb-3 block">Email</label>
                 <div class="relative flex items-center">
-                    <input name="username" type="text" required class="w-full text-sm bg-gray-100 px-4 py-4 rounded-md outline-blue-600 text-black" placeholder="Enter Username" />
+                    <input name="email" type="email" required class="w-full text-sm bg-gray-100 px-4 py-4 rounded-md outline-blue-600 text-black" placeholder="Enter Username" />
 
                 </div>
             </div>

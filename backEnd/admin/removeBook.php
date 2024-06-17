@@ -1,4 +1,9 @@
 <?php
+if ($_GET['bookId'] == '') {
+    header('location: ../../remove-edit.php?bookMsg=Must%20select%20book');
+    return;
+}
+
 include("../Connection.php");
 
 use Connection\Connection;

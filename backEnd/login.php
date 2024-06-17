@@ -8,23 +8,25 @@ use Connection\Connection;
 $db = new Connection();
 $connection = $db->getConnection();
 
-$username = $_POST['username'];
+$email = $_POST['email'];
 $password = $_POST['password'];
 
-$getUser = $connection->prepare('SELECT `username`, `password` FROM `users` WHERE `username` = :username');
-$getUser->bindParam(':username', $username);
+$getUser = $connection->prepare('SELECT * FROM `users` WHERE `email` = :email');
+$getUser->bindParam(':email', $email);
 $getUser->execute();
 $user = $getUser->fetch(PDO::FETCH_ASSOC);
+
+
 
 if ($user) {
     $passwordDB = $user['password'];
 
     if (password_verify($password, $passwordDB)) {
-        if ($user['username'] == 'admin') {
+        if ($user['email'] == 'admin@admin.com') {
             $_SESSION['isAdmin'] = true;
         }
 
-        $_SESSION['user'] = $user['username'];
+        $_SESSION['user'] = $user['email'];
         $_SESSION['isLoggedIn'] = true;
 
         header("location: ../index.php");
@@ -35,4 +37,4 @@ if ($user) {
     return;
 }
 
-header("location: ../login-signup.php?errorLogin=Username%20not%20found");
+header("location: ../login-signup.php?errorLogin=Email%20not%20found");

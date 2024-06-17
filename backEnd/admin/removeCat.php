@@ -1,4 +1,9 @@
 <?php
+if ($_GET['cat_id'] == '') {
+    header('location: ../../remove-edit.php?catMsg=Must%20select%20category');
+    return;
+}
+
 include("../Connection.php");
 
 use Connection\Connection;

@@ -1,4 +1,14 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    header('location: ../../admin-panel.php?authorMsg=Re%20submit%20the%20form');
+    return;
+}
+
+if (($_POST["first_name"] == "") || ($_POST["last_name"] == "") || ($_POST["biography"] == "")) {
+    header('location: ../../admin-panel.php?authorMsg=All%20fields%20must%20be%20filled');
+    return;
+}
+
 include("../Connection.php");
 
 use Connection\Connection;

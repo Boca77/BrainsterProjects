@@ -1,4 +1,9 @@
 <?php
+if ($_GET['author_id'] == '') {
+    header('location: ../../remove-edit.php?authorMsg=Must%20select%20author');
+    return;
+}
+
 include("../Connection.php");
 
 use Connection\Connection;

@@ -1,4 +1,13 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    header('location: ../../remove-edit.php?catMsg=Re%20submit%20the%20form');
+    return;
+}
+
+if (($_POST["name"] == "") || ($_POST["id"] == "")) {
+    header('location: ../../remove-edit.php?catMsg=All%20fields%20must%20be%20filled');
+    return;
+}
 
 include("../Connection.php");
 
@@ -14,4 +23,4 @@ SET name = :category
 WHERE id = :id");
 $updateCategory->execute($_POST);
 
-header('location: ../../index.php');
+header('location: ../../remove-edit.php?catMsg=Successfully%20edited%20category');
