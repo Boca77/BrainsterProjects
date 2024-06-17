@@ -4,10 +4,12 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     return;
 }
 
-if (($_POST["name"] == "") || ($_POST["id"] == "")) {
+if (($_POST["category"] == "") || ($_POST["id"] == '')) {
     header('location: ../../remove-edit.php?catMsg=All%20fields%20must%20be%20filled');
     return;
 }
+
+var_dump($_POST);
 
 include("../Connection.php");
 
@@ -15,8 +17,6 @@ use Connection\Connection;
 
 $db = new Connection();
 $connection = $db->getConnection();
-
-var_dump($_POST);
 
 $updateCategory = $connection->prepare("UPDATE `category` 
 SET name = :category
