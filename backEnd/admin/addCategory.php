@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     return;
 }
 
-if (($_POST["name"] == "")) {
+if (($_POST["category"] == "")) {
     header('location: ../../admin-panel.php?catMsg=All%20fields%20must%20be%20filled');
     return;
 }

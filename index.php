@@ -51,7 +51,7 @@ $books = $getBooks->getBooks();
         </nav>
         <h1 class="text-6xl justify-self-center text-white bg-[#1B3534] rounded w-1/2 self-end p-6">Welcome to Brainster library</h1>
     </div>
-    <main class=" bg-[#2A4742] flex flex-col items-center">
+    <main class=" bg-[#2A4742] flex flex-col items-center justify-between min-h-[350px]">
         <div class="relative w-full flex flex-col justify-center ">
             <div id="filters" class=" px-10 py-5 w-4/5 mx-auto flex border-b-4 border-gray-400 bg-white/20 rounded-b ">
                 <div class="flex items-center gap-2">

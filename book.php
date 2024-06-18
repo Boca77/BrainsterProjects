@@ -12,16 +12,32 @@ $userID = $_SESSION['userID'] ?? '';
 $db = new Connection;
 $connection = $db->getConnection();
 
-$getComments = $connection->prepare("SELECT 
-        comments.*, users.email, users.id AS user_id, books.id AS book_id 
-    FROM
-        `comments` 
-    JOIN 
-        users ON comments.user_id = users.id
-    JOIN
-        books ON comments.book_id = books.id  
-    WHERE
-        books.id = $bookID AND (is_approved = 1 OR users.id = $userID)");
+if (!empty($userID)) {
+    $getComments = $connection->prepare("SELECT 
+            comments.*, users.email, users.id AS user_id, books.id AS book_id 
+        FROM
+            `comments` 
+        JOIN 
+            users ON comments.user_id = users.id
+        JOIN
+            books ON comments.book_id = books.id  
+        WHERE
+            books.id = :bookID AND (is_approved = 1 OR users.id = :userID)");
+    $getComments->bindParam(':bookID', $bookID, PDO::PARAM_INT);
+    $getComments->bindParam(':userID', $userID, PDO::PARAM_INT);
+} else {
+    $getComments = $connection->prepare("SELECT 
+            comments.*, users.email, users.id AS user_id, books.id AS book_id 
+        FROM
+            `comments` 
+        JOIN 
+            users ON comments.user_id = users.id
+        JOIN
+            books ON comments.book_id = books.id  
+        WHERE
+            books.id = :bookID AND is_approved = 1");
+    $getComments->bindParam(':bookID', $bookID, PDO::PARAM_INT);
+}
 $getComments->execute();
 $comments = $getComments->fetchAll(PDO::FETCH_ASSOC);
 
