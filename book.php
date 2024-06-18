@@ -7,13 +7,13 @@ use Connection\Connection;
 use GetBooks\GetBooks;
 
 $bookID = $_GET['id'];
-$userID = $_SESSION['userID'];
+$userID = $_SESSION['userID'] ?? '';
 
 $db = new Connection;
 $connection = $db->getConnection();
 
 $getComments = $connection->prepare("SELECT 
-        comments.*, users.email, books.id 
+        comments.*, users.email, users.id AS user_id, books.id AS book_id 
     FROM
         `comments` 
     JOIN 
@@ -96,12 +96,21 @@ $existingComment = $checkComment->fetch(PDO::FETCH_ASSOC);
 
             <p class='mt-2'>
                 {$com['text']}
-            </p>
-        </div>";
+            </p>";
+            if ($com['user_id'] == $userID) {
+                echo "<form action='./backEnd/admin/delComment.php' method='POST'> 
+                
+                <input type='text' value='{$com['id']}' name='comment_id' hidden>                
+                <input type='text' value='$bookID' name='book_id' hidden>                
+
+                <button type='submit' class='border-[#4d7c73] cursor-pointer border-2 px-2 py-1 mt-3 placeholder-blueGray-300 text-white bg-[#d83636] rounded text-sm shadow focus:outline-none focus:ring w-52 text-center ease-linear transition-all duration-150'>Delete</button>
+                </form>";
+            }
+
+            echo " </div>";
         }
 
         ?>
-
     </div>
 </body>
 
