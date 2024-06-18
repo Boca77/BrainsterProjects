@@ -34,6 +34,9 @@ $comments = $getComments->fetchAll(PDO::FETCH_ASSOC);
     <section class="py-1 bg-blueGray-50">
         <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
             <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
+                <a href="./index.php" class="text-white bg-[#346968] cursor-pointer hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 mb-5 text-center self-start">
+                    Home
+                </a>
                 <div class="rounded-t flex justify-between bg-[#6eb8ab] mb-0 px-6 py-6">
 
                     <div class="text-center flex justify-between">
@@ -42,8 +45,8 @@ $comments = $getComments->fetchAll(PDO::FETCH_ASSOC);
                         </h6>
                     </div>
 
-                    <a href="./remove-edit.php" class="text-white bg-[#346968] cursor-pointer hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center">
-                        Delete Data
+                    <a href="./admin-panel.php" class="text-white bg-[#346968] cursor-pointer hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center">
+                        Admin panel
                     </a>
                 </div>
                 <div class="flex-auto bg-[#5b998e] px-4 lg:px-10 py-10 pt-0">

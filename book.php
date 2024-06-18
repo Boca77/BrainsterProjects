@@ -62,11 +62,18 @@ $existingComment = $checkComment->fetch(PDO::FETCH_ASSOC);
 </head>
 
 <body class="bg-[#2A4742]">
-    <div class="flex flex-col items-center justify-center h-screen mt-5 ">
+
+    <div class="flex flex-col items-center justify-center h-screen mt-2 ">
+
+        <a href="./index.php" class="text-white bg-[#346968] cursor-pointer hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 ml-56 mb-5 text-center self-start">
+            Home
+        </a>
+
         <div id='card' class='w-3/4 shadow-2xl relative flex'>
             <img class='rounded-l-lg w-1/2 h-[500px] md:h-[700px] object-cover' src='<?= $book['img_url'] ?>' alt=''>
             <div id='content' class='p-2 p w-1/2 flex flex-col bg-[#507e76]  rounded-r-lg'>
                 <h3 class='text-2xl shadow-b-lg border-b mb-16 self-center py-2 px-5 text-white'><?= $book['title'] ?></h3>
+
                 <div class="ml-5 text-white">
                     <h2 class="text-xl mb-5">Author: <?php echo $book['first_name'] . ' ' .  $book['last_name'] ?></h2>
                     <p class="text-xl mb-5">Publishing Year: <?= $book['year'] ?></p>
