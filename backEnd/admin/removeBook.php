@@ -18,4 +18,8 @@ WHERE id = :id");
 $getBook->bindParam(":id", $bookID);
 $getBook->execute();
 
+$getBookComments = $connection->prepare("DELETE FROM `comments` WHERE book_id = :book_id");
+$getBookComments->bindParam(":book_id", $bookID);
+$getBookComments->execute();
+
 header('location: ../../remove-edit.php?bookMsg=Successfully%20deleted%20book');
