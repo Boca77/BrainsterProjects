@@ -21,7 +21,7 @@ $getComments = $connection->prepare("SELECT
     JOIN
         books ON comments.book_id = books.id  
     WHERE
-        books.id = $bookID AND is_approved = 0");
+        books.id = $bookID AND (is_approved = 1 OR users.id = $userID)");
 $getComments->execute();
 $comments = $getComments->fetchAll(PDO::FETCH_ASSOC);
 
@@ -106,7 +106,9 @@ $existingComment = $checkComment->fetch(PDO::FETCH_ASSOC);
                 <button type='submit' class='border-[#4d7c73] cursor-pointer border-2 px-2 py-1 mt-3 placeholder-blueGray-300 text-white bg-[#d83636] rounded text-sm shadow focus:outline-none focus:ring w-52 text-center ease-linear transition-all duration-150'>Delete</button>
                 </form>";
             }
-
+            if ($com['is_approved'] == 0) {
+                echo "<p class = 'mt-2 text-[#e07f7f]'> Comment isn't approved yet</p>";
+            }
             echo " </div>";
         }
 
