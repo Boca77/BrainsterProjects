@@ -80,12 +80,28 @@ $existingComment = $checkComment->fetch(PDO::FETCH_ASSOC);
                     <p class="text-xl mb-5">Pages: <?= $book['page_num'] ?></p>
                     <p class="text-xl mb-5">Category: <?= $book['name'] ?></p>
                 </div>
-
+                <h3 class="text-white px-2 mb-0">Notes:</h3>
+                <div id="display-note" class="h-[200px] mt-5 overflow-auto p-2 mb-5 text-white">
+                    <p hidden id="user-id"><?= $userID ?></p>
+                    <p hidden id="book-id"><?= $bookID ?></p>
+                </div>
+                <div class="w-full flex lg:w-12/12 px-4 ">
+                    <div class="relative w-full flex mx-auto mb-3 border p-2 items-center rounded">
+                        <textarea id="note" required name="note" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" rows="2"></textarea>
+                        <div class="flex flex-wrap">
+                            <div class="px-4">
+                                <button id="add-note" class="border-[#4d7c73] cursor-pointer border-2 px-3 py-3 placeholder-blueGray-300 text-white bg-[#4f9286] rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">Add note</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
 
 
     </div>
+
     <div class="border rounded-md p-3 w-3/4 my-5 mx-auto">
         <?php
         if ((isset($_SESSION['isLoggedIn']) && !$existingComment)) {
@@ -137,6 +153,8 @@ $existingComment = $checkComment->fetch(PDO::FETCH_ASSOC);
 
         ?>
     </div>
+
+    <script src="./js/notes.js"></script>
 </body>
 
 </html>
