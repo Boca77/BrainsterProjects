@@ -80,7 +80,9 @@ $existingComment = $checkComment->fetch(PDO::FETCH_ASSOC);
                     <p class="text-xl mb-5">Pages: <?= $book['page_num'] ?></p>
                     <p class="text-xl mb-5">Category: <?= $book['name'] ?></p>
                 </div>
-                <h3 class="text-white px-2 mb-0">Notes:</h3>
+                <?php
+                if (isset($_SESSION['isLoggedIn'])) {
+                    echo ' <h3 class="text-white px-2 mb-0">Notes:</h3>
                 <div id="display-note" class="h-[200px] mt-5 overflow-auto p-2 mb-5 text-white">
                     <p hidden id="user-id"><?= $userID ?></p>
                     <p hidden id="book-id"><?= $bookID ?></p>
@@ -95,6 +97,9 @@ $existingComment = $checkComment->fetch(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </div>
+                ';
+                }
+                ?>
             </div>
 
         </div>
