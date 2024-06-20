@@ -3,6 +3,11 @@ require_once("./backEnd/Classes/GetCategory.php");
 require_once("./backEnd/Classes/GetAuthor.php");
 require_once("./backEnd/Classes/GetBooks.php");
 
+if ($_POST['id'] == '' || $_SERVER["REQUEST_METHOD"] === "GET") {
+    header('location: ./admin-panel.php?bookMsg=Try%20again');
+    return;
+}
+
 use GetAuthor\GetAuthor;
 use GetBooks\GetBooks;
 use GetCategory\GetCategory;

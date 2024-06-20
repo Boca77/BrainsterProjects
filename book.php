@@ -6,6 +6,11 @@ include("./backEnd/Classes/GetBooks.php");
 use Connection\Connection;
 use GetBooks\GetBooks;
 
+if ($_GET['id'] == '') {
+    header('location : ./index.php?errorMsg=Error');
+    return;
+}
+
 $bookID = $_GET['id'];
 $userID = $_SESSION['userID'] ?? '';
 

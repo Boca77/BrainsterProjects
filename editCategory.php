@@ -1,6 +1,11 @@
 <?php
 require_once("./backEnd/Classes/GetCategory.php");
 
+if ($_POST['id'] == '' || $_SERVER["REQUEST_METHOD"] === "GET") {
+    header('location: ./admin-panel.php?catMsg=Try%20again');
+    return;
+}
+
 use GetCategory\GetCategory;
 
 $getCat = new GetCategory;

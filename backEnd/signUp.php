@@ -4,6 +4,16 @@ session_start();
 
 include("./Connection.php");
 
+if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    header("location: ../login-signup.php?errorSignUp=Error%20try%20again");
+    return;
+}
+
+if ($_POST['email'] = '' || $_POST['password'] = '') {
+    header("location: ../login-signup.php?errorSignUp=Please%20enter%20both%20inputs");
+    return;
+}
+
 use Connection\Connection;
 
 $db = new Connection();

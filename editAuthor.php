@@ -1,6 +1,11 @@
 <?php
 require_once("./backEnd/Classes/GetAuthor.php");
 
+if ($_POST['id'] == '' || $_SERVER["REQUEST_METHOD"] === "GET") {
+    header('location: ./admin-panel.php?authorMsg=Try%20again');
+    return;
+}
+
 use GetAuthor\GetAuthor;
 
 $getAuthor = new GetAuthor;
