@@ -26,16 +26,6 @@ $fetchBook->execute();
 $book = $fetchBook->fetch(PDO::FETCH_ASSOC);
 
 if ($book) {
-    if ($book['is_del'] == true) {
-        $unDeleteBook = $connection->prepare("UPDATE `books`
-            SET is_del = 0
-            WHERE id = :id");
-        $unDeleteBook->bindParam('id', $book['id']);
-        $unDeleteBook->execute();
-
-        header('location: ../../admin-panel.php?bookMsg=Book%20successfully%20added');
-        return;
-    }
     header('location: ../../admin-panel.php?bookMsg=Book%20already%20added');
     return;
 }
