@@ -20,7 +20,7 @@ if ($message && $user_id && $book_id) {
 
     $query->execute(['text' => $message, 'user_id' => $user_id, 'book_id' => $book_id]);
 
-    echo json_encode(['status' => 'success', 'message' => 'Data inserted successfully']);
+    echo json_encode(['status' => 'success', 'message' => 'Note added successfully']);
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Invalid input']);
 }

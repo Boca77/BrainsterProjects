@@ -22,6 +22,11 @@ $getAuthor->bindParam(':last_name', $_POST['last_name']);
 $getAuthor->execute();
 $author = $getAuthor->fetch(PDO::FETCH_ASSOC);
 
+if (strlen($_POST['biography']) < 20) {
+    header('location: ../../admin-panel.php?authorMsg=Biography%20must%20be%20at%20least%2020%20characters');
+    return;
+}
+
 if ($author) {
     if ($author['is_del'] == true) {
         $unDeleteAuthor = $connection->prepare("UPDATE `authors`

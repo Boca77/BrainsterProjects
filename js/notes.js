@@ -3,6 +3,7 @@ const bookId = document.getElementById("book-id").innerHTML;
 const notesInput = document.getElementById("note");
 const noteButton = document.getElementById("add-note");
 const noteDisplay = document.getElementById("display-note");
+const noteMsg = document.getElementById("noteMsg");
 
 notesInput.value = "Add a note";
 
@@ -55,8 +56,7 @@ function fetchNotes() {
             )
               .then((response) => response.json())
               .then((data) => {
-                console.log(data);
-                alert(data.message);
+                noteMsg.innerHTML = data.message;
                 fetchNotes();
               })
               .catch((error) => {
@@ -79,8 +79,8 @@ fetchNotes();
 noteButton.addEventListener("click", () => {
   const notesValue = notesInput.value.trim();
 
-  if (!notesValue) {
-    alert("Please enter a note.");
+  if (!notesValue || notesValue == "Add a note") {
+    noteMsg.innerHTML = "Please enter a note.";
     return;
   }
 
@@ -108,8 +108,7 @@ noteButton.addEventListener("click", () => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      alert(data.message);
+      noteMsg.innerHTML = data.message;
       notesInput.value = "";
       delete notesInput.dataset.noteId;
       fetchNotes();

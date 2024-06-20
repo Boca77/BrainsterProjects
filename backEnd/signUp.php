@@ -22,16 +22,6 @@ $connection = $db->getConnection();
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
-    header("location: ../login-signup.php?errorSignUp=Please%20enter%20valid%20email");
-    return;
-}
-
-if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/', $password)) {
-    header("location: ../login-signup.php?errorSignUp=Please%20enter%20valid%20password");
-    return;
-}
-
 $fetchEmail = $connection->prepare('SELECT `email` FROM `users` WHERE email = :email');
 $fetchEmail->bindParam(":email", $email);
 $fetchEmail->execute();
@@ -39,6 +29,17 @@ $userExists = $fetchEmail->fetch(PDO::FETCH_ASSOC);
 
 if ($userExists) {
     header("location: ../login-signup.php?errorSignUp=Email%20already%20exists");
+    return;
+}
+
+
+if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
+    header("location: ../login-signup.php?errorSignUp=Please%20enter%20valid%20email");
+    return;
+}
+
+if (!preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/', $password)) {
+    header("location: ../login-signup.php?errorSignUp=Please%20enter%20valid%20password");
     return;
 }
 

@@ -28,7 +28,7 @@ class GetBooks
         JOIN 
             category ON books.category_id = category.id
         WHERE 
-            books.is_del = 0 AND authors.is_del = 0 AND category.is_del = 0");
+            authors.is_del = 0 AND category.is_del = 0");
         $this->books->execute();
 
         return $this->books->fetchAll(\PDO::FETCH_ASSOC);
@@ -48,8 +48,7 @@ class GetBooks
         JOIN 
             category ON books.category_id = category.id
         WHERE 
-            books.is_del = 0 
-            AND authors.is_del = 0 
+            authors.is_del = 0 
             AND category.is_del = 0 
             AND books.id = $id");
         $this->books->execute();
