@@ -15,6 +15,17 @@ use Connection\Connection;
 $db = new Connection();
 $connection = $db->getConnection();
 
+$getAuthor = $connection->prepare("SELECT `first_name`, `last_name` FROM `authors` WHERE `first_name` = :first_name AND `last_name` = :last_name");
+$getAuthor->bindParam(':first_name', $_POST['first_name']);
+$getAuthor->bindParam(':last_name', $_POST['last_name']);
+$getAuthor->execute();
+$author = $getAuthor->fetch(PDO::FETCH_ASSOC);
+
+if ($author) {
+    header('location: ../../remove-edit.php?authorMsg=Author%20already%20exists');
+    return;
+}
+
 $updateAuthor = $connection->prepare("UPDATE `authors` 
 SET first_name = :first_name, last_name = :last_name, `biography` = :biography
 WHERE id = :id");

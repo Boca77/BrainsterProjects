@@ -16,6 +16,17 @@ use Connection\Connection;
 $db = new Connection();
 $connection = $db->getConnection();
 
+$fetchBook = $connection->prepare('SELECT * FROM `books` WHERE title = :title AND author_id = :author_id');
+$fetchBook->bindParam("title", $_POST['title']);
+$fetchBook->bindParam("author_id", $_POST['author_id']);
+$fetchBook->execute();
+$book = $fetchBook->fetch(PDO::FETCH_ASSOC);
+
+if ($book) {
+    header('location: ../../remove-edit.php?bookMsg=bookMsg=Book%20already%20exists');
+    return;
+}
+
 $updateBook = $connection->prepare("UPDATE `books` 
 SET title = :title, author_id = :author_id, `year` = :year, page_num = :page_num, img_url = :img_url, category_id = :category_id 
 WHERE id = :id");

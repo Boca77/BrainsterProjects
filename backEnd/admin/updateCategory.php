@@ -18,6 +18,16 @@ use Connection\Connection;
 $db = new Connection();
 $connection = $db->getConnection();
 
+$getCategory = $connection->prepare("SELECT * FROM `category` WHERE `name` = :category");
+$getCategory->bindParam(':category', $_POST['category']);
+$getCategory->execute();
+$category = $getCategory->fetch(PDO::FETCH_ASSOC);
+
+if ($category) {
+    header('location: ../../remove-edit.php?catMsg=Category%20already%20exists');
+    return;
+}
+
 $updateCategory = $connection->prepare("UPDATE `category` 
 SET name = :category
 WHERE id = :id");
