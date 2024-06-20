@@ -22,7 +22,6 @@ function fetchNotes() {
   fetch("http://localhost/project/backEnd/api/fetch.php")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       noteDisplay.innerHTML = "";
       data.forEach((item) => {
         if (item.user_id == userId && item.book_id == bookId) {

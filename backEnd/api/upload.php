@@ -6,6 +6,11 @@ require_once(__DIR__ . "/../Connection.php");
 
 header("Content-Type: application/json");
 
+if (empty($message) || empty($user_id) || empty($book_id)) {
+    echo json_encode(['status' => 'error', 'message' => 'Invalid input']);
+    exit;
+}
+
 $input = json_decode(file_get_contents('php://input'), true);
 
 $message = $input['message'] ?? '';
