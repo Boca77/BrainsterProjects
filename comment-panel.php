@@ -23,12 +23,7 @@ $comments = $getComments->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+<?php require_once('./backEnd/head.php'); ?>
 
 <body class="bg-[#4f867d]">
     <section class="py-1 bg-blueGray-50">

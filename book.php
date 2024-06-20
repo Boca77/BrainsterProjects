@@ -60,11 +60,7 @@ $existingComment = $checkComment->fetch(PDO::FETCH_ASSOC);
 <!doctype html>
 <html>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
+<?php require_once('./backEnd/head.php'); ?>
 
 <body class="bg-[#2A4742]">
 

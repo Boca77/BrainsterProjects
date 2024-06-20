@@ -17,13 +17,7 @@ $books = $getBooks->getBooks();
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brainster Library</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://kit.fontawesome.com/0d6f25b6d2.js" crossorigin="anonymous"></script>
-</head>
+<?php require_once('./backEnd/head.php'); ?>
 
 <body>
     <div class="banner min-h-[60vh] flex flex-col gap-48 bg-[url('./imgs/banner1.jpg')] bg-cover bg-center border-b-2 border-gray-400 ">
