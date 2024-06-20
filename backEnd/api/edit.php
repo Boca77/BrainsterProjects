@@ -25,7 +25,8 @@ $query = "UPDATE notes SET text = :text WHERE id = :note_id AND user_id = :user_
 $stmt = $connection->prepare($query);
 $stmt->execute(['text' => $message, 'note_id' => $note_id, 'user_id' => $user_id, 'book_id' => $book_id]);
 
-if ($stmt->rowCount() > 0) {
+
+if ($message) {
     echo json_encode(['status' => 'success', 'message' => 'Note updated successfully']);
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Failed to update note']);

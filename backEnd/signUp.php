@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     return;
 }
 
-if ($_POST['email'] = '' || $_POST['password'] = '') {
+if ($_POST['email'] == '' || $_POST['password'] == '') {
     header("location: ../login-signup.php?errorSignUp=Please%20enter%20both%20inputs");
     return;
 }
