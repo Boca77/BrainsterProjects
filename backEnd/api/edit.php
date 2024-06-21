@@ -18,7 +18,7 @@ $connection = $db->getConnection();
 
 if (!$message || !$user_id || !$book_id || !$note_id) {
     echo json_encode(['status' => 'error', 'message' => 'Missing required fields']);
-    exit;
+    return;
 }
 
 $query = "UPDATE notes SET text = :text WHERE id = :note_id AND user_id = :user_id AND book_id = :book_id";

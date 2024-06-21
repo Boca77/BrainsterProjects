@@ -13,7 +13,7 @@ $connection = $db->getConnection();
 
 if (!$note_id) {
     echo json_encode(['status' => 'error', 'message' => 'Missing note ID']);
-    exit;
+    return;
 }
 
 $query = "DELETE FROM notes WHERE id = :note_id";
