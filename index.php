@@ -21,8 +21,8 @@ $books = $getBooks->getBooks();
 
 <body>
     <div class="banner min-h-[60vh] flex flex-col gap-48 bg-[url('./imgs/banner1.jpg')] bg-cover bg-center border-b-2 border-gray-400 ">
-        <nav class="flex justify-between px-10 py-5 justify-self-start">
-            <p class="text-xl text-neutral-300">Brainster Library</p>
+        <nav class="flex justify-between md:px-10 ms:px-3 py-5 ">
+            <p class="md:text-xl sm:text-lg text-neutral-300">Brainster Library</p>
             <div class="buttons flex items-center gap-5">
                 <?php
                 $isLoggedIn = $_SESSION['isLoggedIn'] ?? '';
@@ -32,34 +32,40 @@ $books = $getBooks->getBooks();
                     echo "<h5 class='text-white'>Welcome {$_SESSION['user']} </h5>";
 
                     if ($isAdmin == true) {
-                        echo '<a href="./admin-panel.php"><button class="text-white bg-[#1B3534] hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">Admin Panel</button></a>';
+                        echo '<a href="./admin-panel.php"><button class="text-white bg-[#1B3534] hover:bg-[#2c5755] focus:outline-none font-medium rounded-full md:text-sm px-5 py-2.5 text-center me-2 mb-2">Admin Panel</button></a>';
                     }
 
-                    echo '<a href="./backEnd/logout.php"><button class="text-white bg-[#1B3534] hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">LogOut</button></a>';
+                    echo '<a href="./backEnd/logout.php"><button class="text-white bg-[#1B3534] hover:bg-[#2c5755] focus:outline-none font-medium rounded-full md:text-sm px-5 py-2.5 text-center me-2 mb-2">LogOut</button></a>';
                 } else {
-                    echo '<a href="./login-signup.php"><button class="text-white bg-[#1B3534] hover:bg-[#2c5755] focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">SignUp / LogIn</button></a>
+                    echo '<a href="./login-signup.php"><button class="text-white bg-[#1B3534] hover:bg-[#2c5755] focus:outline-none md:font-medium sm:font-light rounded-full md:text-sm sm:text-[10px] px-5 py-2.5 text-center me-2 mb-2">SignUp / LogIn</button></a>
                 ';
                 }
                 ?>
             </div>
         </nav>
-        <h1 class="text-6xl justify-self-center text-white bg-[#1B3534] rounded w-1/2 self-end p-6">Welcome to Brainster library</h1>
+        <?php
+        $indexMsg = $_GET["errorMsg"] ?? '';
+        if ($indexMsg) {
+            echo "<small class='p-2 mt-5 bg-red-600 w-20 self-center rounded border border-red-400'>$indexMsg</small>";
+        }
+        ?>
+        <h1 class="md:text-6xl sm:text-xl justify-self-center text-white bg-[#1B3534] rounded w-1/2 self-end p-6">Welcome to Brainster library</h1>
     </div>
-    <main class=" bg-[#2A4742] flex flex-col items-center justify-between min-h-[350px]">
+    <main class=" bg-[#2A4742] flex flex-col items-center sm:gap-9 justify-between min-h-[350px]">
         <div class="relative w-full flex flex-col justify-center ">
             <div id="filters" class=" px-10 py-5 w-4/5 mx-auto flex border-b-4 border-gray-400 bg-white/20 rounded-b ">
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2 ">
                     <i id="filter" class="fa-solid fa-bars fa-xl cursor-pointer"></i>
                     <p>Filters</p>
                 </div>
             </div>
-            <div id="filter-content" class="absolute opacity-0 top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
-                <div class="flex items-center gap-5 p-5">
+            <div id="filter-content" class="absolute opacity-0 top-0 left-1/2 transform md:-translate-x-1/2 sm:-translate-x-1/4 -translate-y-1/2 ">
+                <div class="flex flex-wrap  items-center gap-5 p-5">
                     <?php
                     foreach ($categories as $category) {
-                        echo "<div class='items-center flex'>
+                        echo "<div class='md:items-center sm:items-end flex'>
                         <input checked id='{$category['name']}' type='checkbox' value='{$category['name']}' class='w-4 h-4 accent-slate-400'>
-                        <label for='{$category['name']}' class='ms-2 text-sm font-medium text-gray-900 dark:text-gray-300'>{$category['name']}</label>
+                        <label for='{$category['name']}' class='ms-2 md:text-sm sm:text-[10px] font-medium text-gray-900 dark:text-gray-300'>{$category['name']}</label>
                         </div>";
                     }
                     ?>

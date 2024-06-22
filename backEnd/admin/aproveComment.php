@@ -1,11 +1,11 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
-    header('location: ../../index.php');
+    header('location: ../../comment-panel.php?errorMsg=Something%20went%20wrong%20try%20again');
     return;
 }
 
 if (($_POST['comment_id'] === '')) {
-    header('location: ../../index.php');
+    header('location: ../../comment-panel.php?errorMsg=Something%20went%20wrong%20try%20again');
     return;
 }
 

@@ -6,10 +6,10 @@
 <body class="bg-[#4f867d] text-white">
     <main class="flex flex-col items-center">
         <nav class="flex w-1/5 mt-10 ">
-            <div id="login-btn" class="bg-[#68b1a5] cursor-pointer text-center w-1/2 p-3 rounded-l-lg">
+            <div id="login-btn" class="bg-[#68b1a5] cursor-pointer text-center md:w-1/2 sm:w-2/3 p-3 rounded-l-lg">
                 <p>Login</p>
             </div>
-            <div id="signup-btn" class="bg-[#487a72] cursor-pointer text-center w-1/2 p-3 rounded-r-lg">
+            <div id="signup-btn" class="bg-[#487a72] cursor-pointer text-center md:w-1/2 sm:w-2/3 p-3 rounded-r-lg">
                 <p>SignUp</p>
             </div>
         </nav>
