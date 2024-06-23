@@ -21,5 +21,4 @@ SET title = :title, author_id = :author_id, `year` = :year, page_num = :page_num
 WHERE id = :id");
 $updateBook->execute($_POST);
 
-
 header('location: ../../remove-edit.php?bookMsg=Successfully%20edited%20book');
