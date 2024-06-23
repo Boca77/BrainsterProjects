@@ -20,6 +20,4 @@ $delCom = $connection->prepare("DELETE FROM `comments` WHERE id = :id");
 $delCom->bindParam("id", $_POST['comment_id']);
 $delCom->execute();
 
-var_dump($_POST);
-
 header("location: ../../book.php?id={$_POST['book_id']}");

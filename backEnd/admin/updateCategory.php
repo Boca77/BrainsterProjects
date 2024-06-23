@@ -9,8 +9,6 @@ if (($_POST["category"] == "") || ($_POST["id"] == '')) {
     return;
 }
 
-var_dump($_POST);
-
 include("../Connection.php");
 
 use Connection\Connection;

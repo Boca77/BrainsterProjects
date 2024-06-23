@@ -33,8 +33,8 @@ if ($user) {
         if ($user['email'] == 'admin@admin.com') {
             $_SESSION['isAdmin'] = true;
         }
-
-        $_SESSION['user'] = $user['email'];
+        $currentUser = explode('@', $user['email']);
+        $_SESSION['user'] = $currentUser[0];
         $_SESSION['userID'] = $user['id'];
         $_SESSION['isLoggedIn'] = true;
 

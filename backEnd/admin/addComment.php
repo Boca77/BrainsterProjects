@@ -21,5 +21,3 @@ $setComment = $connection->prepare("INSERT INTO `comments` (`text`, `user_id`, `
 $setComment->execute($_POST);
 
 header("location: ../../book.php?id={$_POST['book']}");
-
-var_dump($_POST);
