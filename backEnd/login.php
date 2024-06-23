@@ -30,9 +30,10 @@ if ($user) {
     $passwordDB = $user['password'];
 
     if (password_verify($password, $passwordDB)) {
-        if ($user['email'] == 'admin@admin.com') {
+        if ($user['is_admin'] == 1) {
             $_SESSION['isAdmin'] = true;
         }
+
         $currentUser = explode('@', $user['email']);
         $_SESSION['user'] = $currentUser[0];
         $_SESSION['userID'] = $user['id'];

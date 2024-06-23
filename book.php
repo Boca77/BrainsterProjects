@@ -7,7 +7,7 @@ use Connection\Connection;
 use GetBooks\GetBooks;
 
 if ($_GET['id'] == '') {
-    header('location : ./index.php?errorMsg=Error');
+    header('location: ./index.php?errorMsg=Error');
     return;
 }
 
@@ -21,7 +21,7 @@ $getBook = new GetBooks;
 $book = $getBook->getBookByID($bookID);
 
 if (!$book) {
-    header('location : ./index.php?errorMsg=Book%20dosnt%20exist');
+    header('location: index.php?errorMsg=Book%20dosnt%20exist');
     return;
 }
 

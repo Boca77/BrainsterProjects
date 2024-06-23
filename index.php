@@ -46,7 +46,7 @@ $books = $getBooks->getBooks();
         <?php
         $indexMsg = $_GET["errorMsg"] ?? '';
         if ($indexMsg) {
-            echo "<small class='p-2 mt-5 bg-red-600 w-20 self-center rounded border border-red-400'>$indexMsg</small>";
+            echo "<small class='p-2 mt-5 bg-red-600 w-30 text-white self-center rounded border border-red-400'>$indexMsg</small>";
         }
         ?>
         <h1 class="md:text-6xl sm:text-xl justify-self-center text-white bg-[#1B3534] rounded w-1/2 self-end p-6">Welcome to Brainster library</h1>

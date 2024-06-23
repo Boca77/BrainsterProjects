@@ -50,7 +50,8 @@ class GetBooks
         WHERE 
             authors.is_del = 0 
             AND category.is_del = 0 
-            AND books.id = $id");
+            AND books.id = :id");
+        $this->books->bindParam("id", $id);
         $this->books->execute();
 
         return $this->books->fetch(\PDO::FETCH_ASSOC);
