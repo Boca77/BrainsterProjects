@@ -20,7 +20,9 @@ notesInput.addEventListener("focusout", () => {
 });
 
 function fetchNotes() {
-  fetch("http://localhost/project/backEnd/api/fetch.php")
+  fetch(
+    "http://localhost/brainsterprojects-borisnachev_fs-15/backEnd/api/fetch.php"
+  )
     .then((response) => response.json())
     .then((data) => {
       noteDisplay.innerHTML = "";
@@ -49,7 +51,7 @@ function fetchNotes() {
           deleteButton.textContent = "Delete";
           deleteButton.addEventListener("click", () => {
             fetch(
-              `http://localhost/project/backEnd/api/delete.php?id=${item.id}`,
+              `http://localhost/brainsterprojects-borisnachev_fs-15/backEnd/api/delete.php?id=${item.id}`,
               {
                 method: "DELETE",
               }
@@ -90,12 +92,13 @@ noteButton.addEventListener("click", () => {
     book_id: bookId,
   };
 
-  let url = "http://localhost/project/backEnd/api/upload.php";
+  let url =
+    "http://localhost/brainsterprojects-borisnachev_fs-15/backEnd/api/upload.php";
   let method = "POST";
 
   if (notesInput.dataset.noteId) {
     const noteId = notesInput.dataset.noteId;
-    url = `http://localhost/project/backEnd/api/edit.php?id=${noteId}`;
+    url = `http://localhost/brainsterprojects-borisnachev_fs-15/backEnd/api/edit.php?id=${noteId}`;
     method = "PUT";
   }
 
