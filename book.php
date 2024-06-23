@@ -17,6 +17,14 @@ $userID = $_SESSION['userID'] ?? '';
 $db = new Connection;
 $connection = $db->getConnection();
 
+$getBook = new GetBooks;
+$book = $getBook->getBookByID($bookID);
+
+if (!$book) {
+    header('location : ./index.php?errorMsg=Book%20dosnt%20exist');
+    return;
+}
+
 if (!empty($userID)) {
     $getComments = $connection->prepare("SELECT 
             comments.*, users.email, users.id AS user_id, books.id AS book_id 
@@ -46,14 +54,12 @@ if (!empty($userID)) {
 $getComments->execute();
 $comments = $getComments->fetchAll(PDO::FETCH_ASSOC);
 
-$getBook = new GetBooks;
-$book = $getBook->getBookByID($bookID);
-
 $checkComment = $connection->prepare("SELECT * FROM `comments` WHERE `user_id` = :userID AND `book_id` = :bookID");
 $checkComment->bindParam(":userID", $userID);
 $checkComment->bindParam(":bookID", $bookID);
 $checkComment->execute();
 $existingComment = $checkComment->fetch(PDO::FETCH_ASSOC);
+
 
 ?>
 
