@@ -1,0 +1,2 @@
+Adminot e ostaven vo bazata i passwordot e admin
+a mailot admin@admin.com
