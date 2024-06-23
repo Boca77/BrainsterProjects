@@ -58,8 +58,9 @@
             </div>
             <div class="mt-6">
                 <label class="text-[15px] mb-3 block">Password</label>
-                <div class="relative flex items-center">
+                <div class="relative items-center">
                     <input name="password" type="password" required class="w-full text-sm text-black px-4 py-4 rounded-md outline-blue-600" placeholder="Enter password" />
+                    <small class="text-white">Password must be 8 characters long have 1 uppercase 1 lowercase letter, a number and a special character </small>
                 </div>
             </div>
             <?php
