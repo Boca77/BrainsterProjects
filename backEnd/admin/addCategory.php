@@ -16,7 +16,6 @@ use Connection\Connection;
 $db = new Connection();
 $connection = $db->getConnection();
 
-
 $getCategory = $connection->prepare("SELECT * FROM `category` WHERE `name` = :category");
 $getCategory->bindParam(':category', $_POST['category']);
 $getCategory->execute();

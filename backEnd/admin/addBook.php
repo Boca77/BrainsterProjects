@@ -11,22 +11,18 @@ if (($_POST["title"] == "") || ($_POST["img_url"] == "") || ($_POST["page_num"] 
 
 session_start();
 
-include("../Connection.php");
 
-use Connection\Connection;
+include("../Classes/GetAuthor.php");
+include("../Classes/GetCategory.php");
 
-$db = new Connection();
-$connection = $db->getConnection();
+use GetAuthor\GetAuthor;
+use GetCategory\GetCategory;
 
-$checkAuthorId = $connection->prepare("SELECT * FROM `authors` WHERE id = :id");
-$checkAuthorId->bindParam('id', $_POST['author_id']);
-$checkAuthorId->execute();
-$checkAuthor = $checkAuthorId->fetch(PDO::FETCH_ASSOC);
+$checkAuthorId = new GetAuthor();
+$checkAuthor = $checkAuthorId->getAuthorByID($_POST['author_id']);
 
-$checkCategoryId = $connection->prepare("SELECT * FROM `category` WHERE id = :cat_id");
-$checkCategoryId->bindParam('cat_id', $_POST['category_id']);
-$checkCategoryId->execute();
-$checkCategory = $checkCategoryId->fetch(PDO::FETCH_ASSOC);
+$checkCategoryId = new GetCategory();
+$checkCategory = $checkCategoryId->getCategoryByID($_POST['category_id']);
 
 if (!$checkAuthor) {
 
