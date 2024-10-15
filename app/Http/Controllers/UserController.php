@@ -18,50 +18,48 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a certain user.
      */
-    public function create()
+    public function showUser(User $user)
     {
-        //
+        $user->load('friends');
+
+        return view('user', compact('user'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Delete a user
      */
-    public function store(Request $request)
+    public function delete(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('users')->with('success', 'User deleted successfully!');
     }
 
     /**
-     * Display the specified resource.
+     * Ban a user that broke terms of services
      */
-    public function show(string $id)
+    public function ban(User $user)
     {
-        //
+        $user->update([
+            'is_banned' => true
+        ]);
+
+
+        return redirect()->back();
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Ban a user that broke terms of services
      */
-    public function edit(string $id)
+    public function unban(User $user)
     {
-        //
-    }
+        $user->update([
+            'is_banned' => false
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->back();
     }
 }

@@ -20,6 +20,8 @@ class BlogFactory extends Factory
     {
         return [
             'title' => fake()->word(),
+            'sub_title' => fake()->paragraph(1),
+            'content' => fake()->paragraph(5),
             'created_by' => User::query()->inRandomOrder()->first()->id,
         ];
     }

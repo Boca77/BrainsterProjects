@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Event;
-use App\Models\Speaker;
+use App\Models\EventSpeaker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,9 +18,9 @@ class SpeakersEventsSeeder extends Seeder
         $events = Event::all();
 
         foreach ($events as $event) {
-            DB::table('speakers_event')->insert([
+            DB::table('speakers_events')->insert([
                 'event_id' => $event->id,
-                'speaker_id' => Speaker::query()->inRandomOrder()->first()->id,
+                'event_speaker_id' => EventSpeaker::query()->inRandomOrder()->first()->id,
             ]);
         }
     }

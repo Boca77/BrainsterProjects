@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blog_body', function (Blueprint $table) {
+        Schema::create('event_speakers', function (Blueprint $table) {
             $table->id();
-            $table->string('sub_title');
-            $table->longText('content');
-            $table->foreignId('blog_id')->constrained('blogs')->cascadeOnDelete();
+            $table->string('name');
+            $table->string('surname');
+            $table->string('email');
+            $table->string('title');
+            $table->string('social_media');
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('blog_body');
+        Schema::dropIfExists('event_speakers');
     }
 };

@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('photo_upload')->nullable();
             $table->string('acquired_points')->nullable();
             $table->boolean('is_admin')->default(false);
+            $table->boolean('is_banned')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

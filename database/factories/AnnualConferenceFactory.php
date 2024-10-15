@@ -18,9 +18,7 @@ class AnnualConferenceFactory extends Factory
     {
         return [
             'title' => fake()->word(),
-            'theme' => fake()->word(),
             'description' => fake()->paragraph(3),
-            'objective' => fake()->paragraph(1),
             'agenda' => fake()->paragraph(2),
             'date' => fake()->date(),
             'location' => fake()->address(),

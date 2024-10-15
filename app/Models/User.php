@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_banned'
     ];
 
     /**
@@ -57,17 +58,17 @@ class User extends Authenticatable
     //     return $this->hasMany(Recommendation::class, 'receiver_id');
     // }
 
-    protected function blogs(): HasMany
+    public function blogs(): HasMany
     {
         return $this->hasMany(Blog::class, 'created_by');
     }
 
-    protected function comments(): HasMany
+    public function comments(): HasMany
     {
         return $this->hasMany(Comments::class);
     }
 
-    protected function connections(): BelongsToMany
+    public function friends(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'connections', 'user_id', 'friend_id');
     }

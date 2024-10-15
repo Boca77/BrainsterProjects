@@ -9,13 +9,15 @@ class Blog extends Model
 {
     use HasFactory;
 
-    public function blog_body()
-    {
-        return $this->hasOne(Blog_body::class);
-    }
+    public $guarded = null;
 
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'created_by');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comments::class);
     }
 }
