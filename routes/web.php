@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ConferenceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
@@ -71,6 +72,12 @@ Route::middleware('checkIsUserAdmin')->group(function () {
     Route::get('/dashboard/events', [EventController::class, 'index'])
         ->name('events');
 
+    Route::get('/dashboard/event/create', [EventController::class, 'create'])
+        ->name('event.create');
+
+    Route::post('/dashboard/event/store', [EventController::class, 'store'])
+        ->name('event.store');
+
     Route::get('/dashboard/event/{event}', [EventController::class, 'showEvent'])
         ->name('event.show');
 
@@ -82,4 +89,25 @@ Route::middleware('checkIsUserAdmin')->group(function () {
 
     Route::put('/dashboard/event/{event}/update', [EventController::class, 'update'])
         ->name('event.update');
+
+    Route::get('/dashboard/conferences', [ConferenceController::class, 'index'])
+        ->name('conferences');
+
+    Route::get('/dashboard/conference/create', [ConferenceController::class, 'create'])
+        ->name('create.conference');
+
+    Route::get('/dashboard/conference/{conference}', [ConferenceController::class, 'showConference'])
+        ->name('conference.show');
+
+    Route::post('/dashboard/conference/store', [ConferenceController::class, 'store'])
+        ->name('conference.store');
+
+    Route::delete('/dashboard/conference/{conference}/delete', [ConferenceController::class, 'delete'])
+        ->name('conference.delete');
+
+    Route::get('/dashboard/conference/{conference}/edit', [ConferenceController::class, 'edit'])
+        ->name('conference.edit');
+
+    Route::put('/dashboard/conference/{conference}/update', [ConferenceController::class, 'update'])
+        ->name('conference.update');
 });

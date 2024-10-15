@@ -3,7 +3,7 @@
 @include('layout.nav')
 
 @section('content')
-    <h1>Add Blog</h1>
+    <h1>Create Blog</h1>
     <form action="{{ route('blog.store') }}" method="POST" class="mt-5">
         @csrf
 

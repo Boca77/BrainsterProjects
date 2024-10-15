@@ -73,7 +73,7 @@
                 </a>
             </div>
             <div class="col-4 d-flex justify-content-center">
-                <a href="" class="text-decoration-none text-black w-100">
+                <a href="{{ route('conferences') }}" class="text-decoration-none text-black w-100">
                     <div class="card border-2"
                         style="height: 200px;
                         background-image:linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),

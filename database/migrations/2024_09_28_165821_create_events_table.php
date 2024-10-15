@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('theme');
             $table->mediumText('description');
             $table->string('objective');
-            $table->tinyText('agenda');
+            $table->tinyText('agenda')->nullable();
             $table->date('date');
             $table->string('location');
             $table->integer('price');

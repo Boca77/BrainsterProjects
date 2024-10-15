@@ -13,7 +13,7 @@ class ConferenceController extends Controller
     public function index()
     {
         $conferences = AnnualConference::all();
-        return view('events');
+        return view('conferences', compact('conferences'));
     }
 
     /**
@@ -21,7 +21,7 @@ class ConferenceController extends Controller
      */
     public function create()
     {
-        //
+        return view('add.conference');
     }
 
     /**
@@ -35,9 +35,9 @@ class ConferenceController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function showConference(AnnualConference $conference)
     {
-        //
+        return view('conference', compact('conference'));
     }
 
     /**
@@ -59,8 +59,10 @@ class ConferenceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(AnnualConference $conference)
     {
-        //
+        $conference->delete();
+
+        return redirect()->route('events')->with('success', 'Conference deleted successfully!');
     }
 }

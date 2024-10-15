@@ -22,6 +22,7 @@ class AnnualConferenceFactory extends Factory
             'agenda' => fake()->paragraph(2),
             'date' => fake()->date(),
             'location' => fake()->address(),
+            'price' => fake()->numberBetween(100, 500),
             'status' => 'test'
         ];
     }

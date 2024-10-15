@@ -46,7 +46,6 @@ class UserController extends Controller
             'is_banned' => true
         ]);
 
-
         return redirect()->back();
     }
 
@@ -58,7 +57,6 @@ class UserController extends Controller
         $user->update([
             'is_banned' => false
         ]);
-
 
         return redirect()->back();
     }

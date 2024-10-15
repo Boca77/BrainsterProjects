@@ -22,7 +22,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('add.event');
     }
 
     /**
@@ -39,6 +39,10 @@ class EventController extends Controller
             'location' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
         ]);
+
+        Event::create($request->all());
+
+        return redirect()->route('events')->with('success', 'Event created successfully!');
     }
 
     /**

@@ -20,6 +20,6 @@ class EnsureUserIsAdmin
             return $next($request);
         }
 
-        return redirect()->back()->with('error', 'User isn\'t authorized please log in as an admin');
+        return redirect()->route('login.form')->with('error', 'User isn\'t authorized please log in as an admin');
     }
 }

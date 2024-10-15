@@ -17,7 +17,8 @@ return new class extends Migration
             $table->mediumText('description');
             $table->date('date');
             $table->string('location');
-            $table->string('agenda');
+            $table->string('agenda')->nullable();
+            $table->integer('price');
             $table->string('status');
             $table->timestamps();
         });

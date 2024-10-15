@@ -14,13 +14,22 @@
                     <a class="nav-link" href="{{ route('users') }}">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blogs</a>
+                    <a class="nav-link" href="{{ route('blogs') }}">Blogs</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Comments</a>
+                    <a class="nav-link" href="{{ route('comments') }}">Comments</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Events</a>
+                    <a class="nav-link" href="{{ route('events') }}">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Conferences</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Speakers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Settings</a>
                 </li>
 
             </ul>
