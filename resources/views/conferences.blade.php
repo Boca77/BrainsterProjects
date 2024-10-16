@@ -8,7 +8,7 @@
             <h1>Conferences</h1>
         </div>
         <div class="col-5">
-            <a href="{{ route('') }}" class="btn btn-success my-2  ">
+            <a href="{{ route('conference.create') }}" class="btn btn-success my-2  ">
                 Add Conference
             </a>
         </div>
@@ -28,9 +28,9 @@
                     <p class="card-text">{{ substr($conference->description, 0, 100) }}...</p>
                     <p class="card-text">{{ $conference->location }} / {{ $conference->date }}</p>
                     <div class="mt-auto">
-                        <a href="{{ route('conference.show', ['conference' => $conference->id]) }}"
-                            class="btn btn-primary">View
-                            Conference</a>
+                        <a href="{{ route('conference.show', ['conference' => $conference->id]) }}" class="btn btn-primary">
+                            View Conference
+                        </a>
                     </div>
                 </div>
             </div>

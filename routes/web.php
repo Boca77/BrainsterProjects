@@ -94,7 +94,7 @@ Route::middleware('checkIsUserAdmin')->group(function () {
         ->name('conferences');
 
     Route::get('/dashboard/conference/create', [ConferenceController::class, 'create'])
-        ->name('create.conference');
+        ->name('conference.create');
 
     Route::get('/dashboard/conference/{conference}', [ConferenceController::class, 'showConference'])
         ->name('conference.show');

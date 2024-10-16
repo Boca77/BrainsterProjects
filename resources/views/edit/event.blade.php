@@ -80,12 +80,3 @@
         <button class="btn btn-warning w-100 mt-5">Edit</button>
     </form>
 @endsection
-
-{{-- $table->string('title');
-$table->string('theme');
-$table->mediumText('description');
-$table->string('objective');
-$table->tinyText('agenda');
-$table->date('date');
-$table->string('location');
-$table->integer('price'); --}}

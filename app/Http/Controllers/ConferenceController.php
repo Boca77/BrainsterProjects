@@ -29,7 +29,23 @@ class ConferenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'location' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        if ($data['date'] <= now()) {
+            $data['status'] = 'finished';
+        } else {
+            $data['status'] = 'upcoming';
+        };
+
+        AnnualConference::create($data);
+
+        return redirect()->route('conferences')->with('success', 'Conference created successfully!');
     }
 
     /**
@@ -43,17 +59,33 @@ class ConferenceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(AnnualConference $conference)
     {
-        //
+        return view('edit.conference', compact('conference'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, AnnualConference $conference)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'location' => 'required|string|max:255',
+            'price' => 'required|numeric|min:0',
+        ]);
+
+        if ($data['date'] <= now()) {
+            $data['status'] = 'finished';
+        } else {
+            $data['status'] = 'upcoming';
+        };
+
+        $conference->update($data);
+
+        return redirect()->route('conference.show', ['conference' => $conference])->with('success', 'Conference edited successfully!');
     }
 
     /**
@@ -63,6 +95,6 @@ class ConferenceController extends Controller
     {
         $conference->delete();
 
-        return redirect()->route('events')->with('success', 'Conference deleted successfully!');
+        return redirect()->route('conferences')->with('success', 'Conference deleted successfully!');
     }
 }

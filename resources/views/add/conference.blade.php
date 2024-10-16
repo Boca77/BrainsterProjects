@@ -18,10 +18,11 @@
                 @enderror
             </div>
             <div class="col">
-                <label for="description">Description</label>
-                <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="Description"
-                    cols="30" rows="5">{{ old('description') }}</textarea>
-                @error('description')
+                <label for="price">Price</label>
+                <input type="number" step="0.01" name="price"
+                    class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}"
+                    placeholder="Price" id="price">
+                @error('price')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
@@ -37,6 +38,7 @@
                 @enderror
             </div>
             <div class="col">
+
                 <label for="location">Location</label>
                 <input type="text" name="location" class="form-control @error('location') is-invalid @enderror"
                     value="{{ old('location') }}" placeholder="Location" id="location">
@@ -48,11 +50,10 @@
 
         <div class="row mt-3">
             <div class="col">
-                <label for="price">Price</label>
-                <input type="number" step="0.01" name="price"
-                    class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}"
-                    placeholder="Price" id="price">
-                @error('price')
+                <label for="description">Description</label>
+                <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="Description"
+                    cols="30" rows="5">{{ old('description') }}</textarea>
+                @error('description')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
