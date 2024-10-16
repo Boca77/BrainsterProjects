@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('surname');
+            $table->string('image');
             $table->string('email');
             $table->string('title');
             $table->string('social_media');
+            $table->boolean('special_guest')->default(false);
             $table->timestamps();
         });
     }

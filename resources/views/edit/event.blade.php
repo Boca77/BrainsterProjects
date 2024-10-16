@@ -18,6 +18,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="col">
                 <label for="theme">Theme</label>
                 <input type="text" name="theme" class="form-control @error('theme') is-invalid @enderror"
@@ -37,6 +38,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="col">
                 <label for="objective">Objective</label>
                 <textarea name="objective" class="form-control @error('objective') is-invalid @enderror" id="objective" cols="30"
@@ -56,6 +58,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="col">
                 <label for="location">Location</label>
                 <input type="text" name="location" class="form-control @error('location') is-invalid @enderror"

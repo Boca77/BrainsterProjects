@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\ConferenceController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SpeakerController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ConferenceController;
 
 Route::get('/', function () {
     return view('home');
@@ -110,4 +111,37 @@ Route::middleware('checkIsUserAdmin')->group(function () {
 
     Route::put('/dashboard/conference/{conference}/update', [ConferenceController::class, 'update'])
         ->name('conference.update');
+
+    Route::get('/dashboard/speakers', [SpeakerController::class, 'index'])
+        ->name('speakers');
+
+    Route::get('/dashboard/speaker/event/create', [SpeakerController::class, 'createEventSpeaker'])
+        ->name('speaker.event.create');
+
+    Route::post('/dashboard/speaker/event/store', [SpeakerController::class, 'storeEventSpeaker'])
+        ->name('speaker.event.store');
+
+    Route::get('/dashboard/speaker/event/edit/{eventSpeaker}', [SpeakerController::class, 'editEventSpeaker'])
+        ->name('speaker.event.edit');
+
+    Route::put('/dashboard/speaker/event/update/{eventSpeaker}', [SpeakerController::class, 'updateEventSpeaker'])
+        ->name('speaker.event.update');
+
+    Route::get('/dashboard/speaker/conference/create', [SpeakerController::class, 'createConferenceSpeaker'])
+        ->name('speaker.conference.create');
+
+    Route::post('/dashboard/speaker/conference/store', [SpeakerController::class, 'storeConferenceSpeaker'])
+        ->name('speaker.conference.store');
+
+    Route::get('/dashboard/speaker/conference/edit/{conferenceSpeaker}', [SpeakerController::class, 'editConferenceSpeaker'])
+        ->name('speaker.conference.edit');
+
+    Route::put('/dashboard/speaker/conference/update/{conferenceSpeaker}', [SpeakerController::class, 'updateConferenceSpeaker'])
+        ->name('speaker.conference.update');
+
+    Route::delete('/dashboard/speaker/event/delete/{eventSpeaker}', [SpeakerController::class, 'deleteEventSpeaker'])
+        ->name('speaker.event.delete');
+
+    Route::delete('/dashboard/speaker/conference/delete/{conferenceSpeaker}', [SpeakerController::class, 'deleteConferenceSpeaker'])
+        ->name('speaker.conference.delete');
 });

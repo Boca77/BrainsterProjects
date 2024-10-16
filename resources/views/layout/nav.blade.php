@@ -23,10 +23,10 @@
                     <a class="nav-link" href="{{ route('events') }}">Events</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Conferences</a>
+                    <a class="nav-link" href="{{ route('conferences') }}">Conferences</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Speakers</a>
+                    <a class="nav-link" href="{{ route('speakers') }}">Speakers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Settings</a>

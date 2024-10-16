@@ -19,6 +19,7 @@ class ConferenceSpeakerFactory extends Factory
         return [
             'name' => fake()->name(),
             'surname' => fake()->lastName(),
+            'image' => 'dummy_images\gettyimages-639805094-612x612.jpg',
             'email' => fake()->email(),
             'title' => fake()->title(),
             'social_media' => 'test'
