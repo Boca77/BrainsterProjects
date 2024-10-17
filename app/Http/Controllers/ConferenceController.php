@@ -63,23 +63,20 @@ class ConferenceController extends Controller
     {
         $speakers = ConferenceSpeaker::all();
 
-        return view('add.assign-conferences-speaker', compact('speakers', 'event'));
+        return view('add.assign-conference-speaker', compact('speakers', 'conference'));
     }
 
     public function assignSpeaker(Request $request)
     {
 
         $request->validate([
-            'conference_speaker_id' => 'required|exists:conferences_speakers,id',
-            'conference_id' => 'required|exists:conferences,id',
+            'conference_speaker_id' => 'required|exists:conference_speakers,id',
+            'conference_id' => 'required|exists:annual_conferences,id',
         ]);
-
 
         $conference = AnnualConference::findOrFail($request->conference_id);
 
-
         $conference->speakers()->attach($request->conference_speaker_id);
-
 
         return redirect()->route('conference.show', ['conference' => $conference->id])->with('success', 'Speaker assigned successfully!');
     }
