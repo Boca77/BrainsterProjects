@@ -15,4 +15,9 @@ class Event extends Model
     {
         return $this->belongsToMany(EventSpeaker::class, 'speakers_events', 'event_id', 'event_speaker_id');
     }
+
+    public function agenda()
+    {
+        return $this->hasMany(Agenda::class);
+    }
 }

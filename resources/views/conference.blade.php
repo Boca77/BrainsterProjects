@@ -27,6 +27,10 @@
                 <a href="{{ route('conference.edit', ['conference' => $conference->id]) }}" class="btn btn-warning my-2  ">
                     Edit
                 </a>
+                <a href="{{ route('agenda.conference.show', ['conference' => $conference->id]) }}"
+                    class="btn btn-primary my-2  ">
+                    View agenda
+                </a>
             </form>
         </div>
     </div>

@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\AnnualConference;
+use App\Models\Event;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -14,7 +16,10 @@ return new class extends Migration
         Schema::create('agendas', function (Blueprint $table) {
             $table->id();
             $table->date('date');
+            $table->string('title');
             $table->boolean('is_conference');
+            $table->foreignIdFor(Event::class)->nullable()->cascadeOnDelete();
+            $table->foreignIdFor(AnnualConference::class)->nullable()->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -158,4 +158,16 @@ Route::middleware('checkIsUserAdmin')->group(function () {
 
     Route::delete('/dashboard/speaker/conference/delete/{conferenceSpeaker}', [SpeakerController::class, 'deleteConferenceSpeaker'])
         ->name('speaker.conference.delete');
+
+    Route::get('/dashboard/event/agenda/{event}', [EventController::class, 'showAgenda'])
+        ->name('agenda.event.show');
+
+    Route::get('/dashboard/event/agenda/addform', [EventController::class, 'showAgendaForm'])
+        ->name('agenda.event.show.form');
+
+    Route::get('/dashboard/conference/agenda/{conference}', [ConferenceController::class, 'showAgenda'])
+        ->name('agenda.conference.show');
+
+    Route::get('/dashboard/conference/agenda/addform', [ConferenceController::class, 'showAgendaForm'])
+        ->name('agenda.conference.show.form');
 });

@@ -18,7 +18,7 @@ class AgendaContentFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->sentence(3),
+            'sub_title' => $this->faker->sentence(3),
             'description' => $this->faker->paragraph(),
             'time' => $this->faker->time(),
             'agenda_id' => Agenda::query()->inRandomOrder()->first()->id

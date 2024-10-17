@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agenda;
 use App\Models\Event;
 use App\Models\EventSpeaker;
 use Illuminate\Http\Request;
@@ -54,6 +55,18 @@ class EventController extends Controller
         $event->load('speakers');
 
         return view('event', compact('event'));
+    }
+
+    public function showAgenda(Event $event)
+    {
+        $agendas = Agenda::query()->with('agenda_contents')->where('event_id', '=', $event->id)->get();
+
+        return view('agenda', compact('agendas'));
+    }
+
+    public function showAgendaForm()
+    {
+        return view('add.agenda-event');
     }
 
     public function showAssignForm(Event $event)

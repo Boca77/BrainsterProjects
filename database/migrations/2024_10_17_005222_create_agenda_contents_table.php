@@ -14,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('agenda_contents', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description');
+            $table->string('sub_title');
+            $table->longText('description');
             $table->time('time');
             $table->foreignIdFor(Agenda::class);
             $table->timestamps();

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agenda;
+use Illuminate\Http\Request;
 use App\Models\AnnualConference;
 use App\Models\ConferenceSpeaker;
-use Illuminate\Http\Request;
 
 class ConferenceController extends Controller
 {
@@ -66,6 +67,8 @@ class ConferenceController extends Controller
         return view('add.assign-conference-speaker', compact('speakers', 'conference'));
     }
 
+
+
     public function assignSpeaker(Request $request)
     {
 
@@ -79,6 +82,13 @@ class ConferenceController extends Controller
         $conference->speakers()->attach($request->conference_speaker_id);
 
         return redirect()->route('conference.show', ['conference' => $conference->id])->with('success', 'Speaker assigned successfully!');
+    }
+
+    public function showAgenda(AnnualConference $conference)
+    {
+        $agendas = Agenda::query()->with('agenda_contents')->where('event_id', '=', $conference->id)->get();
+
+        return view('agenda-conference', compact('agendas'));
     }
 
     /**
