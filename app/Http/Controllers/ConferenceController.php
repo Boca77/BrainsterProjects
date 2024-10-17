@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AnnualConference;
+use App\Models\ConferenceSpeaker;
 use Illuminate\Http\Request;
 
 class ConferenceController extends Controller
@@ -53,7 +54,34 @@ class ConferenceController extends Controller
      */
     public function showConference(AnnualConference $conference)
     {
+        $conference->load('speakers');
+
         return view('conference', compact('conference'));
+    }
+
+    public function showAssign(AnnualConference $conference)
+    {
+        $speakers = ConferenceSpeaker::all();
+
+        return view('add.assign-conferences-speaker', compact('speakers', 'event'));
+    }
+
+    public function assignSpeaker(Request $request)
+    {
+
+        $request->validate([
+            'conference_speaker_id' => 'required|exists:conferences_speakers,id',
+            'conference_id' => 'required|exists:conferences,id',
+        ]);
+
+
+        $conference = AnnualConference::findOrFail($request->conference_id);
+
+
+        $conference->speakers()->attach($request->conference_speaker_id);
+
+
+        return redirect()->route('conference.show', ['conference' => $conference->id])->with('success', 'Speaker assigned successfully!');
     }
 
     /**

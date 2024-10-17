@@ -35,7 +35,9 @@ class DatabaseSeeder extends Seeder
             RelatedBlogsSeeder::class,
             CommentsSeeder::class,
             GeneralInfoSeeder::class,
-            GeneralMembersSeeder::class
+            GeneralMembersSeeder::class,
+            AgendaSeeder::class,
+            AgendaContentSeeder::class
         ]);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\EventSpeaker;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -50,7 +51,34 @@ class EventController extends Controller
      */
     public function showEvent(Event $event)
     {
+        $event->load('speakers');
+
         return view('event', compact('event'));
+    }
+
+    public function showAssignForm(Event $event)
+    {
+        $speakers = EventSpeaker::all();
+
+        return view('add.assign-event-speaker', compact('speakers', 'event'));
+    }
+
+    public function assignSpeaker(Request $request)
+    {
+
+        $request->validate([
+            'event_speaker_id' => 'required|exists:event_speakers,id',
+            'event_id' => 'required|exists:events,id',
+        ]);
+
+
+        $event = Event::findOrFail($request->event_id);
+
+
+        $event->speakers()->attach($request->event_speaker_id);
+
+
+        return redirect()->route('event.show', ['event' => $event->id])->with('success', 'Speaker assigned successfully!');
     }
 
     /**

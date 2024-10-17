@@ -9,6 +9,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SpeakerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ConferenceController;
+use App\Models\ConferenceSpeaker;
 
 Route::get('/', function () {
     return view('home');
@@ -114,6 +115,18 @@ Route::middleware('checkIsUserAdmin')->group(function () {
 
     Route::get('/dashboard/speakers', [SpeakerController::class, 'index'])
         ->name('speakers');
+
+    Route::post('/dashboard/event/assignSpeaker', [EventController::class, 'assignSpeaker'])
+        ->name('speaker.event.assign');
+
+    Route::get('/dashboard/event/assignSpeaker/{event}', [EventController::class, 'showAssignForm'])
+        ->name('speaker.event.assign.form');
+
+    Route::post('/dashboard/conference/assignSpeaker', [ConferenceSpeaker::class, 'assignSpeaker'])
+        ->name('speaker.conference.assign');
+
+    Route::get('/dashboard/conference/assignSpeaker/{conference}', [ConferenceSpeaker::class, 'showAssign'])
+        ->name('speaker.conference.assign.form');
 
     Route::get('/dashboard/speaker/event/create', [SpeakerController::class, 'createEventSpeaker'])
         ->name('speaker.event.create');
