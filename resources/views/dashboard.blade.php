@@ -5,8 +5,9 @@
     <h1 class="display-6">Dashboard</h1>
     <div class="p-4 mt-4 rounded-4"
         style="background-color: rgb(255, 255, 255); box-shadow: 2px 11px 24px 1px rgba(0,0,0,0.36);">
+
         <div class="row">
-            <div class="col-4 d-flex justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
                 <a href="{{ route('users') }}" class="text-decoration-none text-black w-100">
                     <div class="card border-2"
                         style="height: 200px;
@@ -22,7 +23,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-4 d-flex justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
                 <a href="{{ route('blogs') }}" class="text-decoration-none text-black w-100">
                     <div class="card border-2"
                         style="height: 200px;
@@ -38,7 +39,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-4 d-flex justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
                 <a href="{{ route('comments') }}" class="text-decoration-none text-black w-100">
                     <div class="card border-2"
                         style="height: 200px;
@@ -55,8 +56,9 @@
                 </a>
             </div>
         </div>
+
         <div class="row mt-4">
-            <div class="col-4 d-flex justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
                 <a href="{{ route('events') }}" class="text-decoration-none text-black w-100">
                     <div class="card border-2"
                         style="height: 200px;
@@ -72,7 +74,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-4 d-flex justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
                 <a href="{{ route('conferences') }}" class="text-decoration-none text-black w-100">
                     <div class="card border-2"
                         style="height: 200px;
@@ -88,7 +90,7 @@
                     </div>
                 </a>
             </div>
-            <div class="col-4 d-flex justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
                 <a href="{{ route('speakers') }}" class="text-decoration-none text-black w-100">
                     <div class="card border-2"
                         style="height: 200px;
@@ -105,8 +107,9 @@
                 </a>
             </div>
         </div>
+
         <div class="row mt-4">
-            <div class="col-4 d-flex justify-content-center">
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
                 <a href="" class="text-decoration-none text-black w-100">
                     <div class="card border-2"
                         style="height: 200px;

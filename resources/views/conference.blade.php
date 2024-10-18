@@ -24,24 +24,24 @@
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger m-2">Delete</button>
-                <a href="{{ route('conference.edit', ['conference' => $conference->id]) }}" class="btn btn-warning my-2  ">
+                <a href="{{ route('conference.edit', ['conference' => $conference->id]) }}" class="btn btn-warning my-2">
                     Edit
                 </a>
                 <a href="{{ route('agenda.conference.show', ['conference' => $conference->id]) }}"
-                    class="btn btn-primary my-2  ">
+                    class="btn btn-primary my-2">
                     View agenda
                 </a>
             </form>
         </div>
     </div>
     <div class="border border-2 p-4 rounded mt-4">
-        <div class="row">
-            <div class="col-3">
+        <div class="row mb-3">
+            <div class="col-md-6">
                 <h1>Speaker List</h1>
             </div>
-            <div class="col-5">
+            <div class="col-md-6 text-md-end">
                 <a href="{{ route('speaker.conference.assign.form', ['conference' => $conference->id]) }}"
-                    class="btn  btn-success my-2  ">
+                    class="btn btn-success my-2">
                     Assign a Speaker
                 </a>
             </div>
@@ -52,10 +52,11 @@
                     <p class="mb-0">{{ $speaker->name }} {{ $speaker->surname }}</p>
                 </div>
                 <div class="d-flex justify-content-center align-items-center col-4">
-                    <p class="mb-0" class="">{{ $speaker->email }}</p>
+                    <p class="mb-0">{{ $speaker->email }}</p>
                 </div>
             </div>
         @empty
             <p>No speakers assigned to this conference</p>
         @endforelse
-    @endsection
+    </div>
+@endsection

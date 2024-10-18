@@ -13,30 +13,25 @@
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger m-2">Delete</button>
-                <a href="{{ route('blog.edit', ['blog' => $blog->id]) }}" class="btn btn-warning my-2  ">
+                <a href="{{ route('blog.edit', ['blog' => $blog->id]) }}" class="btn btn-warning my-2">
                     Edit
                 </a>
             </form>
-
         </div>
     </div>
 
     <div class="border border-2 rounded mt-5 p-2">
         <h3>Comments</h3>
-
         @foreach ($blog->comments as $comment)
             <div class="border-bottom mt-3">
                 <h6>{{ $comment->user->name }}</h6>
                 <p>{{ $comment->content }}</p>
-
                 <form action="{{ route('comment.delete', ['comment' => $comment->id]) }}" method="POST" class="mb-0">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger m-2">Delete</button>
                 </form>
-
             </div>
         @endforeach
-
     </div>
 @endsection

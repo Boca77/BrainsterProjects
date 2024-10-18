@@ -8,7 +8,6 @@
         enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        {{-- Use PUT method to update existing speaker --}}
 
         <div class="row">
             <div class="col">

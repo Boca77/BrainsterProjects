@@ -4,13 +4,15 @@
 
 @section('content')
     <div class="row gap-3">
-        <div class="col-2">
-            <h1>Conferences</h1>
-        </div>
-        <div class="col-5">
-            <a href="{{ route('conference.create') }}" class="btn btn-success my-2  ">
-                Add Conference
-            </a>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <h1>Conferences</h1>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <a href="{{ route('conference.create') }}" class="btn btn-success my-2">
+                    Add Conference
+                </a>
+            </div>
         </div>
         @if (session('success'))
             <div class="alert alert-success" role="alert">
@@ -36,6 +38,4 @@
             </div>
         </div>
     @endforeach
-
-    </div>
 @endsection
