@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agenda;
 use Illuminate\Http\Request;
+use App\Models\AgendaContent;
 use App\Models\AnnualConference;
 use App\Models\ConferenceSpeaker;
 
@@ -67,8 +68,6 @@ class ConferenceController extends Controller
         return view('add.assign-conference-speaker', compact('speakers', 'conference'));
     }
 
-
-
     public function assignSpeaker(Request $request)
     {
 
@@ -86,9 +85,93 @@ class ConferenceController extends Controller
 
     public function showAgenda(AnnualConference $conference)
     {
-        $agendas = Agenda::query()->with('agenda_contents')->where('event_id', '=', $conference->id)->get();
+        $agendas = Agenda::query()->with('agenda_contents')->where('annual_conference_id', '=', $conference->id)->get();
 
-        return view('agenda-conference', compact('agendas'));
+        return view('agenda-conference', compact('agendas', 'conference'));
+    }
+
+    public function showEditAgendaForm(AnnualConference $conference, Agenda $agenda)
+    {
+        return view('edit.agenda-conference', compact('conference', 'agenda'));
+    }
+
+    public function showAgendaForm(AnnualConference $conference)
+    {
+        return view('add.agenda-conference', compact('conference'));
+    }
+
+    public function showAgendaContentForm(Agenda $agenda)
+    {
+        return view('add.agenda-conference-content', compact('agenda'));
+    }
+
+    public function editContent(Agenda $agenda, AgendaContent $content)
+    {
+        return view('edit.agenda-conference-content', compact('agenda', 'content'));
+    }
+
+    public function addAgenda(Request $request)
+    {
+        $request->validate([
+            'date' => 'required',
+            'title' => 'required',
+            'annual_conference_id' => 'required|exists:annual_conferences,id',
+        ]);
+
+        Agenda::create($request->all());
+
+        return redirect()->route('agenda.conference.show', ['conference' => $request->annual_conference_id]);
+    }
+
+    public function updateAgenda(Request $request, Agenda $agenda)
+    {
+        $request->validate([
+            'date' => 'required',
+            'title' => 'required',
+            'annual_conference_id' => 'required|exists:annual_conferences,id',
+        ]);
+
+        $agenda->update($request->all());
+
+        return redirect()->route('agenda.conference.show', ['conference' => $request->annual_conference_id]);
+    }
+
+    public function updateContent(Request $request, AgendaContent $content)
+    {
+        $request->validate([
+            'time' => 'required',
+            'sub_title' => 'required',
+            'agenda_id' => 'required|exists:agendas,id',
+        ]);
+
+        $content->update($request->all());
+
+        return redirect()->back();
+    }
+
+    public function deleteAgenda(Agenda $agenda)
+    {
+        $agenda->delete();
+        return redirect()->back();
+    }
+
+    public function deleteContent(AgendaContent $content)
+    {
+        $content->delete();
+        return redirect()->back();
+    }
+
+    public function addAgendaContent(Request $request)
+    {
+        $request->validate([
+            'time' => 'required',
+            'sub_title' => 'required',
+            'agenda_id' => 'required|exists:agendas,id',
+        ]);
+
+        AgendaContent::create($request->all());
+
+        return redirect()->back();
     }
 
     /**

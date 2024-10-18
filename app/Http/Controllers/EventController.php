@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
+use App\Models\AgendaContent;
 use App\Models\Event;
 use App\Models\EventSpeaker;
 use Illuminate\Http\Request;
@@ -61,13 +62,93 @@ class EventController extends Controller
     {
         $agendas = Agenda::query()->with('agenda_contents')->where('event_id', '=', $event->id)->get();
 
-        return view('agenda', compact('agendas'));
+        return view('agenda', compact('agendas', 'event'));
     }
 
-    public function showAgendaForm()
+    public function showAgendaForm(Event $event)
     {
-        return view('add.agenda-event');
+        return view('add.agenda-event', compact('event'));
     }
+
+    public function showEditAgendaForm(Event $event, Agenda $agenda)
+    {
+        return view('edit.agenda-event', compact('event', 'agenda'));
+    }
+
+    public function showAgendaContentForm(Agenda $agenda)
+    {
+        return view('add.agenda-event-content', compact('agenda'));
+    }
+
+    public function editContent(Agenda $agenda, AgendaContent $content)
+    {
+        return view('edit.agenda-event-content', compact('agenda', 'content'));
+    }
+
+    public function addAgenda(Request $request)
+    {
+        $request->validate([
+            'date' => 'required',
+            'title' => 'required',
+            'event_id' => 'required|exists:events,id',
+        ]);
+
+        Agenda::create($request->all());
+
+        return redirect()->route('agenda.event.show', ['event' => $request->event_id]);
+    }
+
+    public function updateAgenda(Request $request, Agenda $agenda)
+    {
+        $request->validate([
+            'date' => 'required',
+            'title' => 'required',
+            'event_id' => 'required|exists:events,id',
+        ]);
+
+        $agenda->update($request->all());
+
+        return redirect()->route('agenda.event.show', ['event' => $request->event_id]);
+    }
+
+    public function updateContent(Request $request, AgendaContent $content)
+    {
+        $request->validate([
+            'time' => 'required',
+            'sub_title' => 'required',
+            'agenda_id' => 'required|exists:agendas,id',
+        ]);
+
+        $content->update($request->all());
+
+        return redirect()->back();
+    }
+
+    public function deleteAgenda(Agenda $agenda)
+    {
+        $agenda->delete();
+        return redirect()->back();
+    }
+
+    public function deleteContent(AgendaContent $content)
+    {
+        $content->delete();
+        return redirect()->back();
+    }
+
+    public function addAgendaContent(Request $request)
+    {
+        $request->validate([
+            'time' => 'required',
+            'sub_title' => 'required',
+            'agenda_id' => 'required|exists:agendas,id',
+        ]);
+
+        AgendaContent::create($request->all());
+
+        return redirect()->back();
+    }
+
 
     public function showAssignForm(Event $event)
     {

@@ -5,7 +5,8 @@
 @section('content')
     <div>
         <h1>Agenda</h1>
-        <a href="" class="btn btn-success"> Add Agenda</a>
+        <a href="{{ route('agenda.conference.form', ['conference' => $conference->id]) }}" class="btn btn-success"> Add
+            Agenda</a>
     </div>
 
     @forelse ($agendas as $agenda)
@@ -13,7 +14,17 @@
             <div class="border-bottom pb-2 mb-3">
                 <h2>{{ $agenda->title }}</h2>
                 <p>{{ $agenda->date }}</p>
-                <a href="" class="btn btn-success"> Add Content</a>
+                <a href="{{ route('agenda.content.conference.form', ['agenda' => $agenda->id]) }}" class="btn btn-success">
+                    Add Content</a>
+                <a href="{{ route('agenda.conference.form.edit', ['conference' => $conference->id, 'agenda' => $agenda->id]) }}"
+                    class="btn btn-warning"> Edit
+                    Agenda</a>
+                <form action="{{ route('agenda.conference.delete', ['agenda' => $agenda->id]) }}" method="POST"
+                    class="d-inline">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger">Delete Agenda</button>
+                </form>
             </div>
 
             @forelse ($agenda->agenda_contents as $content)
@@ -25,11 +36,21 @@
                         <div class="col-11">
                             <h4>{{ $content->sub_title }}</h4>
                             <p>{{ $content->description }}</p>
+                            <div>
+                                <a class="btn"
+                                    href="{{ route('agenda.content.conference.edit', ['agenda' => $content->agenda_id, 'content' => $content->id]) }}">Edit</a>
+                                <form
+                                    action="{{ route('agenda.content.conference.delete', ['content' => $content->id]) }} "
+                                    method="POST" class="d-inline">
+                                    @csrf @method('DELETE')
+                                    <button class="btn">Delete</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             @empty
-                <p>This event doesn't have an agenda.</p>
+                <p>This conference doesn't have an agenda.</p>
             @endforelse
         </div>
     @empty

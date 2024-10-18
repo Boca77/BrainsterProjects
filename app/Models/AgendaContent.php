@@ -9,4 +9,6 @@ class AgendaContent extends Model
 {
     /** @use HasFactory<\Database\Factories\AgendaContentFactory> */
     use HasFactory;
+
+    public $guarded = null;
 }

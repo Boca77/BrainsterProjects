@@ -9,7 +9,6 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SpeakerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ConferenceController;
-use App\Models\AnnualConference;
 use App\Models\ConferenceSpeaker;
 
 Route::get('/', function () {
@@ -159,15 +158,69 @@ Route::middleware('checkIsUserAdmin')->group(function () {
     Route::delete('/dashboard/speaker/conference/delete/{conferenceSpeaker}', [SpeakerController::class, 'deleteConferenceSpeaker'])
         ->name('speaker.conference.delete');
 
+    Route::post('/dashboard/event/agenda/add', [EventController::class, 'addAgenda'])
+        ->name('agenda.event.add');
+
+    Route::put('/dashboard/event/agenda/update/{agenda}', [EventController::class, 'updateAgenda'])
+        ->name('agenda.event.update');
+
+    Route::delete('/dashboard/event/agenda/delete/{agenda}', [EventController::class, 'deleteAgenda'])
+        ->name('agenda.event.delete');
+
+    Route::post('/dashboard/event/agenda/content/add', [EventController::class, 'addAgendaContent'])
+        ->name('agenda.content.event.add');
+
+    Route::get('/dashboard/event/agenda/form/{event}', [EventController::class, 'showAgendaForm'])
+        ->name('agenda.event.form');
+
+    Route::get('/dashboard/event/agenda/edit/form/{event}/{agenda}', [EventController::class, 'showEditAgendaForm'])
+        ->name('agenda.event.form.edit');
+
+    Route::get('/dashboard/event/agenda/content/edit/{agenda}/{content}', [EventController::class, 'editContent'])
+        ->name('agenda.content.event.edit');
+
+    Route::put('/dashboard/event/agenda/content/update/{content}', [EventController::class, 'updateContent'])
+        ->name('agenda.content.event.update');
+
+    Route::delete('/dashboard/event/agenda/content/delete/{content}', [EventController::class, 'deleteContent'])
+        ->name('agenda.content.event.delete');
+
+    Route::get('/dashboard/event/agenda/content/form/{agenda}', [EventController::class, 'showAgendaContentForm'])
+        ->name('agenda.content.event.form');
+
     Route::get('/dashboard/event/agenda/{event}', [EventController::class, 'showAgenda'])
         ->name('agenda.event.show');
 
-    Route::get('/dashboard/event/agenda/addform', [EventController::class, 'showAgendaForm'])
-        ->name('agenda.event.show.form');
+    Route::post('/dashboard/conference/agenda/add', [ConferenceController::class, 'addAgenda'])
+        ->name('agenda.conference.add');
+
+    Route::put('/dashboard/conference/agenda/update/{agenda}', [ConferenceController::class, 'updateAgenda'])
+        ->name('agenda.conference.update');
+
+    Route::delete('/dashboard/conference/agenda/delete/{agenda}', [ConferenceController::class, 'deleteAgenda'])
+        ->name('agenda.conference.delete');
+
+    Route::post('/dashboard/conference/agenda/content/add', [ConferenceController::class, 'addAgendaContent'])
+        ->name('agenda.content.conference.add');
 
     Route::get('/dashboard/conference/agenda/{conference}', [ConferenceController::class, 'showAgenda'])
         ->name('agenda.conference.show');
 
-    Route::get('/dashboard/conference/agenda/addform', [ConferenceController::class, 'showAgendaForm'])
-        ->name('agenda.conference.show.form');
+    Route::get('/dashboard/conference/agenda/edit/form/{conference}/{agenda}', [ConferenceController::class, 'showEditAgendaForm'])
+        ->name('agenda.conference.form.edit');
+
+    Route::get('/dashboard/conference/agenda/content/edit/{agenda}/{content}', [ConferenceController::class, 'editContent'])
+        ->name('agenda.content.conference.edit');
+
+    Route::put('/dashboard/conference/agenda/content/update/{content}', [ConferenceController::class, 'updateContent'])
+        ->name('agenda.content.conference.update');
+
+    Route::delete('/dashboard/conference/agenda/content/delete/{content}', [ConferenceController::class, 'deleteContent'])
+        ->name('agenda.content.conference.delete');
+
+    Route::get('/dashboard/conference/agenda/content/form/{agenda}', [ConferenceController::class, 'showAgendaContentForm'])
+        ->name('agenda.content.conference.form');
+
+    Route::get('/dashboard/conference/agenda/form/{conference}', [ConferenceController::class, 'showAgendaForm'])
+        ->name('agenda.conference.form');
 });
