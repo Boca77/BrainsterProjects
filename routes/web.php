@@ -9,6 +9,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SpeakerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ConferenceController;
+use App\Http\Controllers\GeneralController;
 use App\Models\ConferenceSpeaker;
 
 Route::get('/', function () {
@@ -223,4 +224,10 @@ Route::middleware('checkIsUserAdmin')->group(function () {
 
     Route::get('/dashboard/conference/agenda/form/{conference}', [ConferenceController::class, 'showAgendaForm'])
         ->name('agenda.conference.form');
+
+    Route::get('/dashboard/settings/{general_info}', [GeneralController::class, 'index'])
+        ->name('settings');
+
+    Route::put('/dashboard/settings/update', [GeneralController::class, 'update'])
+        ->name('update.settings');
 });

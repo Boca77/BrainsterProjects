@@ -18,7 +18,6 @@ class GeneralInfoFactory extends Factory
     {
         return [
             'hero_image' => 'test',
-            'social_media' => 'test',
             'general' => 'test',
         ];
     }

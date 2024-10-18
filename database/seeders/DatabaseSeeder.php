@@ -37,7 +37,8 @@ class DatabaseSeeder extends Seeder
             GeneralInfoSeeder::class,
             GeneralMembersSeeder::class,
             AgendaSeeder::class,
-            AgendaContentSeeder::class
+            AgendaContentSeeder::class,
+            SocialMediaSeeder::class
         ]);
     }
 }

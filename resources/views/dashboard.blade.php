@@ -110,7 +110,7 @@
 
         <div class="row mt-4">
             <div class="col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center mb-4">
-                <a href="" class="text-decoration-none text-black w-100">
+                <a href="{{ route('settings', ['general_info' => 1]) }}" class="text-decoration-none text-black w-100">
                     <div class="card border-2"
                         style="height: 200px;
                         background-image:linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),

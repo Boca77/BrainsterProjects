@@ -22,7 +22,7 @@ class GeneralMembersFactory extends Factory
             'name' => fake()->name(),
             'title' => fake()->word(),
             'bio' => fake()->paragraph(),
-            'image' => 'test',
+            'image' => 'dummy_images\gettyimages-639805094-612x612.jpg',
             'general_info_id' => GeneralInfo::query()->inRandomOrder()->first()->id
         ];
     }

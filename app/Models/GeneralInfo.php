@@ -10,4 +10,14 @@ class GeneralInfo extends Model
     use HasFactory;
 
     public $guarded = null;
+
+    public function social_media()
+    {
+        return $this->hasMany(SocialMedia::class);
+    }
+
+    public function employs()
+    {
+        return $this->hasMany(GeneralMembers::class);
+    }
 }
