@@ -95,7 +95,7 @@ class EventController extends Controller
 
         Agenda::create($request->all());
 
-        return redirect()->route('agenda.event.show', ['event' => $request->event_id]);
+        return redirect()->route('agenda.event.show', ['event' => $request->event_id])->with('success', 'Agenda added successfully!');
     }
 
     public function updateAgenda(Request $request, Agenda $agenda)
@@ -108,7 +108,7 @@ class EventController extends Controller
 
         $agenda->update($request->all());
 
-        return redirect()->route('agenda.event.show', ['event' => $request->event_id]);
+        return redirect()->route('agenda.event.show', ['event' => $request->event_id])->with('success', 'Agenda updated successfully!');
     }
 
     public function updateContent(Request $request, AgendaContent $content)
@@ -121,19 +121,21 @@ class EventController extends Controller
 
         $content->update($request->all());
 
-        return redirect()->back();
+        $content->load('agenda.event');
+
+        return redirect()->route('agenda.event.show', $content->agenda->event->id)->with('success', 'Content updated successfully!');
     }
 
     public function deleteAgenda(Agenda $agenda)
     {
         $agenda->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Agenda deleted successfully!');
     }
 
     public function deleteContent(AgendaContent $content)
     {
         $content->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Content deleted successfully!');
     }
 
     public function addAgendaContent(Request $request)
@@ -146,7 +148,9 @@ class EventController extends Controller
 
         AgendaContent::create($request->all());
 
-        return redirect()->back();
+        $agenda = Agenda::query()->where('id', '=', $request->agenda_id)->with('event')->first();
+
+        return redirect()->route('agenda.event.show', $agenda->event->id)->with('success', 'Content added successfully!');
     }
 
 

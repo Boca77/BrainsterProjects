@@ -11,12 +11,19 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <form action="{{ route('update.settings') }}" method="POST" class="mt-5">
+            <form action="{{ route('update.settings') }}" method="POST" enctype="multipart/form-data" class="mt-5">
                 @csrf
                 @method('PUT')
-
-                <label for="hero" class="h3">Change Hero Image</label><br>
-                <input type="file" name="hero_image" id="hero">
+                <div class="row d-flex align-items-center">
+                    <div class="col "><label for="hero" class="h3">Change Hero Image</label><br>
+                        <input type="file" name="hero_image" id="hero">
+                    </div>
+                    <div class="col d-flex align-items-center flex-column justify-content-center">
+                        <h6>Current Hero Image</h6>
+                        <img src="{{ asset('storage/' . $generalInfo->hero_image) }}"
+                            style="width: 150px; height: 150px; object-fit: cover;" alt="">
+                    </div>
+                </div>
 
                 <h3 class="mt-4">Social Media</h3>
                 <div>

@@ -21,7 +21,7 @@
         </div>
 
 
-        <input type="text" hidden value="{{ $agenda->id }}" name="event_id">
+        <input type="text" hidden value="{{ $event->id }}" name="event_id">
         <input type="text" hidden value="0" name="is_conference">
 
         <button class="btn btn-success mt-3">Update</button>

@@ -10,7 +10,6 @@ use App\Http\Controllers\SpeakerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ConferenceController;
 use App\Http\Controllers\GeneralController;
-use App\Models\ConferenceSpeaker;
 
 Route::get('/', function () {
     return view('home');

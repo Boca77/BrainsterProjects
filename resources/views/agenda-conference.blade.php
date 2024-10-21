@@ -3,6 +3,12 @@
 @include('layout.nav')
 
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div>
         <h1>Agenda</h1>
         <a href="{{ route('agenda.conference.form', ['conference' => $conference->id]) }}" class="btn btn-success">Add

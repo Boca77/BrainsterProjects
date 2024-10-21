@@ -63,6 +63,7 @@ class SpeakerController extends Controller
         EventSpeaker::create($data);
         return redirect()->route('speakers')->with('success', 'Event speaker added successfully');
     }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -109,65 +110,48 @@ class SpeakerController extends Controller
      */
     public function updateConferenceSpeaker(Request $request, ConferenceSpeaker $conferenceSpeaker)
     {
-
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'email' => 'required|email',
             'title' => 'nullable|string|max:255',
             'social_media' => 'nullable|string|max:255',
             'special_guest' => 'required|boolean',
-            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        $data = $request->except('image');
 
-        if ($request->hasFile('file')) {
-            $filePath = $request->file('file')->store('speakers', 'public');
-            $conferenceSpeaker->image = $filePath;
-        }
+        $path = $request->file('image')->store('speakers', 'public');
+
+        $data['image'] = $path;
 
 
-        $conferenceSpeaker->update([
-            'name' => $request->input('name'),
-            'surname' => $request->input('surname'),
-            'email' => $request->input('email'),
-            'title' => $request->input('title'),
-            'social_media' => $request->input('social_media'),
-            'special_guest' => $request->input('special_guest'),
-        ]);
+        $conferenceSpeaker->update($data);
 
-        return redirect()->route('speakers', $conferenceSpeaker->id)
-            ->with('success', 'Conference speaker updated successfully');
+        return redirect()->route('speakers')->with('success', 'Conference speaker added successfully');
     }
 
     public function updateEventSpeaker(Request $request, EventSpeaker $eventSpeaker)
     {
 
-        $request->validate([
+        $data = $request->validate([
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'email' => 'required|email',
             'title' => 'nullable|string|max:255',
             'social_media' => 'nullable|string|max:255',
             'special_guest' => 'required|boolean',
-            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        $data = $request->except('image');
 
-        if ($request->hasFile('file')) {
-            $filePath = $request->file('file')->store('speakers', 'public');
-            $eventSpeaker->image = $filePath;
-        }
+        $path = $request->file('image')->store('speakers', 'public');
 
+        $data['image'] = $path;
 
-        $eventSpeaker->update([
-            'name' => $request->input('name'),
-            'surname' => $request->input('surname'),
-            'email' => $request->input('email'),
-            'title' => $request->input('title'),
-            'social_media' => $request->input('social_media'),
-            'special_guest' => $request->input('special_guest'),
-        ]);
+        $eventSpeaker->update($data);
 
         return redirect()->route('speakers', $eventSpeaker->id)
             ->with('success', 'Event speaker updated successfully');

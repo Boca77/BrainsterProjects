@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col">
                 <label for="image">Upload Image</label>
-                <input class="mt-3" type="file" id="image" name="file">
+                <input class="mt-3" type="file" id="image" name="image">
                 @error('file')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror

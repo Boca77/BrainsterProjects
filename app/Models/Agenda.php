@@ -16,4 +16,14 @@ class Agenda extends Model
     {
         return $this->hasMany(AgendaContent::class);
     }
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
+
+    public function conference()
+    {
+        return $this->belongsTo(AnnualConference::class, 'annual_conference_id');
+    }
 }

@@ -5,7 +5,7 @@
 @section('content')
     <h1>Edit Conference Speaker</h1>
     <form action="{{ route('speaker.conference.update', ['conferenceSpeaker' => $conferenceSpeaker->id]) }}" method="POST"
-        class="mt-5">
+        class="mt-5" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col">
                 <label for="image">Upload Image</label>
-                <input class="mt-3" type="file" id="image" name="file">
+                <input class="mt-3" type="file" id="image" name="image">
             </div>
             <div class="col">
                 <label for="email">Email</label>
@@ -75,6 +75,17 @@
 
             </div>
         </div>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
 
         <button class="btn btn-warning w-100 mt-5">Edit</button>
     </form>

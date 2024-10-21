@@ -3,6 +3,12 @@
 @include('layout.nav')
 
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success" role="alert">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <div>
         <h1>Agenda</h1>
         <a href="{{ route('agenda.event.form', ['event' => $event->id]) }}" class="btn btn-success">Add Agenda</a>
@@ -17,7 +23,8 @@
                     Content</a>
                 <a href="{{ route('agenda.event.form.edit', ['event' => $event->id, 'agenda' => $agenda->id]) }}"
                     class="btn btn-warning">Edit Agenda</a>
-                <form action="{{ route('agenda.event.delete', ['agenda' => $agenda->id]) }}" method="POST" class="d-inline">
+                <form action="{{ route('agenda.event.delete', ['agenda' => $agenda->id]) }}" method="POST"
+                    class="d-inline">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger">Delete Agenda</button>

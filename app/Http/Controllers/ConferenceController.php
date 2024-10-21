@@ -120,7 +120,7 @@ class ConferenceController extends Controller
 
         Agenda::create($request->all());
 
-        return redirect()->route('agenda.conference.show', ['conference' => $request->annual_conference_id]);
+        return redirect()->route('agenda.conference.show', ['conference' => $request->annual_conference_id])->with('success', 'Agenda added successfully!');
     }
 
     public function updateAgenda(Request $request, Agenda $agenda)
@@ -146,19 +146,19 @@ class ConferenceController extends Controller
 
         $content->update($request->all());
 
-        return redirect()->back();
+        return redirect()->route('agenda.conference.show', ['conference' => $content->agenda->annual_conference_id])->with('success', 'Content updated successfully!');
     }
 
     public function deleteAgenda(Agenda $agenda)
     {
         $agenda->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Agenda deleted successfully!');
     }
 
     public function deleteContent(AgendaContent $content)
     {
         $content->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Content deleted successfully!');
     }
 
     public function addAgendaContent(Request $request)
@@ -171,7 +171,9 @@ class ConferenceController extends Controller
 
         AgendaContent::create($request->all());
 
-        return redirect()->back();
+        $agenda = Agenda::query()->where('id', '=', $request->agenda_id)->with('conference')->first();
+
+        return redirect()->route('agenda.conference.show', $agenda->conference->id)->with('success', 'Content added successfully!');
     }
 
     /**
