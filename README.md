@@ -23,9 +23,9 @@ To install the Admin Dashboard locally:
     ```bash
     git clone https://git.brainster.co/Boris.Nachev-FS15/brainsterprojects-borisnachev_fs-15
 
-    git checkout project_03
-
     cd brainsterprojects-borisnachev_fs-15
+
+    git checkout project_03
     ```
 
 2. Install dependencies:
@@ -50,7 +50,7 @@ To install the Admin Dashboard locally:
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
-    DB_DATABASE=dashboardName
+    DB_DATABASE=databaseName
     DB_USERNAME=username
     DB_PASSWORD=password
     ```
