@@ -9,6 +9,8 @@
         </div>
     @endif
 
+
+
     <div class="row mb-4">
         <div class="col d-flex justify-content-between align-items-center">
             <h1>Event Speakers</h1>
@@ -20,7 +22,7 @@
         @foreach ($eventSpeakers as $speaker)
             <div class="col-lg-4 col-md-6 col-sm-12 p-3" id="event">
                 <div class="d-flex align-items-center flex-column rounded-top border py-3 shadow-lg">
-                    <img class="rounded-circle" src="{{ asset($speaker->image) }}"
+                    <img class="rounded-circle" src="{{ asset('storage/' . $speaker->image) }}"
                         style="width: 150px; height: 150px; object-fit: cover;" alt="Speaker image">
                     <p class="mt-3 fw-bold">{{ $speaker->name }} {{ $speaker->surname }}</p>
                     <p>
@@ -64,12 +66,12 @@
         @foreach ($conferenceSpeakers as $speaker)
             <div class="col-lg-4 col-md-6 col-sm-12 p-3" id="conference">
                 <div class="d-flex align-items-center flex-column rounded-top border py-3 shadow-lg">
-                    <img class="rounded-circle" src="{{ asset($speaker->image) }}"
+                    <img class="rounded-circle" src="{{ asset('storage/' . $speaker->image) }}"
                         style="width: 150px; height: 150px; object-fit: cover;" alt="Speaker image">
                     <p class="mt-3 fw-bold">{{ $speaker->name }} {{ $speaker->surname }}</p>
                     <p>
                         Speaker in conferences: <br>
-                        @forelse ($speaker->conferences as $conference)
+                        @forelse ($speaker->conference as $conference)
                             {{ $conference->title }}{{ !$loop->last ? ',' : '' }}
                         @empty
                             no conferences

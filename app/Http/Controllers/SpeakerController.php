@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ConferenceSpeaker;
+use App\Models\Event;
 use App\Models\EventSpeaker;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,9 @@ class SpeakerController extends Controller
     {
         $eventSpeakers = EventSpeaker::all();
         $conferenceSpeakers = ConferenceSpeaker::all();
+
+        $eventSpeakers->load('events');
+        $conferenceSpeakers->load('conference');
 
         return view('speakers', compact('eventSpeakers', 'conferenceSpeakers'));
     }
@@ -50,11 +54,11 @@ class SpeakerController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        $data = $request->except('image');
 
-        if ($request->hasFile('file')) {
-            $filePath = $request->file('file')->store('speakers', 'public');
-            $data['image'] = $filePath;
-        }
+        $path = $request->file('image')->store('speakers', 'public');
+
+        $data['image'] = $path;
 
         EventSpeaker::create($data);
         return redirect()->route('speakers')->with('success', 'Event speaker added successfully');
@@ -74,11 +78,11 @@ class SpeakerController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        $data = $request->except('image');
 
-        if ($request->hasFile('file')) {
-            $filePath = $request->file('file')->store('speakers', 'public');
-            $data['image'] = $filePath;
-        }
+        $path = $request->file('image')->store('speakers', 'public');
+
+        $data['image'] = $path;
 
         ConferenceSpeaker::create($data);
         return redirect()->route('speakers')->with('success', 'Conference speaker added successfully');

@@ -230,4 +230,19 @@ Route::middleware('checkIsUserAdmin')->group(function () {
 
     Route::put('/dashboard/settings/update', [GeneralController::class, 'update'])
         ->name('update.settings');
+
+    Route::get('/dashboard/settings/employee/create', [GeneralController::class, 'createEmployee'])
+        ->name('create.employee.settings');
+
+    Route::post('/dashboard/settings/employee/add', [GeneralController::class, 'addEmployee'])
+        ->name('add.employee.settings');
+
+    Route::put('/dashboard/settings/employee/update/{employee}', [GeneralController::class, 'updateEmployee'])
+        ->name('update.employee.settings');
+
+    Route::get('/dashboard/settings/employee/edit/{employee}', [GeneralController::class, 'editEmployee'])
+        ->name('edit.employee.settings');
+
+    Route::delete('/dashboard/settings/employee/delete/{employee}', [GeneralController::class, 'deleteEmployee'])
+        ->name('delete.employee.settings');
 });

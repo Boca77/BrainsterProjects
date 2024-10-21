@@ -29,7 +29,7 @@
                     <a class="nav-link" href="{{ route('speakers') }}">Speakers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">Settings</a>
+                    <a class="nav-link" href="{{ route('settings', 1) }}">Settings</a>
                 </li>
 
             </ul>

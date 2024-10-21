@@ -16,7 +16,7 @@ class GeneralInfo extends Model
         return $this->hasMany(SocialMedia::class);
     }
 
-    public function employs()
+    public function employees()
     {
         return $this->hasMany(GeneralMembers::class);
     }

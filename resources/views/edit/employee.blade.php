@@ -3,28 +3,29 @@
 @include('layout.nav')
 
 @section('content')
-    <form action="{{ route('your.update.route', $employ->id) }}" method="POST" enctype="multipart/form-data" class="mt-5">
+    <form action="{{ route('update.employee.settings', $employee->id) }}" method="POST" enctype="multipart/form-data"
+        class="mt-5">
         @csrf
         @method('PUT')
 
-        <div class="form-group">
+        <div class="form-group mt-3">
             <label for="name">Name</label>
             <input type="text" class="form-control" name="name" id="name" required placeholder="Enter your name"
-                value="{{ old('name', $employ->name) }}">
+                value="{{ old('name', $employee->name) }}">
         </div>
 
-        <div class="form-group">
+        <div class="form-group mt-3">
             <label for="title">Title</label>
             <input type="text" class="form-control" name="title" id="title" required placeholder="Enter your title"
-                value="{{ old('title', $employ->title) }}">
+                value="{{ old('title', $employee->title) }}">
         </div>
 
-        <div class="form-group">
+        <div class="form-group mt-3">
             <label for="bio">Bio</label>
-            <textarea class="form-control" name="bio" id="bio" rows="4" required placeholder="Enter your bio">{{ old('bio', $employ->bio) }}</textarea>
+            <textarea class="form-control" name="bio" id="bio" rows="4" required placeholder="Enter your bio">{{ old('bio', $employee->bio) }}</textarea>
         </div>
 
-        <div class="form-group">
+        <div class="form-group mt-3">
             <label for="image">Image</label>
             <input type="file" class="form-control-file" name="image" id="image" accept="image/*">
         </div>
