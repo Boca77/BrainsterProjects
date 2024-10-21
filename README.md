@@ -55,7 +55,14 @@ To install the Admin Dashboard locally:
     DB_PASSWORD=password
     ```
 
-5. Serve the application:
+5. Run migrations, seeders, and create a symbolic link for storage:
+
+    ```bash
+    php artisan migrate --seed
+    php artisan storage:link
+    ```
+
+6. Serve the application:
 
     ```bash
     php artisan serve
