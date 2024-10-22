@@ -28,8 +28,7 @@ class GeneralController extends Controller
         $generalInfo = GeneralInfo::find(1);
 
         if ($request->hasFile('hero_image')) {
-
-            $heroImagePath = $request->file('hero_image')->store('hero_images');
+            $heroImagePath = $request->file('hero_image')->store('hero_images', 'public');
             $generalInfo->hero_image = $heroImagePath;
         }
 

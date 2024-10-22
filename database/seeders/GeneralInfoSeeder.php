@@ -13,6 +13,6 @@ class GeneralInfoSeeder extends Seeder
      */
     public function run(): void
     {
-        GeneralInfo::factory(5)->create();
+        GeneralInfo::factory(1)->create();
     }
 }

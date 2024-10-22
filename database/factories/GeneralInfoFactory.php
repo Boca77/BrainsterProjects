@@ -17,7 +17,7 @@ class GeneralInfoFactory extends Factory
     public function definition(): array
     {
         return [
-            'hero_image' => 'test',
+            'hero_image' => 'hero_images\logo.png',
             'general' => 'test',
         ];
     }
