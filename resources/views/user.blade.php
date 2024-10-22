@@ -7,7 +7,7 @@
         <div class="row g-0">
             <div class="col-lg-4 col-md-12 p-5 text-center"
                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                <img src="{{ asset($user->photo_upload) }}" alt="Avatar" class="rounded-circle"
+                <img src="{{ asset('storage/' . $user->photo_upload) }}" alt="Avatar" class="rounded-circle"
                     style="width: 150px; height: 150px; object-fit: cover;" alt="">
                 <h5 class="mt-2">{{ $user->name }} {{ $user->surname }}</h5>
                 <p>{{ $user->bio }}</p>

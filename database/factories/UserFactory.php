@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'city' => fake()->city(),
             'country' => fake()->country(),
             'cv_upload' => 'test',
-            'photo_upload' => 'dummy_images\gettyimages-639805094-612x612.jpg',
+            'photo_upload' => 'users/generic-man.jpg',
             'acquired_points' => fake()->numberBetween(1, 10),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),

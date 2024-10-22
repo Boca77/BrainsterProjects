@@ -21,7 +21,8 @@ class CommentsFactory extends Factory
         return [
             'user_id' => User::query()->inRandomOrder()->first()->id,
             'blog_id' => Blog::query()->inRandomOrder()->first()->id,
-            'content' => fake()->paragraph(3)
+            'content' => fake()->paragraph(3),
+            'likes' => fake()->numberBetween(1, 100),
         ];
     }
 }

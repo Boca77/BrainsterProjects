@@ -13,6 +13,7 @@
             <div class="col-md-4">
                 <h6><span class="text-secondary">Commented on:</span> <a
                         href="{{ route('blog.show', ['blog' => $comment->blog->id]) }}">{{ $comment->blog->title }}</a></h6>
+                <p class="text-secondary">likes: {{ $comment->likes }}</p>
             </div>
             <div class="col-md-2 text-md-end">
                 <form action="{{ route('comment.delete', ['comment' => $comment->id]) }}" method="POST" class="mb-0">
