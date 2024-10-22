@@ -93,3 +93,10 @@ To install the Admin Dashboard locally:
 -   Change the hero image of the page.
 -   Manage social media links.
 -   CRUD for employees.
+
+### Admin Credentials
+
+```bash
+email: admin@admin.com
+password: password
+```

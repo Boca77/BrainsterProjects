@@ -64,51 +64,47 @@ class GeneralController extends Controller
      */
     public function addEmployee(Request $request)
     {
-        // Validate incoming request
+
         $request->validate([
             'name' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'bio' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'general_info_id' => 'required|integer|exists:general_infos,id',
         ]);
 
-        // Extract other data except image
         $data = $request->except('image');
 
-        // Store the image in the 'public' disk
-        $path = $request->file('image')->store('employee_images', 'public');
+        if ($request->has('image')) {
+            $path = $request->file('image')->store('employee_images', 'public');
 
-        // Add the image path to the data array
-        $data['image'] = $path;
+            $data['image'] = $path;
+        }
 
-        // Create the new member record in the database
         GeneralMembers::create($data);
 
-        // Redirect back with success message
         return redirect()->route('settings', $request->general_info_id)
             ->with('success', 'Employee added successfully!');
     }
     public function updateEmployee(Request $request, GeneralMembers $employee)
     {
-        // Validate incoming request
+
         $request->validate([
             'name' => 'required|string|max:255',
             'title' => 'required|string|max:255',
             'bio' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'general_info_id' => 'required|integer|exists:general_infos,id',
         ]);
 
-        // Extract other data except image
+
         $data = $request->except('image');
 
-        // Store the image in the 'public' disk
-        $path = $request->file('image')->store('employee_images', 'public');
+        if ($request->has('image')) {
+            $path = $request->file('image')->store('employee_images', 'public');
 
-        // Add the image path to the data array
-        $data['image'] = $path;
-
+            $data['image'] = $path;
+        }
 
         $employee->update($data);
         $employee->load('generalInfo');

@@ -56,9 +56,11 @@ class SpeakerController extends Controller
 
         $data = $request->except('image');
 
-        $path = $request->file('image')->store('speakers', 'public');
+        if ($request->has('image')) {
+            $path = $request->file('image')->store('speakers', 'public');
 
-        $data['image'] = $path;
+            $data['image'] = $path;
+        }
 
         EventSpeaker::create($data);
         return redirect()->route('speakers')->with('success', 'Event speaker added successfully');
@@ -81,9 +83,11 @@ class SpeakerController extends Controller
 
         $data = $request->except('image');
 
-        $path = $request->file('image')->store('speakers', 'public');
+        if ($request->has('image')) {
+            $path = $request->file('image')->store('speakers', 'public');
 
-        $data['image'] = $path;
+            $data['image'] = $path;
+        }
 
         ConferenceSpeaker::create($data);
         return redirect()->route('speakers')->with('success', 'Conference speaker added successfully');
@@ -122,9 +126,11 @@ class SpeakerController extends Controller
 
         $data = $request->except('image');
 
-        $path = $request->file('image')->store('speakers', 'public');
+        if ($request->has('image')) {
+            $path = $request->file('image')->store('speakers', 'public');
 
-        $data['image'] = $path;
+            $data['image'] = $path;
+        }
 
 
         $conferenceSpeaker->update($data);
@@ -147,10 +153,11 @@ class SpeakerController extends Controller
 
         $data = $request->except('image');
 
-        $path = $request->file('image')->store('speakers', 'public');
+        if ($request->has('image')) {
+            $path = $request->file('image')->store('speakers', 'public');
 
-        $data['image'] = $path;
-
+            $data['image'] = $path;
+        }
         $eventSpeaker->update($data);
 
         return redirect()->route('speakers', $eventSpeaker->id)
