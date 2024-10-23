@@ -15,8 +15,12 @@
                 @csrf
                 @method('PUT')
                 <div class="row d-flex align-items-center">
-                    <div class="col "><label for="hero" class="h3">Change Hero Image</label><br>
+                    <div class="col">
+                        <label for="hero" class="h3">Change Hero Image</label><br>
                         <input type="file" name="hero_image" id="hero">
+                        @error('hero_image')
+                            <div class="text-danger mt-2">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col d-flex align-items-center flex-column justify-content-center">
                         <h6>Current Hero Image</h6>
@@ -32,6 +36,9 @@
                         <input required class="form-control" type="text"
                             name="social_media[{{ $social_media->platform }}]" value="{{ $social_media->url }}"
                             id="{{ $social_media->platform }}">
+                        @error("social_media.{{ $social_media->platform }}")
+                            <div class="text-danger mt-2">{{ $message }}</div>
+                        @enderror
                     @endforeach
                 </div>
                 <button class="btn btn-success mt-5">Save Changes</button>
@@ -57,7 +64,6 @@
                     Add Employee
                 </a>
             </div>
-
         </div>
         <div class="row">
             @foreach ($generalInfo->employees as $employee)
@@ -81,12 +87,8 @@
                             <button class="btn btn-danger">Delete</button>
                         </form>
 
-                        <form class="mb-0" action="{{ route('edit.employee.settings', ['employee' => $employee->id]) }}"
-                            method="PUT">
-                            @csrf
-                            @method('PUT')
-                            <button class="btn btn-warning">Edit</button>
-                        </form>
+                        <a href="{{ route('edit.employee.settings', ['employee' => $employee->id]) }}"
+                            class="btn btn-warning">Edit</a>
                     </div>
                 </div>
             @endforeach

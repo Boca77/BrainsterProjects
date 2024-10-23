@@ -29,11 +29,12 @@
                             @method('DELETE')
                             <button class="btn btn-danger">Delete</button>
                         </form>
-
-                        <form class="mb-0" action="{{ route('user.ban', ['user' => $user->id]) }}" method="POST">
-                            @csrf
-                            <button class="btn btn-warning">Ban</button>
-                        </form>
+                        @if (!$user->is_banned)
+                            <form class="mb-0" action="{{ route('user.ban', ['user' => $user->id]) }}" method="POST">
+                                @csrf
+                                <button class="btn btn-warning">Ban</button>
+                            </form>
+                        @endif
 
                         @if ($user->is_banned)
                             <form class="mb-0" action="{{ route('user.unban', ['user' => $user->id]) }}" method="POST">

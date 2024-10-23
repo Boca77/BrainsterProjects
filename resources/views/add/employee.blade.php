@@ -24,7 +24,7 @@
 
         <div class="form-group mt-3">
             <label for="image">Image</label>
-            <input type="file" class="form-control-file" name="image" id="image" accept="image/*" required>
+            <input type="file" class="form-control-file" name="image" id="image" accept="image/*">
         </div>
 
         <input type="text" hidden name="general_info_id" value="1" id="">

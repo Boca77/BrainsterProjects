@@ -51,13 +51,17 @@
                                 <button class="btn btn-danger w-100">Delete</button>
                             </form>
                         </div>
+                        @if (!$user->is_banned)
+                            <div class="col-sm-4 mb-3">
 
-                        <div class="col-sm-4 mb-3">
-                            <form class="mb-0" action="{{ route('user.ban', ['user' => $user->id]) }}" method="POST">
-                                @csrf
-                                <button class="btn btn-warning w-100">Ban</button>
-                            </form>
-                        </div>
+                                <form class="mb-0" action="{{ route('user.ban', ['user' => $user->id]) }}"
+                                    method="POST">
+                                    @csrf
+                                    <button class="btn btn-warning w-100">Ban</button>
+                                </form>
+
+                            </div>
+                        @endif
 
                         <div class="col-sm-4 mb-3">
                             @if ($user->is_banned)

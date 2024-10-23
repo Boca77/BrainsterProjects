@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('title');
             $table->mediumText('bio');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->foreignId('general_info_id')->constrained('general_infos');
             $table->timestamps();
         });
