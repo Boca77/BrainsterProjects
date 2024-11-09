@@ -6,7 +6,7 @@ This repository contains various coding projects, each developed and stored in s
 
  - Project_01 -> pure vanilla HTML/CSS/JavaScript
  - Project_02 -> pure vanilla PHP with a database (MySQL & XAMPP) / styled with Tailwind 
- - Project_03 -> a real life Laravel 11 project for The Macedonian Human Resource Association / styled with Bootstrap
+ - Project_03 -> a real life Laravel 11 project for The Macedonian Human Resource Association (Admin Pannel) / styled with Bootstrap
 
 
 ## Introduction
