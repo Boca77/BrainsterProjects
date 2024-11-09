@@ -1,25 +1,21 @@
-# Coding Challenges (mini projects)
+#Coding Projects
 
-This repository contains various coding challenges tackled in separate branches. Each challenge is solved in its respective branch.
+This repository contains various coding projects, each developed and stored in separate branches. Every project focuses on a specific task or feature and is implemented in its respective branch.
 
-## Challenges
+##Projects
 
-- HTML & CSS/SASS -> Challenges form 1 - 4 
-- Git exercise -> Challenges 5 and 6 
-- Bootstrap -> Challenge 7
-- ER diagrams and SQL queries -> Challenges 9 and 10
-- PHP basics, OOP, PDO and DB integration with XAMPP/PhPMYAdmin -> Challenges 11 - 17
-- JavaScript OOP and JQuery/Ajax -> Challenges 18 - 21
-- Laravel basic to advanced  -> Challenges 22 - 27
+-Project_01 -> pure vanilla HTML/CSS/JavaScript
+-Project_02 -> pure vanilla PHP with a database (MySQL & XAMPP) / styled with Tailwind 
+-Project_03 -> a real life Laravel 11 project for The Macedonian Human Resource Association / styled with Bootstrap
 
 
 ## Introduction
 
-This project is a collection of coding challenges aimed at enhancing problem-solving skills. Each branch in the repository focuses on a unique challenge, with solutions implemented in various programming languages, including HTML, JavaScript, PHP, and PHP (Laravel). Bootstrap has been used for styling in most of the challenges
+This project repository is a collection of mini-projects aimed at enhancing both development and problem-solving skills. Each branch of the repository is dedicated to a specific project, with solutions implemented in a variety of programming languages, including HTML, JavaScript, PHP, and Laravel.
 
-The purpose of this `README.md` is to give an overview of these challenges, describe where they can be found
+The purpose of this `README.md` is to give an overview of these projects and describe where they can be found.
 
-## Branch Overview
+##Branch Overview
 
-- **Main Branch**: Contains the overall project documentation (including this `README.md`). No coding challenges are solved in this branch.
-- **Other Branches**: Each branch is dedicated to a specific coding challenge.
+- **Main Branch**: Contains the overall project documentation (including this README.md). No project code is stored in this branch.
+- **Other Branches**: Each branch is dedicated to a specific project, where the code and related files for that project are stored and maintained.
