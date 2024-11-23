@@ -12,8 +12,9 @@ if (($_POST["title"] == "") || ($_POST["img_url"] == "") || ($_POST["page_num"] 
 session_start();
 
 
-include("../Classes/GetAuthor.php");
-include("../Classes/GetCategory.php");
+require_once(__DIR__ . "\..\Connection.php");
+require_once(__DIR__ . "\..\Classes\GetAuthor.php");
+require_once(__DIR__ . "\..\Classes\GetCategory.php");
 
 use GetAuthor\GetAuthor;
 use GetCategory\GetCategory;
@@ -34,6 +35,11 @@ if (!$checkCategory) {
     header('location: ../../admin-panel.php?bookMsg=Category%20Id%20not%20valid');
     return;
 }
+
+use Connection\Connection;
+
+$db = new Connection();
+$connection = $db->getConnection();
 
 $fetchBook = $connection->prepare('SELECT * FROM `books` WHERE title = :title AND author_id = :author_id');
 $fetchBook->bindParam("title", $_POST['title']);
